@@ -4,29 +4,33 @@ Survey of `origin/master` (Blanket, Python + PyGObject + GTK4/libadwaita +
 GStreamer) against `lib/` on the `ruby` branch, for the full-parity Ruby port.
 
 Method: the `component-identification` skill. Upstream carries blueprint UI, so
-the eleven `data/resources/*.blp` files were read first — they are the real
+the twelve `data/resources/*.blp` files were read first — they are the real
 widget trees, the CSS classes and the signals — then every Python module that
 backs one, plus the GSettings schema, the GResource manifest and `po/`.
+
+Re-surveyed after `2dffcf3 Port the settings, presets and app dialogs`; the
+present/missing column below reflects the branch at that commit.
 
 ## Totals
 
 | | Upstream | `ruby` branch |
 |---|---|---|
-| UI units (blueprint template / named root / app class) | 13 | 1 (placeholder) |
-| Blueprint files | 11 | 0 (by design — widgets are memoized methods) |
-| Python modules | 20 | 3 Ruby files, 1 of them a stub window |
-| Distinct widget types | ~30 | 5 |
-| CSS classes applied | 10 (`accent`, `circular`, `devel`, `error`, `flat`, `menu`, `playpause`, `preset-row`, `selected`, `sound-item`, `sound-view`, `suggested-action`, `volume-row`, `volume-separator`, `caption-heading`) | 0 |
-| Stylesheet | `data/resources/style.css`, 11 rules | none |
-| GActions | 14 (`app.*` ×12, `win.*` ×2) | 0 |
-| Accelerators | 6 | 0 |
-| GSettings schemas | 2 (app + `.preset`), 13 + 4 keys | none |
-| Translated strings | 87 msgids, 60 locales | none |
+| UI units (blueprint template / named root / app class) | 14 | 5 (application shell, preset chooser, preset row, preset dialog, shortcuts, about) |
+| Blueprint files | 12 | 0 (by design — widgets are memoized methods) |
+| Python modules | 20 | 10 Ruby files |
+| Distinct widget types | ~30 | ~16 |
+| CSS classes applied | 15 (`accent`, `caption-heading`, `circular`, `devel`, `error`, `flat`, `menu`, `playpause`, `preset-row`, `selected`, `sound-item`, `sound-view`, `suggested-action`, `volume-row`, `volume-separator`) | 5 (`menu`, `preset-row`, `selected`, `flat`, `circular`, `suggested-action`) |
+| Stylesheet | `data/resources/style.css`, 17 rules | `lib/blanket/style.css`, 17 rules — **ported whole** |
+| GActions | 14 (`app.*` ×12, `win.*` ×2) | 6 (`app.quit`, `app.about`, `app.shortcuts`, `app.add-preset`, `app.background-playback`, `win.close`) |
+| Accelerators | 6 | 3 (`<Control>q`, `<Control>question`, `<Control>w`) |
+| GSettings schemas | 2 (app + `.preset`), 13 + 4 keys | **both present**, same key names, under `org.rubygtkproject.Blanket`, compiled to `data/schemas/` |
+| Assets | 16 symbolic icons, 14 `.ogg` sounds in GResource | **all present on disk** (`data/icons/hicolor/scalable/emblems`, `data/sounds`) |
+| Translated strings | 87 msgids, 57 `po/*.po` locales | none |
 
-The `ruby` branch is at the scaffold stage: `lib/blanket/application.rb` is a
-`Gtk::Application` with an `Adwaita::ToolbarView`, an empty `Adwaita::HeaderBar`
-and an `Adwaita::StatusPage` reading "The Ruby port has not been written yet."
-Nothing else of the app exists.
+The window itself is still a placeholder: `lib/blanket/application.rb` presents
+an `Adwaita::ApplicationWindow` holding an `Adwaita::ToolbarView`, a header bar
+with the real `PresetChooser` and main menu, and an `Adwaita::StatusPage` where
+the sound grid belongs. No audio, no sounds, no bottom bar.
 
 ## Path convention
 
@@ -40,41 +44,47 @@ Targets below therefore keep this fork's existing namespace,
 
 ## lib/blanket/application.rb — the application object: actions, accelerators, MPRIS, power monitor
 
-Upstream: `blanket/main.py`. **Exists as a placeholder only** — none of the
-below is present.
+Upstream: `blanket/main.py`. **Partial** — exists with the window shell, the
+primary menu, six actions, three accelerators and the CSS provider. Missing:
+the `--hidden` command-line option, the power-profile monitor, the playback
+actions, the sound actions, the dark-mode fallback and the full accelerator set.
 
-| Thing | × | Notes |
-|---|---:|---|
-| `Gtk::Application` (upstream `Adw.Application`) | 1 | `HANDLES_COMMAND_LINE`; `resource_base_path`; sets `PULSE_PROP_application.icon_name` |
-| `--hidden` command-line option | 1 | starts the window hidden; `do_command_line` |
-| `Gio::PowerProfileMonitor` | 1 | `notify::power-saver-enabled` → pause playback + show power toast |
-| `Adwaita::StyleManager` | 1 | forces dark when the system has no colour schemes |
-| Signal `shutdown` | 1 | saves settings, stops the player |
-| Signal `close-request` on the window | 1 | hide when background playback is on, else save window state and quit |
+| Thing | × | Present | Notes |
+|---|---:|---|---|
+| `Gtk::Application` (upstream `Adw.Application`) | 1 | yes | upstream sets `HANDLES_COMMAND_LINE`, `resource_base_path` and `PULSE_PROP_application.icon_name`; the port sets none of these. `Adwaita::Application` is broken in the Ruby bindings, so the app object is `Gtk::Application` |
+| `--hidden` command-line option | 1 | no | starts the window hidden; `do_command_line` |
+| `Gio::PowerProfileMonitor` | 1 | no | `notify::power-saver-enabled` → pause playback + show power toast |
+| `Adwaita::StyleManager` | 1 | partial | reachable as `style_manager`; the force-dark fallback for systems without colour schemes is not wired |
+| Signal `shutdown` | 1 | partial | the port saves presets; upstream also stops the player |
+| Signal `close-request` on the window | 1 | yes | hide when background playback is on, else save window state and quit |
+| `Gtk::CssProvider` | 1 | yes | loads `lib/blanket/style.css` at `PRIORITY_APPLICATION` |
 
-Actions installed (names are literals; the `space` accelerator is removed while
-a text-entry dialog is open and restored on close — `set_space_accel` /
-`unset_space_accel`):
+Actions installed upstream (names are literals; the `space` accelerator is
+removed while a text-entry dialog is open and restored on close —
+`set_space_accel` / `unset_space_accel`):
 
-| Action | Kind | Accelerator |
-|---|---|---|
-| `app.quit` | simple | `<Ctl>q` |
-| `app.about` | simple | — |
-| `app.preferences` | simple | `<Ctl>comma` |
-| `app.background-playback` | stateful (boolean) | — |
-| `app.playpause` | simple | `<Ctl>m`, `space` |
-| `app.play` | simple | — |
-| `app.add-preset` | simple | — |
-| `app.reset-volumes` | simple | — |
-| `app.open` | simple | `<Ctl>o` |
-| `app.remove-sound` | simple, param `u` | — |
-| `app.rename-sound` | simple, param `u` | — |
-| `win.close` | simple | `<Ctl>w` |
-| `win.hide-inactive` | stateful (boolean) | `<Ctl>h` |
+| Action | Kind | Accelerator | Present |
+|---|---|---|---|
+| `app.quit` | simple | `<Ctl>q` | yes |
+| `app.about` | simple | — | yes |
+| `app.preferences` | simple | `<Ctl>comma` | no |
+| `app.background-playback` | stateful (boolean) | — | yes |
+| `app.playpause` | simple | `<Ctl>m`, `space` | no |
+| `app.play` | simple | — | no |
+| `app.add-preset` | simple | — | yes |
+| `app.reset-volumes` | simple | — | no |
+| `app.open` | simple | `<Ctl>o` | no |
+| `app.remove-sound` | simple, param `u` | — | no |
+| `app.rename-sound` | simple, param `u` | — | no |
+| `win.close` | simple | `<Ctl>w` | yes |
+| `win.hide-inactive` | stateful (boolean) | `<Ctl>h` | no |
+| `app.shortcuts` | — (never installed upstream) | — | **installed in the port**, with `<Control>question` |
 
 ## lib/blanket/window.rb — the main window: sound grid, bottom bar, menus
 
-Upstream: `blanket/window.py` + `data/resources/window.blp`. **Missing.**
+Upstream: `blanket/window.py` + `data/resources/window.blp`. **Missing** — the
+window exists only as the shell inside `application.rb`, and must move into its
+own file when the grid and bottom bar land.
 
 | Widget | × | CSS | Signals | Notes |
 |---|---:|---|---|---|
@@ -107,6 +117,11 @@ Menus defined in `window.blp` (all land in this file):
 | `volume-menu` | `custom: "volumes"` slot; "Reset Sounds" (`app.reset-volumes`) |
 | `more-menu` | "Hide Inactive Sounds" (`win.hide-inactive`), "Save as New Preset…" (`app.add-preset`); "Add Sound…" (`app.open`) |
 
+The port currently carries `primary-menu` in `application.rb`, without its
+"Preferences" item and with "Save as New Preset…" (upstream's `more-menu`)
+folded in so the action reaches the preset chooser. Both menus belong in this
+unit once it exists.
+
 Repeaters: the grid is one `SoundItem` per sound in `MainPlayer` (14 bundled + N
 custom) plus one dummy "Add…" tile; the volume list is one `VolumeRow` per
 playing sound. Conditional: `presets_chooser` is visible only when more than
@@ -122,7 +137,7 @@ Upstream: `blanket/widgets/playpause.py`. **Missing.**
 
 ## lib/blanket/preset_chooser.rb — the preset menu button in the header bar
 
-Upstream: `blanket/widgets/preset_chooser.py` + `data/resources/preset-chooser.blp`. **Missing.**
+Upstream: `blanket/widgets/preset_chooser.py` + `data/resources/preset-chooser.blp`. **Present** (136 lines).
 
 | Widget | × | CSS | Signals | Notes |
 |---|---:|---|---|---|
@@ -136,7 +151,7 @@ Repeater: one `PresetRow` per preset. Also listens to `Settings` `preset-changed
 
 ## lib/blanket/preset_row.rb — one preset in the preset popover
 
-Upstream: `blanket/widgets/preset_row.py` + `data/resources/preset-row.blp`. **Missing.**
+Upstream: `blanket/widgets/preset_row.py` + `data/resources/preset-row.blp`. **Present** (113 lines).
 
 | Widget | × | CSS | Signals | Notes |
 |---|---:|---|---|---|
@@ -149,11 +164,11 @@ Upstream: `blanket/widgets/preset_row.py` + `data/resources/preset-row.blp`. **M
 
 ## lib/blanket/preset_dialog.rb — "New Preset" / "Edit Preset"
 
-Upstream: `blanket/widgets/preset_dialog.py` + `data/resources/preset-dialog.blp`. **Missing.**
+Upstream: `blanket/widgets/preset_dialog.py` + `data/resources/preset-dialog.blp`. **Present** (162 lines).
 
 | Widget | × | CSS | Signals | Notes |
 |---|---:|---|---|---|
-| `Adwaita::Dialog` | 1 | — | `realize` → unset space accel; `closed` → restore it | 360×148; focus widget is the entry |
+| `Adwaita::Dialog` | 1 | — | `realize` → unset space accel; `closed` → restore it | 360×148; focus widget is the entry. The accel juggling has nothing to unset until `app.playpause` exists |
 | `Adwaita::ToolbarView` | 1 | — | — | |
 | `Adwaita::HeaderBar` | 1 | — | — | no window buttons either side |
 | `Adwaita::WindowTitle` | 1 | — | — | title bound to the dialog title; subtitle = preset name when editing |
@@ -183,6 +198,21 @@ Upstream: `blanket/widgets/sound_item.py` + `data/resources/sound-item.blp`. **M
 `blanket-add-symbolic`, and activating it opens the file dialog. This is what
 `blanket/utils.py`'s `DummyItemModel` exists for.
 
+## lib/blanket/volume_row.rb — one playing sound in the volume popover
+
+Upstream: `blanket/widgets/volume_row.py` + `data/resources/volume-row.blp`. **Missing.**
+
+| Widget | × | CSS | Signals | Notes |
+|---|---:|---|---|---|
+| `Gtk::ListBoxRow` | 1 | `volume-row` | — | not selectable; `.volume-row:hover`, `.volume-row label` and `.volume-row scale` are styled in `style.css` |
+| `Gtk::Box` | 1 | — | — | vertical |
+| `Gtk::Label` (`title`) | 1 | `caption-heading` | — | ellipsize end, `xalign: 0`, bound to the row's `title` property |
+| `Gtk::Scale` (`volume`) | 1 | — | adjustment bound bidirectionally to the row's `volume` property (`no-sync-create`) | hexpand, no value drawn |
+| `Gtk::Adjustment` | 1 | — | — | 0..1 step 0.01 |
+
+The Python side is nothing but the two GObject properties the window binds per
+playing sound; all of the behaviour is the blueprint's bidirectional binding.
+
 ## lib/blanket/sound_context_menu.rb — right-click menu on a sound tile
 
 Upstream: `blanket/widgets/sound_context_menu.py` + `data/resources/sound-context-menu.blp`. **Missing.**
@@ -209,7 +239,7 @@ title is always "Rename Sound", the subtitle is the current sound name, and
 
 ## lib/blanket/preferences_dialog.rb — Preferences
 
-Upstream: `blanket/preferences.py` + `data/resources/preferences.blp`. **Missing.**
+Upstream: `blanket/preferences.py` + `data/resources/preferences.blp`. **Missing** — and `app.preferences` is not installed, so the menu item is absent too.
 
 | Widget | × | CSS | Signals | Notes |
 |---|---:|---|---|---|
@@ -224,90 +254,98 @@ Upstream: `blanket/preferences.py` + `data/resources/preferences.blp`. **Missing
 | `Adwaita::Toast` | 1 | — | — | **error state**: "The autostart request failed." |
 
 Port note: upstream uses `Xdp.Portal.request_background`. There is no `Xdp`
-typelib binding in this fork's dev shell — see Blockers.
+typelib in this fork's dev shell — see Blockers.
 
 ## lib/blanket/shortcuts_dialog.rb — Keyboard Shortcuts
 
 Upstream: `data/resources/shortcuts.blp` — a standalone named root with no
-backing Python file. **Missing.**
+backing Python file. **Present** (51 lines), with the six items.
 
 `Adwaita::ShortcutsDialog` with one `Adwaita::ShortcutsSection` "General" and
-six `Adwaita::ShortcutsItem`s, each addressed by action name: `app.playpause`
-"Play/Pause Sounds", `app.open` "Add Custom Sound", `win.close` "Close Window",
-`app.preferences` "Preferences", `app.shortcuts` "Keyboard Shortcuts",
-`app.quit` "Quit".
+six `Adwaita::ShortcutsItem`s: `app.playpause` "Play/Pause Sounds", `app.open`
+"Add Custom Sound", `win.close` "Close Window", `app.preferences`
+"Preferences", `app.shortcuts` "Keyboard Shortcuts", `app.quit` "Quit".
+Upstream addresses each item by action name and lets libadwaita look the
+accelerator up; the port carries the accelerator literally, because that is the
+form the Ruby bindings take positionally. Three of the six actions do not exist
+in the port yet, so those rows document accelerators nothing answers.
 
-**Upstream bug to reproduce or fix deliberately:** `primary-menu` and this
-dialog both reference `app.shortcuts`, but `blanket/main.py` never installs that
-action. The menu item is therefore insensitive upstream.
+**Upstream bug, deliberately not reproduced:** `primary-menu` and this dialog
+both reference `app.shortcuts`, which `blanket/main.py` never installs, so the
+menu item is insensitive upstream. The port installs the action.
 
 ## lib/blanket/about_dialog.rb — About Blanket
 
 Upstream: `data/resources/about.blp` (named root `about`) + `on_about` in
-`blanket/main.py` + the credit tables in `blanket/define.in`. **Missing.**
+`blanket/main.py` + the credit tables in `blanket/define.in`. **Present** (43 lines).
 
 `Adwaita::AboutDialog`: application name "Blanket", comments "Listen to
 different sounds", copyright, developer "Rafael Mardojai CM", website
-`apps.gnome.org/Blanket`, issue URL, GPL-3.0, translator credits. Filled in
-code with version, app icon, developers, designers (`ARTISTS`), a "Source Code"
-link, and two credit sections — "Sounds by" (`SOUND_ARTISTS`, 14 entries) and
-"Sounds edited by" (`SOUND_EDITORS`).
+`apps.gnome.org/Blanket`, issue URL, GPL-3.0, translator credits, version, app
+icon, developers, designers (`ARTISTS`), a "Source Code" link, and two credit
+sections — "Sounds by" (`SOUND_ARTISTS`, 14 entries) and "Sounds edited by"
+(`SOUND_EDITORS`).
 
 ---
 
 ## Non-widget units the UI cannot work without
 
-All **missing**. Listed because every component above binds to one of them.
+Every component above binds to one of these.
 
-| Upstream | Target | What it is |
-|---|---|---|
-| `blanket/define.in` | `lib/blanket/define.rb` | APP_ID, RES_PATH, the sound catalogue (3 groups / 12 sounds), 2 noises, credits tables |
-| `blanket/settings.py` | `lib/blanket/settings.rb` | `Gio::Settings` singleton, per-preset `Gio::Settings` in delay-apply mode, custom-audio and preset helpers, legacy volume migration, `preset-changed` signal |
-| `blanket/preset.py` | `lib/blanket/preset.rb` | `GObject` with `name`/`active`, bound to the preset schema |
-| `blanket/sound.py` | `lib/blanket/sound.rb` | one sound: `playing`, `title`, `icon_name`, `error_message`, `failed`, `saved_volume`/`saved_mute`, lazy GStreamer branch attach/detach with a 5s delay |
-| `blanket/main_player.py` | `lib/blanket/main_player.rb` | singleton player **and** the app's `Gio::ListModel`; one shared pipeline (audiomixer → convert → resample → volume → autoaudiosink), branch attach/detach with pad offsets, cubic/linear volume conversion, error recovery, suspend inhibition, preset next/prev |
-| `blanket/audio/bins.py` | `lib/blanket/audio/bins.rb` | `SoundBin` base, `LoopBin` (uridecodebin + segment-seek looping with retries), `NoiseBin` (audiotestsrc) |
-| `blanket/utils.py` | `lib/blanket/dummy_item_model.rb` | `Gio::ListModel` that appends one dummy item — the "Add…" tile |
-| `blanket/mpris.py` | `lib/blanket/mpris.rb` | D-Bus `org.mpris.MediaPlayer2.Blanket`: Raise/Quit/Next/Previous/PlayPause/Play/Pause/Stop, Metadata, Volume, CanGoNext/Previous, PropertiesChanged |
-| `data/com.rafaelmardojai.Blanket.gschema.xml.in` | GSettings schema in-tree + compiled for the dev shell | app schema (13 keys: `window-state`, `autostart`, `start-paused`, `dark-mode`, `inhibit-suspension`, `scroll-position`, `volume`, `playing`, `background-playback`, `custom-audios`, `presets`, `active-preset`, deprecated `sounds-volume`) and `.preset` schema (`visible-name`, `sounds-volume`, `sounds-mute`, `hide-inactive`) |
-| `data/resources/style.css` | `lib/blanket/style.css` loaded via `Gtk::CssProvider` from `application.rb` | 11 rules: `.preset-row`, `.preset-row.selected label`, `.volume-separator`, `.volume-row` (+ `:hover`, `label`, `scale`), `button.playpause`, `.sound-view`, `.sound-item` (+ `:hover`, `image`, `image.accent`, scale trough/slider/highlight) |
-| `data/resources/blanket.gresource.xml` | asset loading | 11 UI files (not needed — the port builds widgets in code), `style.css`, 16 symbolic icons, 14 `.ogg` sounds. **The icons and sounds must be carried over**; the port has neither |
-| `po/` (60 locales, 87 msgids) | translation strategy | no gettext in the port yet; every label above is currently untranslated |
+| Upstream | Target | Present | What it is |
+|---|---|---|---|
+| `blanket/define.in` | `lib/blanket/define.rb` | **yes** (107 lines) | APP_ID, RES_PATH, data/icon/sound/schema paths, the sound catalogue (3 groups / 12 sounds), 2 noises, credits tables. The Meson templating is gone — values are literals, the version comes from the gem, and assets are files rather than a GResource bundle |
+| `blanket/settings.py` | `lib/blanket/settings.rb` | **yes** (318 lines) | `Gio::Settings` wrapper, per-preset `Gio::Settings` in delay-apply mode, custom-audio and preset helpers, legacy volume migration, `preset-changed` as a block list rather than a GObject signal |
+| `blanket/preset.py` | `lib/blanket/preset.rb` | **yes** (61 lines) | name/active, read through `Settings`, with `#on_changed` blocks in place of property bindings |
+| `blanket/sound.py` | `lib/blanket/sound.rb` | no | one sound: `playing`, `title`, `icon_name`, `error_message`, `failed`, `saved_volume`/`saved_mute`, lazy GStreamer branch attach/detach with a 5s delay |
+| `blanket/main_player.py` | `lib/blanket/main_player.rb` | no | singleton player **and** the app's `Gio::ListModel`; one shared pipeline (audiomixer → convert → resample → volume → autoaudiosink), branch attach/detach with pad offsets, cubic/linear volume conversion, error recovery, suspend inhibition, preset next/prev |
+| `blanket/audio/bins.py` | `lib/blanket/audio/bins.rb` | no | `SoundBin` base, `LoopBin` (uridecodebin + segment-seek looping with retries), `NoiseBin` (audiotestsrc) |
+| `blanket/utils.py` | `lib/blanket/dummy_item_model.rb` | no | `Gio::ListModel` that appends one dummy item — the "Add…" tile |
+| `blanket/mpris.py` | `lib/blanket/mpris.rb` | no | D-Bus `org.mpris.MediaPlayer2.Blanket`: Raise/Quit/Next/Previous/PlayPause/Play/Pause/Stop, Metadata, Volume, CanGoNext/Previous, PropertiesChanged |
+| `data/com.rafaelmardojai.Blanket.gschema.xml.in` | `data/schemas/org.rubygtkproject.Blanket.gschema.xml` | **yes** | both schemas, same 13 + 4 key names, compiled to `data/schemas/gschemas.compiled`; the dev shell exports `GSETTINGS_SCHEMA_DIR` |
+| `data/resources/style.css` | `lib/blanket/style.css` | **yes** | all 17 rules, loaded by `application.rb`'s `Gtk::CssProvider`. Most of them style widgets that do not exist yet |
+| `data/resources/blanket.gresource.xml` | files on disk | **yes** for assets | 16 symbolic icons under `data/icons/hicolor/scalable/emblems`, 14 `.ogg` sounds under `data/sounds`, plus the app icon. The 12 `.ui` files have no counterpart by design |
+| `po/` (57 locales, 87 msgids) | translation strategy | no | no gettext in the port; every label above is a literal English string |
 
 ---
 
 ## Summary of parity
 
-Present on `ruby`: 1 of 13 UI units, and that one only as a placeholder shell
-(`lib/blanket/application.rb` — no actions, no accelerators, no menus, no real
-content). Everything else in this document is to be written.
+Present on `ruby`: 5 of 14 UI units in full (preset chooser, preset row, preset
+dialog, shortcuts dialog, about dialog), 1 partially (the application object,
+with a placeholder window), and 4 of the 12 non-widget units (define, settings,
+preset, the stylesheet) plus the schemas and every asset.
+
+Missing: the window proper and everything audio — the sound grid and its tiles,
+the bottom bar, the volume popover and its rows, the play/pause button, the
+sound context menu, the rename dialog, preferences, and the whole GStreamer
+player stack with MPRIS.
 
 ## Blockers and open questions
 
-1. **No GStreamer in the dev shell (unverified).** The whole app is a GStreamer
-   mixer. `flake.nix` must provide `gstreamer`, `gst-plugins-base`,
-   `gst-plugins-good` and their typelibs, and the Ruby side needs working
-   `Gst`/`GstAudio` introspection. Confirm before porting `main_player.rb`.
-2. **No `Xdp` (libportal) binding.** `preferences.py` requests autostart through
-   `Xdp.Portal` + `XdpGtk4`. If the typelib is absent the autostart switch, its
-   "Authorization failed" dialog and its failure toast cannot be ported as-is.
-3. **GSettings schemas must exist at runtime.** Nothing works until the two
-   schemas are compiled into a `GSETTINGS_SCHEMA_DIR` the dev shell exports;
-   the dynamic per-preset `Gio::Settings.new_with_path` + `delay`/`apply`
-   pattern needs checking against the Ruby bindings.
-4. **`Adwaita::ApplicationWindow` is flagged broken** in the `ruby-gtk` skill's
-   quirks reference, yet the existing `lib/blanket/application.rb` uses it. The
-   window unit must be driven headlessly early to find out which it is.
-5. **Custom `Gio::ListModel` implementations.** `MainPlayer` and
-   `DummyItemModel` both implement `Gio::ListModel` in Python via `do_get_item`.
-   Whether Ruby GTK allows implementing a GInterface this way is unknown; a
-   `Gio::ListStore` + a separate player object may be the port's shape instead.
-6. **Path convention deviates from the pilot.** The pilot is flat `lib/*.rb`;
-   this fork's gem layout forces `lib/blanket/*.rb`. Confirmed against
-   `exe/blanket` and the gemspec, but worth an explicit decision.
-7. **Assets.** 16 symbolic SVG icons and 14 `.ogg` sounds live in upstream's
-   GResource. The port needs them on disk (or in its own resource bundle) plus
-   an icon-theme search path, or every sound tile renders a missing icon.
-8. **`app.shortcuts` is referenced but never installed upstream** (see the
-   shortcuts unit). Decide whether the port reproduces the dead menu item or
-   installs the action.
+1. **No GStreamer in the dev shell.** `flake.nix` names no `gst*` package at
+   all, and the whole app is a GStreamer mixer. It needs `gstreamer`,
+   `gst-plugins-base`, `gst-plugins-good` and their typelibs on the shell's
+   `GI_TYPELIB_PATH`, and working `Gst`/`GstAudio` introspection from Ruby,
+   before `sound.rb`, `bins.rb` or `main_player.rb` can be written. This is the
+   next thing to settle, because six of the missing units bind to the player.
+2. **No `Xdp` (libportal) binding.** `preferences.py` requests autostart
+   through `Xdp.Portal` + `XdpGtk4`. Absent the typelib, the autostart switch,
+   its "Authorization failed" dialog and its failure toast cannot be ported
+   as-is; the rest of Preferences can be.
+3. **Custom `Gio::ListModel` implementations.** `MainPlayer` and
+   `DummyItemModel` both implement `Gio::ListModel` in Python via
+   `do_get_item`. Whether Ruby GTK allows implementing a GInterface this way is
+   still unverified; a `Gio::ListStore` plus a separate player object may be
+   the port's shape instead. This decides the window's `bind_model` wiring.
+4. **`Adwaita::ApplicationWindow`** is flagged broken in the `ruby-gtk` skill's
+   quirks reference, and `application.rb` uses it. It has not been driven
+   headlessly yet, so this is still open.
+5. **No translations.** 57 locales and 87 msgids upstream; the port has no
+   gettext and no catalogue. Needs a decision before more literal strings are
+   written.
+6. **Resolved since the first survey:** both GSettings schemas exist and
+   compile, the dev shell exports `GSETTINGS_SCHEMA_DIR`, the stylesheet is
+   ported whole, and all 16 icons and 14 sounds are on disk with an icon-theme
+   search path. The `lib/blanket/*.rb` path convention (rather than the pilot's
+   flat `lib/*.rb`) is settled, forced by the gem layout.
