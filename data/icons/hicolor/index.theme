@@ -1,0 +1,18 @@
+[Icon Theme]
+Name=hicolor
+Comment=Blanket's own icons
+Directories=scalable/apps,scalable/emblems
+
+[scalable/apps]
+Size=128
+MinSize=16
+MaxSize=512
+Context=Applications
+Type=Scalable
+
+[scalable/emblems]
+Size=128
+MinSize=16
+MaxSize=512
+Context=Emblems
+Type=Scalable
