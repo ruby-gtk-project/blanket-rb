@@ -72,6 +72,22 @@
           xorgproto
         ]);
 
+        # The app is a GStreamer mixer: every sound is a branch of one shared
+        # pipeline. gst-plugins-base carries audiomixer, audioconvert,
+        # audioresample, volume, audiotestsrc, capsfilter and the decodebin
+        # family; gst-plugins-good carries the Ogg/Vorbis decoders the bundled
+        # sounds need and the PulseAudio sink `autoaudiosink` picks.
+        gstStack = with pkgs.gst_all_1; [
+          gstreamer
+          gst-plugins-base
+          gst-plugins-good
+        ];
+
+        # Where GStreamer looks for its element factories. Without it the
+        # pipeline builds no elements at all and every sound reports failure.
+        gstPluginPath = pkgs.lib.makeSearchPath "lib/gstreamer-1.0"
+          (map (drv: drv.out or drv) gstStack);
+
         # ruby-gnome gems build C extensions with extconf.rb + the pkg-config
         # gem; nixpkgs only ships gemConfig entries for the GTK3-era subset, so
         # the GTK4 gems get their build inputs declared here.
@@ -80,7 +96,18 @@
           buildInputs = gtkStack;
         };
 
+        # The gstreamer gem builds a C extension of its own against
+        # gstreamer-1.0.pc and gstreamer-audio-1.0.pc. Those name libunwind,
+        # libdw (elfutils) and orc-0.4 in `Requires.private`, and the
+        # pkg-config gem hard-fails on any .pc missing from that chain, so
+        # all three are build inputs here too.
+        rubyGstGem = _attrs: {
+          nativeBuildInputs = [ pkgs.pkg-config ];
+          buildInputs = gtkStack ++ gstStack ++ (with pkgs; [ libunwind elfutils orc ]);
+        };
+
         gemConfig = pkgs.defaultGemConfig // {
+          gstreamer = rubyGstGem;
           gdk4 = rubyGnomeGem;
           gsk4 = rubyGnomeGem;
           gtk4 = rubyGnomeGem;
@@ -93,7 +120,7 @@
         # first output is `bin`, which carries no typelibs — hence the explicit
         # `.out`. at-spi2-core is here for the Atk typelib.
         typelibPath = pkgs.lib.makeSearchPath "lib/girepository-1.0"
-          (map (drv: drv.out or drv) (gtkStack ++ [ pkgs.at-spi2-core ]));
+          (map (drv: drv.out or drv) (gtkStack ++ gstStack ++ [ pkgs.at-spi2-core ]));
 
         # nix/ and not the repo root: the root Gemfile is kettle-jem's
         # development bundle — rubocop, rspec, yard, the kettle-dev stack — and
@@ -129,7 +156,7 @@
           # the wrapper never looks. The wrapper below is built by hand and
           # points at both the pre- and post-move paths.
           nativeBuildInputs = [ pkgs.makeWrapper ];
-          buildInputs = [ gems ] ++ gtkStack;
+          buildInputs = [ gems ] ++ gtkStack ++ gstStack;
 
           dontBuild = true;
 
@@ -160,6 +187,7 @@
               --add-flags "-I$out/share/blanket/lib" \
               --add-flags "$out/share/blanket/exe/${launcher}" \
               --set GI_TYPELIB_PATH "${typelibPath}" \
+              --set GST_PLUGIN_SYSTEM_PATH_1_0 "${gstPluginPath}" \
               --prefix XDG_DATA_DIRS : "$out/share" \
               --prefix XDG_DATA_DIRS : "$out/share/gsettings-schemas/blanket-0.1.0" \
               --prefix XDG_DATA_DIRS : "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}" \
@@ -201,13 +229,14 @@
             pkgs.xvfb-run
             pkgs.gsettings-desktop-schemas
             pkgs.adwaita-icon-theme
-          ] ++ gtkStack;
+          ] ++ gtkStack ++ gstStack;
 
           # Icons, GSettings schemas and the GTK portal all resolve through
           # XDG_DATA_DIRS; without these the window opens with blank icons.
           shellHook = ''
             export XDG_DATA_DIRS="${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk4}/share/gsettings-schemas/${pkgs.gtk4.name}:${pkgs.adwaita-icon-theme}/share:$XDG_DATA_DIRS"
             export GI_TYPELIB_PATH="${typelibPath}''${GI_TYPELIB_PATH:+:$GI_TYPELIB_PATH}"
+            export GST_PLUGIN_SYSTEM_PATH_1_0="${gstPluginPath}"
             export RUBYLIB="$PWD/lib''${RUBYLIB:+:$RUBYLIB}"
             [ -d data/schemas ] && export GSETTINGS_SCHEMA_DIR="$PWD/data/schemas"
             unset BUNDLE_GEMFILE BUNDLE_FROZEN
