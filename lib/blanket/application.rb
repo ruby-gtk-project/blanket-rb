@@ -4,17 +4,26 @@ require "gtk4"
 require "adwaita"
 require_relative "about_dialog"
 require_relative "define"
+require_relative "main_player"
+require_relative "mpris"
+require_relative "preferences_dialog"
 require_relative "preset"
-require_relative "preset_chooser"
 require_relative "preset_dialog"
 require_relative "settings"
 require_relative "shortcuts_dialog"
+require_relative "sound"
+require_relative "sound_rename_dialog"
+require_relative "window"
 
 module Blanket
-  # The port's application, ported from the parts of blanket/main.py that set
-  # up the application object: the style manager's dark-mode fallback, the
-  # stylesheet, the actions and their accelerators, the window's saved state
-  # and the background-playback behaviour on close.
+  # Ported from blanket/main.py.
+  #
+  # Owns the application object itself: startup (style manager fallback,
+  # the stylesheet, MPRIS, every app-scoped action and its accelerators),
+  # activation (building and presenting the one Window), and shutdown
+  # (saving settings and stopping the shared pipeline). Everything that is
+  # the window's own content — the header bar, the sounds grid, the volume
+  # popover — lives in Window, ported from window.py/window.blp.
   #
   # House style (see .claude/skills/ruby-gtk): every widget is a memoized
   # method, all configuration lives in its `tap`, assembly happens only in
@@ -23,30 +32,8 @@ module Blanket
     def build
       app.tap do
         app.signal_connect("startup") { on_startup }
-
-        app.signal_connect("activate") do
-          window.tap do |win|
-            win.content = toolbar_view
-            win.hide_on_close = settings.background
-
-            win.add_action(close_action)
-            win.signal_connect("close-request") { on_close_request }
-          end
-
-          toolbar_view.tap do |view|
-            view.add_top_bar(header_bar)
-            view.content = status_page
-
-            header_bar.tap do |bar|
-              bar.title_widget = presets_chooser.build
-              bar.pack_end(menu_button)
-            end
-          end
-
-          window.present
-        end
-
-        app.signal_connect("shutdown") { settings.save_presets }
+        app.signal_connect("activate") { on_activate }
+        app.signal_connect("shutdown") { on_shutdown }
       end
     end
 
@@ -56,108 +43,35 @@ module Blanket
     # object comes from Gtk and only the window is Adwaita.
     def app = @app ||= Gtk::Application.new(Define::APP_ID, :default_flags)
 
-    def window
-      @window ||= Adwaita::ApplicationWindow.new(app).tap do |win|
-        win.title = "Blanket"
-        win.icon_name = Define::APP_ID
-        win.set_default_size(window_state[:width], window_state[:height])
-
-        if window_state[:maximized]
-          win.maximize
-        end
-      end
-    end
-
-    def toolbar_view = @toolbar_view ||= Adwaita::ToolbarView.new
-    def header_bar = @header_bar ||= Adwaita::HeaderBar.new
-
-    def menu_button
-      @menu_button ||= Gtk::MenuButton.new.tap do |button|
-        button.icon_name = "open-menu-symbolic"
-        button.tooltip_text = "Main Menu"
-        button.primary = true
-        button.menu_model = primary_menu
-      end
-    end
-
-    # Ported from window.blp's primary-menu. "Save as New Preset…" sits in the
-    # sounds view's more-menu upstream, which belongs to window.blp; it is
-    # carried here so the action reaches the preset chooser.
-    def primary_menu
-      @primary_menu ||= Gio::Menu.new.tap do |menu|
-        menu.append_section(nil, playback_section)
-        menu.append_section(nil, presets_section)
-        menu.append_section(nil, app_section)
-        menu.append_section(nil, quit_section)
-      end
-    end
-
-    def playback_section
-      @playback_section ||= Gio::Menu.new.tap do |menu|
-        menu.append("Keep Playing when Closed", "app.background-playback")
-      end
-    end
-
-    def presets_section
-      @presets_section ||= Gio::Menu.new.tap do |menu|
-        menu.append("Save as New Preset…", "app.add-preset")
-      end
-    end
-
-    def app_section
-      @app_section ||= Gio::Menu.new.tap do |menu|
-        menu.append("Keyboard Shortcuts", "app.shortcuts")
-        menu.append("About Blanket", "app.about")
-      end
-    end
-
-    def quit_section
-      @quit_section ||= Gio::Menu.new.tap { |menu| menu.append("Quit", "app.quit") }
-    end
-
-    def presets_chooser = @presets_chooser ||= PresetChooser.new(window)
-
-    def status_page
-      @status_page ||= Adwaita::StatusPage.new.tap do |page|
-        page.title = "Blanket"
-        page.description = "Listen to different sounds"
-        page.icon_name = Define::APP_ID
-      end
-    end
-
     def css_provider
       @css_provider ||= Gtk::CssProvider.new.tap do |provider|
         provider.load_from_path(Define::STYLE_PATH)
       end
     end
 
-    def close_action
-      @close_action ||= Gio::SimpleAction.new("close", nil).tap do |action|
-        action.signal_connect("activate") { window.close }
-      end
-    end
+    def mpris = @mpris ||= Mpris.new(self)
 
     def quit_action
       @quit_action ||= Gio::SimpleAction.new("quit", nil).tap do |action|
-        action.signal_connect("activate") { app.quit }
+        action.signal_connect("activate") { on_quit }
       end
     end
 
     def about_action
       @about_action ||= Gio::SimpleAction.new("about", nil).tap do |action|
-        action.signal_connect("activate") { AboutDialog.new.present(window) }
+        action.signal_connect("activate") { AboutDialog.new.present(blanket_window.window) }
+      end
+    end
+
+    def preferences_action
+      @preferences_action ||= Gio::SimpleAction.new("preferences", nil).tap do |action|
+        action.signal_connect("activate") { PreferencesDialog.new(blanket_window.window).present(blanket_window.window) }
       end
     end
 
     def shortcuts_action
       @shortcuts_action ||= Gio::SimpleAction.new("shortcuts", nil).tap do |action|
-        action.signal_connect("activate") { ShortcutsDialog.new.present(window) }
-      end
-    end
-
-    def add_preset_action
-      @add_preset_action ||= Gio::SimpleAction.new("add-preset", nil).tap do |action|
-        action.signal_connect("activate") { open_preset_dialog }
+        action.signal_connect("activate") { ShortcutsDialog.new.present(blanket_window.window) }
       end
     end
 
@@ -171,11 +85,75 @@ module Blanket
       end
     end
 
+    def playpause_action
+      @playpause_action ||= Gio::SimpleAction.new("playpause", nil).tap do |action|
+        action.signal_connect("activate") { on_playpause }
+      end
+    end
+
+    def play_action
+      @play_action ||= Gio::SimpleAction.new("play", nil).tap do |action|
+        action.signal_connect("activate") { on_play }
+      end
+    end
+
+    def add_preset_action
+      @add_preset_action ||= Gio::SimpleAction.new("add-preset", nil).tap do |action|
+        action.signal_connect("activate") { PresetDialog.new.present(blanket_window.window) }
+      end
+    end
+
+    def reset_volumes_action
+      @reset_volumes_action ||= Gio::SimpleAction.new("reset-volumes", nil).tap do |action|
+        action.signal_connect("activate") { MainPlayer.get.reset_volumes }
+      end
+    end
+
+    def open_action
+      @open_action ||= Gio::SimpleAction.new("open", nil).tap do |action|
+        action.signal_connect("activate") { blanket_window.open_audio }
+      end
+    end
+
+    def remove_sound_action
+      @remove_sound_action ||= Gio::SimpleAction.new("remove-sound", GLib::VariantType.new("u")).tap do |action|
+        action.signal_connect("activate") { |_action, index_variant| on_remove_sound(index_variant) }
+      end
+    end
+
+    def rename_sound_action
+      @rename_sound_action ||= Gio::SimpleAction.new("rename-sound", GLib::VariantType.new("u")).tap do |action|
+        action.signal_connect("activate") { |_action, index_variant| on_rename_sound(index_variant) }
+      end
+    end
+
+    # Called by Mpris#Raise and Mpris#Quit, and by the window actions they
+    # otherwise reach directly, through the window the player is shared
+    # with rather than the application object MPRIS is given.
+    def on_raise = blanket_window.window.present
+
+    def on_playpause
+      MainPlayer.get.playing = !MainPlayer.get.playing?
+      blanket_window.hide_power_toast
+    end
+
+    def on_play
+      MainPlayer.get.playing = true
+      blanket_window.hide_power_toast
+    end
+
+    def on_pause
+      MainPlayer.get.playing = false
+      blanket_window.hide_power_toast
+    end
+
+    def on_quit = app.quit
+
     private
 
       def settings = Settings.get
 
-      def window_state = @window_state ||= settings.window_state
+      def blanket_window = @blanket_window ||= Window.new(self)
 
       def on_startup
         style_manager.tap do |manager|
@@ -192,68 +170,112 @@ module Blanket
           Gtk::StyleProvider::PRIORITY_APPLICATION,
         )
 
+        mpris.build
+
         [
           quit_action,
           about_action,
-          shortcuts_action,
-          add_preset_action,
+          preferences_action,
           background_action,
+          playpause_action,
+          play_action,
+          add_preset_action,
+          reset_volumes_action,
+          open_action,
+          remove_sound_action,
+          rename_sound_action,
+          shortcuts_action,
         ].each { |action| app.add_action(action) }
 
         {
-          "app.quit"      => ["<Control>q"],
-          "app.shortcuts" => ["<Control>question"],
-          "win.close"     => ["<Control>w"],
+          "app.quit"          => ["<Control>q"],
+          "app.preferences"   => ["<Control>comma"],
+          "app.playpause"     => ["<Control>m", "space"],
+          "app.open"          => ["<Control>o"],
+          "app.shortcuts"     => ["<Control>question"],
+          "win.close"         => ["<Control>w"],
+          "win.hide-inactive" => ["<Control>h"],
         }.each { |action, accels| app.set_accels_for_action(action, accels) }
+      end
+
+      def on_activate
+        blanket_window.build.tap do |win|
+          win.hide_on_close = settings.background
+          win.signal_connect("close-request") { on_close_request }
+        end
+
+        blanket_window.present
+
+        MainPlayer.get.volume = settings.volume
+        MainPlayer.get.playing = settings.playing && !settings.start_paused
+      end
+
+      def on_shutdown
+        save_settings
+        MainPlayer.get.stop
       end
 
       def style_manager = Adwaita::StyleManager.default
 
       def icon_theme = Gtk::IconTheme.get_for_display(Gdk::Display.default)
 
-      def open_preset_dialog
-        PresetDialog.new(on_created: ->(preset) { preset.activate }).present(window)
+      # `value` arrives already unwrapped to a Ruby boolean: GSimpleAction's
+      # "change-state" signal hands a scalar-typed parameter through as its
+      # native Ruby value here, not as a GLib::Variant, while #set_state
+      # wants an actual GLib::Variant back.
+      def on_background(action, value)
+        action.set_state(GLib::Variant.new(value))
+        settings.background = value
+        blanket_window.window.hide_on_close = value
       end
 
-      def on_background(action, value)
-        action.set_state(value)
-        settings.background = value.value
-        window.hide_on_close = value.value
+      # `index` arrives already unwrapped to a Ruby Integer: GSimpleAction's
+      # "activate" signal hands a scalar-typed parameter through as its
+      # native Ruby value rather than as a GLib::Variant, unlike
+      # "change-state"'s value parameter below.
+      def on_remove_sound(index)
+        MainPlayer.get.get_by_index(index).then do |sound|
+          unless sound.nil?
+            sound.remove
+            MainPlayer.get.remove(index)
+          end
+        end
+      end
+
+      def on_rename_sound(index)
+        MainPlayer.get.get_by_index(index).then do |sound|
+          unless sound.nil?
+            SoundRenameDialog.new(
+              sound,
+              index,
+              on_space_unset: -> { unset_space_accel },
+              on_space_reset: -> { set_space_accel },
+            ).present(blanket_window.window)
+          end
+        end
+      end
+
+      def set_space_accel = app.set_accels_for_action("app.playpause", ["<Control>m", "space"])
+      def unset_space_accel = app.set_accels_for_action("app.playpause", ["<Control>m"])
+
+      def save_settings
+        settings.volume = MainPlayer.get.volume
+        settings.playing = MainPlayer.get.playing?
+        settings.save_presets
       end
 
       # Ported from main.py's _on_window_close_request: with background
       # playback on, closing the window only hides it.
       def on_close_request
-        save_window_state
+        blanket_window.save_window_state
 
         if settings.background
-          settings.save_presets
-          window.visible = false
+          save_settings
+          blanket_window.window.visible = false
           true
         else
-          settings.save_presets
+          save_settings
           false
-        end
-      end
-
-      # Ported from window.py's save_window_state: the size recorded while the
-      # window is maximized is the one it had before, so restoring it gives
-      # back the size the user chose.
-      def save_window_state
-        window.maximized?.then do |maximized|
-          if maximized
-            settings.set_window_state(
-              width:     window_state[:width],
-              height:    window_state[:height],
-              maximized: true,
-            )
-          else
-            settings.set_window_state(
-              width:     window.width,
-              height:    window.height,
-              maximized: false,
-            )
-          end
         end
       end
   end

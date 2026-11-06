@@ -373,3 +373,49 @@ calls `MainPlayer.get`'s model from a window.
    ported whole, and all 16 icons and 14 sounds are on disk with an icon-theme
    search path. The `lib/blanket/*.rb` path convention (rather than the pilot's
    flat `lib/*.rb`) is settled, forced by the gem layout.
+
+## Round N+1: the UI landed
+
+`window.rb`, `play_pause_button.rb`, `sound_item.rb`, `volume_row.rb`,
+`sound_context_menu.rb`, `sound_rename_dialog.rb`, `preferences_dialog.rb`,
+`mpris.rb` and `dummy_item_model.rb` are now all present and wired into
+`application.rb`, which no longer builds the window's content itself —
+window.py's own actions (`win.close`, `win.hide-inactive`) moved to
+`Window`, and every `app.*` action main.py installs is now present with its
+accelerator, including `--hidden`'s sibling actions `play`/`pause` as plain
+methods (upstream never makes `pause` a `Gio::SimpleAction` either).
+
+Resolving blocker 3: `MainPlayer` is not bound to the grid through any
+`Gio::ListModel`/`bind_model` — the Ruby binding cannot implement
+`Gio::ListModel` for the reason `main_player.rb`'s own comment gives, so
+`Window` rebuilds the `FlowBox` and the volume `ListBox` directly from
+`MainPlayer#to_a` whenever a sound is added/removed or any sound's
+`#on_changed` fires, reusing one persistent `SoundItem` per sound rather
+than rebuilding tiles from scratch (which would otherwise re-subscribe
+`#on_changed` once per rebuild and leak). `dummy_item_model.rb` exists as a
+plain Ruby wrapper (same shape) for parity but `Window` builds its tiles
+straight from `#each`, not through it.
+
+Blocker 2 (ashpd) is wired in — gemspec, `nix/Gemfile`, the regenerated
+lock and `flake.nix`'s platform-selection override for the Rust gem's
+precompiled variant — and proven to `require`. It answers no portal this
+app currently calls: its native extension defines only Screenshot, OpenUri,
+Trash, Settings, Camera and Account, with no Background portal, so
+`preferences_dialog.rb`'s autostart switch writes the GSetting directly
+rather than asking the portal upstream's `Xdp.Portal#request_background`
+goes through; "Authorization failed" and the failure toast have no
+counterpart here because there is no request to fail.
+
+Blocker 4 — `Adwaita::ApplicationWindow` — is unambiguously **not** broken
+in the Ruby bindings actually exercised here: `test/drive_presets.rb` and
+the new `test/drive_window.rb` both drive it headlessly (41 and 22 checks,
+`DRIVE OK`) and it behaves exactly as `window.py`'s widget tree would.
+
+**New finding, out of scope for this round:** playing a real bundled sound
+(a `LoopBin`, i.e. `uridecodebin`) crashes the process — `uridecodebin`'s
+"pad-added" signal fires from a GStreamer streaming thread, and the Ruby
+binding invoking a block from a thread Ruby never registered segfaults.
+Reproduces with pre-existing `sound.rb`/`main_player.rb` alone, unrelated
+to anything landed this round; `NoiseBin` (`audiotestsrc`, no dynamic pads)
+is unaffected, which is why `test/drive_window.rb` only ever tells a noise
+sound to play.

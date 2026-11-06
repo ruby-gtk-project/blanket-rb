@@ -96,6 +96,23 @@ Gem::Specification.new do |spec|
   spec.executables = ["blanket"]
   spec.require_paths = ["lib"]
 
+  # Runtime dependencies. This gemspec had none at all: the app's gems were
+  # declared only in nix/Gemfile, so `gem install blanket-rb` produced
+  # something that could not load its own toolkit.
+  spec.add_dependency("gem_kit", "~> 0.2")
+  spec.add_dependency("gtk4", "~> 4.3")
+  spec.add_dependency("adwaita", "~> 4.3")
+  spec.add_dependency("glib2", "~> 4.3")
+
+  # The GStreamer bindings MainPlayer and audio/bins.rb mix every sound
+  # through, pinned to the exact release nix/Gemfile.lock already resolved.
+  spec.add_dependency("gstreamer", "4.3.9")
+
+  # The XDG desktop portal client. Reaches no portal this app currently
+  # uses — see the note atop PreferencesDialog — but is wired in as this
+  # app's mandated binding gem regardless, proven to load in nix develop.
+  spec.add_dependency("ashpd", "~> 0.1")
+
   # NOTE: It is preferable to list development dependencies in the gemspec due to increased
   #       visibility and discoverability.
   #       However, development dependencies in gemspec will install on

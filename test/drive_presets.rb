@@ -21,30 +21,37 @@ require_relative "gtk_driver"
 
 settings = nil
 
+# `window` and `presets_chooser` used to be the application's own methods,
+# from before window.py's content had a Window class of its own; now both
+# live there, reached the way a step reaches any other private collaborator.
+def window(app) = app.send(:blanket_window)
+
+def presets_chooser(app) = window(app).send(:presets_chooser)
+
 # The interval is generous so a dialog's open animation has finished before
 # the next step photographs it.
 GtkDriver.drive(Blanket::Application.new, shots: "tmp/shots", interval: 900) do |d, app|
-  d.window { app.window }
+  d.window { window(app).window }
 
   d.step("the window builds") do
     settings = Blanket::Settings.get
 
-    d.check("the status page carries the app's name") { app.status_page.title == "Blanket" }
+    d.check("the window carries the app's name") { window(app).window.title == "Blanket" }
     d.check("one preset to start with") { settings.presets.length == 1 }
     d.check("the default preset is named Default") { settings.active_preset_name == "Default" }
-    d.check("the chooser is hidden with a single preset") { !app.presets_chooser.menu_button.visible? }
-    d.check("the chooser's label is the active preset") { app.presets_chooser.label.label == "Default" }
+    d.check("the chooser is hidden with a single preset") { !presets_chooser(app).menu_button.visible? }
+    d.check("the chooser's label is the active preset") { presets_chooser(app).label.label == "Default" }
     d.check("the stylesheet loaded") { app.css_provider.to_s.include?("preset-row") }
     d.shot("01-window")
   end
 
   d.step("the new-preset dialog opens") do
     @dialog = Blanket::PresetDialog.new(on_created: ->(preset) { preset.activate })
-    @dialog.present(app.window)
+    @dialog.present(window(app).window)
   end
 
   d.step("the dialog refuses an empty name") do
-    d.check("the dialog is showing") { !app.window.visible_dialog.nil? }
+    d.check("the dialog is showing") { !window(app).window.visible_dialog.nil? }
     d.check("Save starts insensitive") { !@dialog.accept_button.sensitive? }
     d.check("the title is New Preset") { @dialog.dialog.title == "New Preset" }
     d.shot("02-new-preset")
@@ -63,38 +70,38 @@ GtkDriver.drive(Blanket::Application.new, shots: "tmp/shots", interval: 900) do 
   d.step("the chooser shows both presets") do
     d.check("two presets") { settings.presets.length == 2 }
     d.check("the new one is active") { settings.active_preset_name == "Evening" }
-    d.check("the chooser is visible now") { app.presets_chooser.menu_button.visible? }
-    d.check("the chooser's label followed") { app.presets_chooser.label.label == "Evening" }
-    d.check("two rows") { app.presets_chooser.rows.length == 2 }
-    d.check("the new row is marked selected") { app.presets_chooser.rows[1].row.css_classes.include?("selected") }
-    d.check("the default row is not") { !app.presets_chooser.rows[0].row.css_classes.include?("selected") }
-    d.check("the new row's label") { app.presets_chooser.rows[1].name_label.label == "Evening" }
+    d.check("the chooser is visible now") { presets_chooser(app).menu_button.visible? }
+    d.check("the chooser's label followed") { presets_chooser(app).label.label == "Evening" }
+    d.check("two rows") { presets_chooser(app).rows.length == 2 }
+    d.check("the new row is marked selected") { presets_chooser(app).rows[1].row.css_classes.include?("selected") }
+    d.check("the default row is not") { !presets_chooser(app).rows[0].row.css_classes.include?("selected") }
+    d.check("the new row's label") { presets_chooser(app).rows[1].name_label.label == "Evening" }
   end
 
   # Gtk::Widget#visible? is the effective visibility, so the rows' buttons read
   # as hidden until the popover they live in is actually up.
   d.step("the popover opens") do
-    app.presets_chooser.menu_button.popup
+    presets_chooser(app).menu_button.popup
   end
 
   d.step("the rows carry the right buttons") do
-    d.check("the default row cannot be renamed") { !app.presets_chooser.rows[0].rename_button.visible? }
-    d.check("the default row cannot be deleted") { !app.presets_chooser.rows[0].delete_button.visible? }
-    d.check("the new row can be renamed") { app.presets_chooser.rows[1].rename_button.visible? }
-    d.check("the new row can be deleted") { app.presets_chooser.rows[1].delete_button.visible? }
-    d.check("the active row shows the check mark") { app.presets_chooser.rows[1].check_image.visible? }
+    d.check("the default row cannot be renamed") { !presets_chooser(app).rows[0].rename_button.visible? }
+    d.check("the default row cannot be deleted") { !presets_chooser(app).rows[0].delete_button.visible? }
+    d.check("the new row can be renamed") { presets_chooser(app).rows[1].rename_button.visible? }
+    d.check("the new row can be deleted") { presets_chooser(app).rows[1].delete_button.visible? }
+    d.check("the active row shows the check mark") { presets_chooser(app).rows[1].check_image.visible? }
     d.shot("03-two-presets")
   end
 
   d.step("activating a row makes its preset active") do
-    app.presets_chooser.presets_list.signal_emit("row-activated", app.presets_chooser.rows[0].row)
+    presets_chooser(app).presets_list.signal_emit("row-activated", presets_chooser(app).rows[0].row)
   end
 
   d.step("the default preset becomes active") do
     d.check("the default preset is active") { settings.active_preset_name == "Default" }
-    d.check("the default row is marked selected") { app.presets_chooser.rows[0].row.css_classes.include?("selected") }
+    d.check("the default row is marked selected") { presets_chooser(app).rows[0].row.css_classes.include?("selected") }
 
-    app.presets_chooser.presets_list.signal_emit("row-activated", app.presets_chooser.rows[1].row)
+    presets_chooser(app).presets_list.signal_emit("row-activated", presets_chooser(app).rows[1].row)
   end
 
   d.step("and back to the new one") do
@@ -111,45 +118,45 @@ GtkDriver.drive(Blanket::Application.new, shots: "tmp/shots", interval: 900) do 
   end
 
   d.step("renaming opens the edit dialog") do
-    app.presets_chooser.rows[1].rename_button.signal_emit("clicked")
+    presets_chooser(app).rows[1].rename_button.signal_emit("clicked")
   end
 
   d.step("the edit dialog is prefilled") do
-    d.check("a dialog is showing") { !app.window.visible_dialog.nil? }
-    d.check("it is the edit dialog") { app.window.visible_dialog.title == "Edit Preset" }
+    d.check("a dialog is showing") { !window(app).window.visible_dialog.nil? }
+    d.check("it is the edit dialog") { window(app).window.visible_dialog.title == "Edit Preset" }
     d.shot("04-edit-preset")
-    app.window.visible_dialog.close
+    window(app).window.visible_dialog.close
   end
 
   d.step("deleting the preset falls back to the default") do
-    app.presets_chooser.rows[1].delete_button.signal_emit("clicked")
+    presets_chooser(app).rows[1].delete_button.signal_emit("clicked")
   end
 
   d.step("the chooser is back to one preset") do
     d.check("one preset") { settings.presets.length == 1 }
     d.check("the default preset is active") { settings.active_preset_name == "Default" }
-    d.check("one row") { app.presets_chooser.rows.length == 1 }
-    d.check("the chooser is hidden again") { !app.presets_chooser.menu_button.visible? }
+    d.check("one row") { presets_chooser(app).rows.length == 1 }
+    d.check("the chooser is hidden again") { !presets_chooser(app).menu_button.visible? }
   end
 
   d.step("the shortcuts dialog opens") do
-    Blanket::ShortcutsDialog.new.present(app.window)
+    Blanket::ShortcutsDialog.new.present(window(app).window)
   end
 
   d.step("the shortcuts dialog renders") do
-    d.check("a dialog is showing") { !app.window.visible_dialog.nil? }
+    d.check("a dialog is showing") { !window(app).window.visible_dialog.nil? }
     d.shot("05-shortcuts")
-    app.window.visible_dialog.close
+    window(app).window.visible_dialog.close
   end
 
   d.step("the about dialog opens") do
-    Blanket::AboutDialog.new.present(app.window)
+    Blanket::AboutDialog.new.present(window(app).window)
   end
 
   d.step("the about dialog renders") do
-    d.check("a dialog is showing") { !app.window.visible_dialog.nil? }
+    d.check("a dialog is showing") { !window(app).window.visible_dialog.nil? }
     d.shot("06-about")
-    app.window.visible_dialog.close
+    window(app).window.visible_dialog.close
   end
 
   d.step("the window state round-trips") do

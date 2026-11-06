@@ -31,6 +31,7 @@ module Blanket
       @cookie = 0
       @items_changed_callbacks = []
       @playing_callbacks = []
+      @volume_changed_callbacks = []
       @preset_changed_callbacks = []
       @reset_volumes_callbacks = []
 
@@ -75,8 +76,14 @@ module Blanket
       value.clamp(0.0, 1.0).then do |level|
         @volume = level
         sink_volume.set_property("volume", level**3)
+        @volume_changed_callbacks.each { |callback| callback.call(level) }
       end
     end
+
+    # Runs the block with the new level whenever #volume= moves it. Upstream
+    # connects to the "notify::volume" GObject signal; MPRIS is the only
+    # caller.
+    def on_volume_changed(&block) = @volume_changed_callbacks << block
 
     # Pipeline
 
