@@ -11,13 +11,23 @@ backs one, plus the GSettings schema, the GResource manifest and `po/`.
 Re-surveyed after `2dffcf3 Port the settings, presets and app dialogs`; the
 present/missing column below reflects the branch at that commit.
 
+**Re-surveyed again** at the current tip of `ruby`: `lib/blanket/sound.rb`
+(252 lines), `lib/blanket/main_player.rb` (405 lines) and
+`lib/blanket/audio/bins.rb` (241 lines) have since landed — the whole
+GStreamer player stack is now ported — and `flake.nix` now carries a
+`gstStack` (`gstreamer`, `gst-plugins-base`, `gst-plugins-good`) feeding both
+`buildInputs` and `typelibPath`/`GI_TYPELIB_PATH`, plus
+`GST_PLUGIN_SYSTEM_PATH_1_0`, and a custom `gstreamer` gem override for its C
+extension. Blocker 1 below is resolved; the "Non-widget units" table and
+blockers section are corrected in place rather than re-run from scratch.
+
 ## Totals
 
 | | Upstream | `ruby` branch |
 |---|---|---|
 | UI units (blueprint template / named root / app class) | 14 | 5 (application shell, preset chooser, preset row, preset dialog, shortcuts, about) |
 | Blueprint files | 12 | 0 (by design — widgets are memoized methods) |
-| Python modules | 20 | 10 Ruby files |
+| Python modules | 20 | 13 Ruby files (+ `sound.rb`, `main_player.rb`, `audio/bins.rb` since the first survey) |
 | Distinct widget types | ~30 | ~16 |
 | CSS classes applied | 15 (`accent`, `caption-heading`, `circular`, `devel`, `error`, `flat`, `menu`, `playpause`, `preset-row`, `selected`, `sound-item`, `sound-view`, `suggested-action`, `volume-row`, `volume-separator`) | 5 (`menu`, `preset-row`, `selected`, `flat`, `circular`, `suggested-action`) |
 | Stylesheet | `data/resources/style.css`, 17 rules | `lib/blanket/style.css`, 17 rules — **ported whole** |
@@ -297,9 +307,9 @@ Every component above binds to one of these.
 | `blanket/define.in` | `lib/blanket/define.rb` | **yes** (107 lines) | APP_ID, RES_PATH, data/icon/sound/schema paths, the sound catalogue (3 groups / 12 sounds), 2 noises, credits tables. The Meson templating is gone — values are literals, the version comes from the gem, and assets are files rather than a GResource bundle |
 | `blanket/settings.py` | `lib/blanket/settings.rb` | **yes** (318 lines) | `Gio::Settings` wrapper, per-preset `Gio::Settings` in delay-apply mode, custom-audio and preset helpers, legacy volume migration, `preset-changed` as a block list rather than a GObject signal |
 | `blanket/preset.py` | `lib/blanket/preset.rb` | **yes** (61 lines) | name/active, read through `Settings`, with `#on_changed` blocks in place of property bindings |
-| `blanket/sound.py` | `lib/blanket/sound.rb` | no | one sound: `playing`, `title`, `icon_name`, `error_message`, `failed`, `saved_volume`/`saved_mute`, lazy GStreamer branch attach/detach with a 5s delay |
-| `blanket/main_player.py` | `lib/blanket/main_player.rb` | no | singleton player **and** the app's `Gio::ListModel`; one shared pipeline (audiomixer → convert → resample → volume → autoaudiosink), branch attach/detach with pad offsets, cubic/linear volume conversion, error recovery, suspend inhibition, preset next/prev |
-| `blanket/audio/bins.py` | `lib/blanket/audio/bins.rb` | no | `SoundBin` base, `LoopBin` (uridecodebin + segment-seek looping with retries), `NoiseBin` (audiotestsrc) |
+| `blanket/sound.py` | `lib/blanket/sound.rb` | **yes** (252 lines) | one sound: `playing`, `title`, `icon_name`, `error_message`, `failed`, `saved_volume`/`saved_mute`, lazy GStreamer branch attach/detach with a 5s delay |
+| `blanket/main_player.py` | `lib/blanket/main_player.rb` | **yes** (405 lines) | singleton player **and** the app's list of sounds; one shared pipeline (audiomixer → convert → resample → volume → autoaudiosink), branch attach/detach with pad offsets, cubic/linear volume conversion, error recovery, suspend inhibition, preset next/prev. Not yet consumed by a window — see blocker 3 |
+| `blanket/audio/bins.py` | `lib/blanket/audio/bins.rb` | **yes** (241 lines) | `SoundBin` base, `LoopBin` (uridecodebin + segment-seek looping with retries), `NoiseBin` (audiotestsrc) |
 | `blanket/utils.py` | `lib/blanket/dummy_item_model.rb` | no | `Gio::ListModel` that appends one dummy item — the "Add…" tile |
 | `blanket/mpris.py` | `lib/blanket/mpris.rb` | no | D-Bus `org.mpris.MediaPlayer2.Blanket`: Raise/Quit/Next/Previous/PlayPause/Play/Pause/Stop, Metadata, Volume, CanGoNext/Previous, PropertiesChanged |
 | `data/com.rafaelmardojai.Blanket.gschema.xml.in` | `data/schemas/org.rubygtkproject.Blanket.gschema.xml` | **yes** | both schemas, same 13 + 4 key names, compiled to `data/schemas/gschemas.compiled`; the dev shell exports `GSETTINGS_SCHEMA_DIR` |
@@ -313,31 +323,45 @@ Every component above binds to one of these.
 
 Present on `ruby`: 5 of 14 UI units in full (preset chooser, preset row, preset
 dialog, shortcuts dialog, about dialog), 1 partially (the application object,
-with a placeholder window), and 4 of the 12 non-widget units (define, settings,
-preset, the stylesheet) plus the schemas and every asset.
+with a placeholder window), and 7 of the 12 non-widget units (define, settings,
+preset, sound, main_player, audio/bins, the stylesheet) plus the schemas and
+every asset.
 
-Missing: the window proper and everything audio — the sound grid and its tiles,
-the bottom bar, the volume popover and its rows, the play/pause button, the
-sound context menu, the rename dialog, preferences, and the whole GStreamer
-player stack with MPRIS.
+Missing: the window proper and everything that shows a sound on screen — the
+sound grid and its tiles, the bottom bar, the volume popover and its rows, the
+play/pause button, the sound context menu, the rename dialog, preferences, and
+MPRIS. The GStreamer player stack itself (`sound.rb`, `main_player.rb`,
+`audio/bins.rb`) is ported but unreachable from the UI, because nothing yet
+calls `MainPlayer.get`'s model from a window.
 
 ## Blockers and open questions
 
-1. **No GStreamer in the dev shell.** `flake.nix` names no `gst*` package at
-   all, and the whole app is a GStreamer mixer. It needs `gstreamer`,
-   `gst-plugins-base`, `gst-plugins-good` and their typelibs on the shell's
-   `GI_TYPELIB_PATH`, and working `Gst`/`GstAudio` introspection from Ruby,
-   before `sound.rb`, `bins.rb` or `main_player.rb` can be written. This is the
-   next thing to settle, because six of the missing units bind to the player.
-2. **No `Xdp` (libportal) binding.** `preferences.py` requests autostart
-   through `Xdp.Portal` + `XdpGtk4`. Absent the typelib, the autostart switch,
-   its "Authorization failed" dialog and its failure toast cannot be ported
-   as-is; the rest of Preferences can be.
-3. **Custom `Gio::ListModel` implementations.** `MainPlayer` and
-   `DummyItemModel` both implement `Gio::ListModel` in Python via
-   `do_get_item`. Whether Ruby GTK allows implementing a GInterface this way is
-   still unverified; a `Gio::ListStore` plus a separate player object may be
-   the port's shape instead. This decides the window's `bind_model` wiring.
+1. ~~No GStreamer in the dev shell.~~ **Resolved.** `flake.nix` now has a
+   `gstStack` (`gstreamer`, `gst-plugins-base`, `gst-plugins-good`) feeding
+   both `buildInputs` and `typelibPath`, a `gstPluginPath` exported as
+   `GST_PLUGIN_SYSTEM_PATH_1_0`, and a `rubyGstGem` override building the
+   `gstreamer` gem's C extension against `libunwind`/`elfutils`/`orc`.
+   `sound.rb`, `bins.rb` and `main_player.rb` are written and use it.
+2. **No `Xdp`/ASHPD binding wired.** `preferences.py` requests autostart
+   through `Xdp.Portal` + `XdpGtk4` (libportal). This fork's mandatory-gems
+   list names `ashpd` (the `Ashpd` Rust gem, portal bindings) for exactly this
+   kind of call, and it is **not yet in the gemspec, `nix/Gemfile` or
+   `flake.nix`'s `gtkStack`** — the gemspec in fact has no runtime
+   dependencies declared at all (not even `gtk4`/`adwaita`/`glib2`, though
+   `nix/Gemfile` separately lists `adwaita`, `gtk4`, `gstreamer`). This has to
+   be wired in — gemspec, `nix/Gemfile`, regenerated lock, flake typelib —
+   before `preferences_dialog.rb` is written, per the fork's house rules; the
+   autostart switch, its "Authorization failed" dialog and its failure toast
+   depend on it.
+3. **How the window's `bind_model` reaches `MainPlayer`.** Upstream's
+   `MainPlayer` and `DummyItemModel` both implement `Gio.ListModel` in Python
+   via `do_get_item`. The ported `main_player.rb` comments that it "also
+   implements `Gio.ListModel`, which the window ... [uses]" but does not
+   itself declare the interface (grep finds no `ListModel`/`ListStore`/
+   `do_get_item` in the file) — so whether the window binds to it directly,
+   through a `Gio::ListStore` kept in sync, or some other shape is still
+   undecided, and decides how `window.rb`, `sound_item.rb`'s grid and
+   `dummy_item_model.rb` get built.
 4. **`Adwaita::ApplicationWindow`** is flagged broken in the `ruby-gtk` skill's
    quirks reference, and `application.rb` uses it. It has not been driven
    headlessly yet, so this is still open.
