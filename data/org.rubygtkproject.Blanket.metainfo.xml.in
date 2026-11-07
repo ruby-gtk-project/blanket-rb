@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<component type="desktop-application">
+  <id>org.rubygtkproject.Blanket</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>Blanket</name>
+  <summary>Listen to ambient sounds</summary>
+  <description>
+    <p>Improve focus and increase your productivity by listening to different ambient sounds</p>
+    <p>Also can help you to fall asleep in a noisy environment.</p>
+    <p>Features:</p>
+    <ul>
+      <li>Save presets</li>
+      <li>Add custom sounds</li>
+      <li>Auto start in background</li>
+      <li>MPRIS integration</li>
+    </ul>
+    <p>Included Sounds in the App:</p>
+    <ul>
+      <li>Birds</li>
+      <li>Boat</li>
+      <li>City</li>
+      <li>Coffee Shop</li>
+      <li>Fireplace</li>
+      <li>Pink Noise</li>
+      <li>Rain</li>
+      <li>Summer Night</li>
+      <li>Storm</li>
+      <li>Stream</li>
+      <li>Train</li>
+      <li>Waves</li>
+      <li>White Noise</li>
+      <li>Wind</li>
+    </ul>
+  </description>
+  <url type="homepage">https://github.com/ruby-gtk-project/blanket-rb</url>
+  <url type="bugtracker">https://github.com/ruby-gtk-project/blanket-rb/issues</url>
+  <url type="vcs-browser">https://github.com/ruby-gtk-project/blanket-rb</url>
+  <!-- developer_name tag deprecated with Appstream 1.0 -->
+  <developer_name translate="no">Rafael Mardojai CM</developer_name>
+  <developer id="com.mardojai">
+      <name translate="no">Rafael Mardojai CM</name>
+  </developer>
+  <content_rating type="oars-1.1" />
+
+  <launchable type="desktop-id">org.rubygtkproject.Blanket.desktop</launchable>
+  <translation type="gettext">blanket</translation>
+
+  <requires>
+    <internet>offline-only</internet>
+    <display_length compare="ge">360</display_length>
+  </requires>
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
+
+  <releases>
+    <release version="0.1.0" date="2025-11-07">
+      <description translate="no">
+        <p>Ruby GTK4/Libadwaita port of Blanket.</p>
+      </description>
+    </release>
+  </releases>
+</component>

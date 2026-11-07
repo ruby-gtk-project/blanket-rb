@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "adwaita"
+require_relative "i18n"
 require_relative "preset"
 require_relative "preset_dialog"
 require_relative "preset_row"
@@ -20,6 +21,8 @@ module Blanket
   # objects are cached by id so each one subscribes to the settings once,
   # however many times its row is rebuilt.
   class PresetChooser
+    include GetText
+
     # The rows currently in the popover, in the order the presets are listed.
     attr_reader :rows
 
@@ -69,7 +72,10 @@ module Blanket
     end
 
     def menu_button
-      @menu_button ||= Gtk::MenuButton.new.tap { |button| button.always_show_arrow = true }
+      @menu_button ||= Gtk::MenuButton.new.tap do |button|
+        button.always_show_arrow = true
+        button.tooltip_text = _("Presets Menu")
+      end
     end
 
     def label = @label ||= Gtk::Label.new.tap { |text| text.ellipsize = :end }

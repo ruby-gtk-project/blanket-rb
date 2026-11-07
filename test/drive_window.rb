@@ -157,20 +157,22 @@ GtkDriver.drive(Blanket::Application.new, shots: "tmp/shots", interval: 900) do 
     d.check("inhibit-suspension flipped") { Blanket::Settings.get.inhibit_suspension == @prefs.inhibition_row.active? }
   end
 
-  # The one feature a removed `ashpd` dependency might have served: upstream
-  # gates this switch behind the XDG Background portal
-  # (`Xdp.Portal#request_background`), but this port has no binding for that
-  # portal (ashpd's gem binds Account/Camera/OpenUri/Screenshot/Settings/Trash,
-  # not Background -- see preferences_dialog.rb), so the switch here writes
-  # the "autostart" GSetting directly via the same Gio::Settings#bind every
-  # other switch on this dialog uses. Exercise that bound path end to end
-  # rather than only checking its resting state.
-  d.step("toggling autostart writes the setting directly (no portal)") do
-    @prefs.autostart_row.active = !@prefs.autostart_row.active?
+  # Upstream gates this switch behind the XDG Background portal
+  # (`Xdp.Portal#request_background`). This port has no `Xdp`/`libportal`
+  # binding, so it talks to `org.freedesktop.portal.Background` directly over
+  # the session bus (see `preferences_dialog.rb`). There is no
+  # xdg-desktop-portal running in this dev shell, so the request fails the
+  # same way it would on any plain (non-Flatpak, no portal daemon) Linux
+  # session: the switch flips on momentarily, the D-Bus call errors out, and
+  # it reverts — exactly the toast-and-revert path upstream takes on an
+  # exception from the portal call.
+  d.step("toggling autostart asks the Background portal") do
+    @prefs.autostart_row.active = true
   end
 
-  d.step("the autostart setting followed") do
-    d.check("autostart flipped") { Blanket::Settings.get.autostart == @prefs.autostart_row.active? }
+  d.step("no portal is running, so the request fails and the switch reverts") do
+    d.check("the switch reverted") { !@prefs.autostart_row.active? }
+    d.check("the setting was not written") { !Blanket::Settings.get.autostart }
   end
 
   # The action lives on the window itself, unprefixed; toggling a stateful
