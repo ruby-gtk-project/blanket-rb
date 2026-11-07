@@ -20,11 +20,30 @@ rescue LoadError => error
 end
 
 # External RSpec & related config
-require "kettle/test/rspec"
-# `kettle/test/rspec` installs harness helpers documented in spec/README.md.
+begin
+  require "kettle/test/rspec"
+  # `kettle/test/rspec` installs harness helpers documented in spec/README.md.
+rescue LoadError => error
+  # The kettle-test bundle is a development dependency and is not always
+  # installed — `nix develop` carries the app's runtime gems plus rspec, and
+  # nothing else. The examples in this suite use plain RSpec, so a missing
+  # harness is worth noting and not worth failing over; anything that
+  # genuinely needs a helper from it will fail on the helper, which says so
+  # far more clearly than a LoadError in spec_helper.
+  unless error.message.include?("kettle")
+    raise error
+  end
 
-# This library
-require "blanket/rb"
+  warn("NOTE: kettle-test isn't installed; running with plain RSpec.")
+end
+
+# This library.
+#
+# blanket/define is the display-free half exercised here — the sound
+# catalogue and the credits tables. require "blanket" pulls in gtk4 and
+# adwaita and raises Gtk::InitError where there is no display; the widget-
+# driving specs in test/drive_*.rb ask for "blanket" themselves.
+require "blanket/define"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
