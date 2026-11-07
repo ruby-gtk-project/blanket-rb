@@ -29,19 +29,41 @@ module Blanket
   # method, all configuration lives in its `tap`, assembly happens only in
   # `build`, and the launcher is one expression.
   class Application
+    def initialize
+      @window_hidden = false
+      @window_built = false
+    end
+
     def build
       app.tap do
+        app.add_main_option(
+          "hidden",
+          "h".ord,
+          GLib::OptionFlags::NONE,
+          GLib::OptionArg::NONE,
+          "Start window hidden",
+          nil,
+        )
         app.signal_connect("startup") { on_startup }
+        app.signal_connect("command-line") { |_app, command_line| on_command_line(command_line) }
         app.signal_connect("activate") { on_activate }
         app.signal_connect("shutdown") { on_shutdown }
       end
     end
 
-    def run = app.run([])
+    # GApplication#run expects argv[0] to be the program name, the way C's
+    # argv does; Ruby's ARGV has already stripped it, so it is put back or
+    # the first real argument (e.g. --hidden) gets eaten as if it were one.
+    def run = app.run([$PROGRAM_NAME, *ARGV])
 
     # Adwaita::Application is broken in the Ruby bindings; the application
     # object comes from Gtk and only the window is Adwaita.
-    def app = @app ||= Gtk::Application.new(Define::APP_ID, :default_flags)
+    #
+    # :handles_command_line replaces main.py's
+    # Gio::ApplicationFlags::HANDLES_COMMAND_LINE: with it set, GApplication
+    # no longer calls "activate" on its own, which is why #on_command_line
+    # below calls it explicitly.
+    def app = @app ||= Gtk::Application.new(Define::APP_ID, :handles_command_line)
 
     def css_provider
       @css_provider ||= Gtk::CssProvider.new.tap do |provider|
@@ -204,10 +226,28 @@ module Blanket
           win.signal_connect("close-request") { on_close_request }
         end
 
-        blanket_window.present
+        if @window_hidden
+          blanket_window.window.visible = false
+          @window_hidden = false
+        else
+          blanket_window.present
+        end
 
         MainPlayer.get.volume = settings.volume
         MainPlayer.get.playing = settings.playing && !settings.start_paused
+      end
+
+      # Ported from main.py's do_command_line: with :handles_command_line
+      # set on the application, GApplication no longer calls "activate" on
+      # its own, so this calls it explicitly once the --hidden option (if
+      # any) has been read off the command line.
+      def on_command_line(command_line)
+        if command_line.options_dict.contains?("hidden") && !@window_built
+          @window_hidden = true
+        end
+        @window_built = true
+        app.activate
+        0
       end
 
       def on_shutdown
