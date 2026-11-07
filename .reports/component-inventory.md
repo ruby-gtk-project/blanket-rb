@@ -35,7 +35,7 @@ blockers section are corrected in place rather than re-run from scratch.
 | Accelerators | 6 | 6 + the port's own `app.shortcuts` accelerator (see "Round N+2" below) |
 | GSettings schemas | 2 (app + `.preset`), 13 + 4 keys | **both present**, same key names, under `org.rubygtkproject.Blanket`, compiled to `data/schemas/` |
 | Assets | 16 symbolic icons, 14 `.ogg` sounds in GResource | **all present on disk** (`data/icons/hicolor/scalable/emblems`, `data/sounds`) |
-| Translated strings | 87 msgids, 57 `po/*.po` locales | none |
+| Translated strings | 87 msgids, 57 `po/*.po` locales | `lib/blanket/i18n.rb` binds the `blanket` gettext domain; 60 of 80 source-level msgids ported, 57/57 `.mo` catalogues shipped under `locale/*/LC_MESSAGES/` (Round N+3 — see `.reports/translation-parity.md`) |
 
 The window itself is still a placeholder: `lib/blanket/application.rb` presents
 an `Adwaita::ApplicationWindow` holding an `Adwaita::ToolbarView`, a header bar
@@ -55,17 +55,22 @@ Targets below therefore keep this fork's existing namespace,
 ## lib/blanket/application.rb — the application object: actions, accelerators, MPRIS, power monitor
 
 Upstream: `blanket/main.py`. **Present**, including the window, the primary
-menu, all 14 actions, all 6 accelerators, the CSS provider and the `--hidden`
-command-line option (landed in `d49f71b`, see "Round N+2" below). Still
-missing: the power-profile monitor and the dark-mode system-colour-scheme
-fallback.
+menu, all 14 actions, all 6 accelerators, the CSS provider, the `--hidden`
+command-line option (landed in `d49f71b`, see "Round N+2" below), the
+power-profile monitor and the dark-mode system-colour-scheme fallback (both
+landed in `37ac2c7`, see "Round N+3" below). The one remaining behavioural
+gap on this unit is the autostart permission flow (see Gap 1 in
+`.reports/component-parity.md`): `ashpd` was added, found to bind no
+Background portal, and has since been **removed** again (`ab7a2a8`); the
+autostart switch writes the GSetting directly with no portal request, no
+"Authorization failed" dialog, and no revert-on-denial.
 
 | Thing | × | Present | Notes |
 |---|---:|---|---|
 | `Gtk::Application` (upstream `Adw.Application`) | 1 | yes | upstream sets `HANDLES_COMMAND_LINE`, `resource_base_path` and `PULSE_PROP_application.icon_name`; the port sets `:handles_command_line` and the `--hidden` option but not `resource_base_path`/`PULSE_PROP_application.icon_name` (there is no GResource bundle to base a path on). `Adwaita::Application` is broken in the Ruby bindings, so the app object is `Gtk::Application` |
 | `--hidden` command-line option | 1 | yes | `add_main_option` + `#on_command_line`; starts the window hidden on first build |
-| `Gio::PowerProfileMonitor` | 1 | no | `notify::power-saver-enabled` → pause playback + show power toast |
-| `Adwaita::StyleManager` | 1 | partial | reachable as `style_manager`; the force-dark fallback for systems without colour schemes is not wired |
+| `Gio::PowerProfileMonitor` | 1 | yes (Round N+3) | `power_monitor` memoized accessor, `notify::power-saver-enabled` → `on_power_saver_enabled` pauses playback + `blanket_window.show_power_toast` |
+| `Adwaita::StyleManager` | 1 | yes (Round N+3) | `style_manager` + `settings.dark_mode && !manager.system_supports_color_schemes?` → `manager.color_scheme = :force_dark`, matching upstream's fallback |
 | Signal `shutdown` | 1 | partial | the port saves presets; upstream also stops the player |
 | Signal `close-request` on the window | 1 | yes | hide when background playback is on, else save window state and quit |
 | `Gtk::CssProvider` | 1 | yes | loads `lib/blanket/style.css` at `PRIORITY_APPLICATION` |
@@ -492,3 +497,93 @@ builds a correct variant; nothing in this file's component tables changes
 because of it, but a real D-Bus client reading `org.mpris.MediaPlayer2.Player`
 `Metadata` through the normal property-get path on this binding gets the same
 `NotImplementedError`, not a track title.
+
+## Round N+3: gettext, the power monitor, and ashpd's removal
+
+Re-surveyed at `0bae87d Drop the unused gem_kit dependency, exercise
+autostart's direct-write path`, after `37ac2c7 Wire the gettext translation
+catalogue and the power-saver monitor` and `ab7a2a8 Remove the unused ashpd
+dependency`.
+
+**Translations landed.** `lib/blanket/i18n.rb` binds the `blanket` gettext
+domain to `locale/`, which now carries all 57 upstream `LINGUAS` locales as
+compiled `.mo` catalogues (no `.po` sources on the port side — matching the
+pilot's convention of shipping compiled catalogues, not the editable ones).
+Eleven files were wired through `include GetText`'s `_()`/`n_()`. A dedicated
+census (`.reports/translation-parity.md`, run with
+`.claude/skills/translation-parity/scripts/msgid-census.sh`) puts this at 60
+of 80 upstream source-level msgids reachable by exact match, with 19
+confirmed gaps and one scanner artifact. 16 of the 19 gaps trace to two whole
+files the port has never created at all —
+`data/com.rafaelmardojai.Blanket.desktop.in.in` and
+`data/com.rafaelmardojai.Blanket.metainfo.xml.in.in` — which is a components
+gap, not a translation one: there is no desktop entry and no AppStream
+metadata unit anywhere in `lib/` or `data/` for this fork, so every string
+either file carries (`Keywords`, the AppStream summary/description/feature
+list, both screenshot captions) has nowhere to attach a `_()` call. The
+remaining 3 gaps are the still-missing autostart-error dialog strings
+(`Authorization failed`, its explanation, `Ok`, `The autostart request
+failed.` — see below) and the preset chooser's unset tooltip (`Presets
+Menu`, Gap 2 in `component-parity.md`).
+
+**The power monitor and dark-mode fallback landed.** Same commit,
+`application.rb`: `power_monitor` (`Gio::PowerProfileMonitor.dup_default`)
+connects `notify::power-saver-enabled` to `on_power_saver_enabled`, which
+pauses `MainPlayer` and shows a power toast exactly as `main.py`'s
+`_on_notify_power_saver_enabled` does, and never auto-resumes — matching
+upstream's documented intent. `style_manager` now also applies upstream's
+`:force_dark` fallback when `settings.dark_mode` is set and
+`system_supports_color_schemes?` is false. Both rows in the `application.rb`
+table above move from "no"/"partial" to "yes". This closes every item that
+"Round N+2" left open for that unit except the autostart flow.
+
+**`ashpd` was added and removed again.** The dependency was wired in to
+answer whether the Background portal it might bind could back a real
+autostart permission request; its native extension turned out to bind only
+Screenshot, OpenUri, Trash, Settings, Camera and Account, never Background,
+so it answered no call this app makes and `ab7a2a8` dropped it along with the
+unused `gem_kit` dependency. `preferences_dialog.rb`'s `autostart_row` is
+unchanged by either commit: it still writes `Settings#autostart=` directly,
+with no portal request, no `Adw.AlertDialog`-equivalent "Authorization
+failed" dialog, no toast on other failure, and no revert of the switch on
+denial. This remains Gap 1 in `.reports/component-parity.md` and is the one
+open item on the `application.rb`/`preferences_dialog.rb` pair.
+
+### Totals, corrected again
+
+| | Upstream | `ruby` branch |
+|---|---|---|
+| Translated strings | 87 msgids (80 distinct, excl. `po/`), 57 `po/*.po` locales | 60/80 source msgids ported, 57/57 `.mo` catalogues shipped |
+| `Gio::PowerProfileMonitor` | wired | wired (pause + toast, no auto-resume) |
+| Dark-mode system-colour-scheme fallback | wired | wired (`:force_dark` when unsupported) |
+| `ashpd` dependency | n/a (upstream uses `Xdp.Portal` via libportal, not this gem) | removed — never bound a usable portal |
+
+## Open items, current as of Round N+3
+
+1. **Autostart permission flow** (`application.rb` / `preferences_dialog.rb`)
+   — no portal request, no error dialog, no failure toast, no revert on
+   denial. `component-parity.md` Gap 1.
+2. **Preset chooser tooltip** (`preset_chooser.rb`) — upstream's
+   `tooltip-text: _("Presets Menu")` on the `$PresetChooser` instance is
+   never set. `component-parity.md` Gap 2.
+3. **No desktop entry, no AppStream metadata** — `data/com.rafaelmardojai.
+   Blanket.desktop.in.in` and `...metainfo.xml.in.in` have no port
+   equivalent; 16 of the 19 translation gaps trace here.
+   `component-parity.md` Gap 3.
+4. **MPRIS `Metadata` property binding gap** — `Gio::DBusConnection`'s
+   registered-object handler cannot convert the `a{sv}` `Metadata` property
+   through `GLib::Variant#value`; a real D-Bus client reading
+   `org.mpris.MediaPlayer2.Player.Metadata` gets `NotImplementedError`
+   instead of track data. `drive-verification.md`.
+5. **Real-sound playback crash** — playing a `LoopBin` (`uridecodebin`)
+   segfaults because its `pad-added` signal fires from a GStreamer streaming
+   thread the Ruby binding cannot invoke a block from. Reproducible outside
+   the drive-script harness; `test/drive_window.rb` only exercises a
+   `NoiseBin` (`audiotestsrc`) sound for exactly this reason.
+
+Nothing else in this file changes this round: the widget tree
+(`window.rb`, `sound_item.rb`, `volume_row.rb`, `sound_context_menu.rb`,
+`sound_rename_dialog.rb`, `preset_chooser.rb`, `preset_row.rb`,
+`preset_dialog.rb`, `about_dialog.rb`, `shortcuts_dialog.rb`), the GStreamer
+player stack (`sound.rb`, `main_player.rb`, `audio/bins.rb`), MPRIS, and the
+GSettings schemas are all unchanged by `37ac2c7`/`ab7a2a8`.
