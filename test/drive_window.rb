@@ -130,7 +130,23 @@ GtkDriver.drive(Blanket::Application.new, shots: "tmp/shots", interval: 900) do 
 
     d.check("start-paused switch matches settings") { @prefs.start_paused_row.active? == settings.start_paused }
     d.check("inhibition switch matches settings") { @prefs.inhibition_row.active? == settings.inhibit_suspension }
+    d.check("dark-mode switch matches settings") { @prefs.dark_row.active? == settings.dark_mode }
+    d.check("autostart row starts off") { !@prefs.autostart_row.active? }
     d.shot("04-preferences")
+  end
+
+  d.step("toggling dark mode writes the setting and the style manager") do
+    @prefs.dark_row.active = !@prefs.dark_row.active?
+  end
+
+  d.step("the dark-mode setting and style scheme followed") do
+    settings = Blanket::Settings.get
+
+    d.check("dark-mode flipped") { settings.dark_mode == @prefs.dark_row.active? }
+    d.check("the style scheme followed") do
+      expected = @prefs.dark_row.active? ? :force_dark : :prefer_light
+      Adwaita::StyleManager.default.color_scheme == expected
+    end
   end
 
   d.step("toggling inhibition writes the setting") do
