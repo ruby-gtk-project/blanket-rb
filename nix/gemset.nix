@@ -10,17 +10,6 @@
     };
     version = "4.3.9";
   };
-  ashpd = {
-    dependencies = ["gem_kit"];
-    groups = ["default"];
-    platforms = [];
-    source = {
-      remotes = ["https://rubygems.org"];
-      sha256 = "156x0l8fal0n05k6ya6qdfgl8277595mrg6gx0syis6dx3rr8fk7";
-      type = "gem";
-    };
-    version = "0.1.1";
-  };
   atk = {
     dependencies = ["glib2" "rake"];
     groups = ["default"];
@@ -105,16 +94,6 @@
       type = "gem";
     };
     version = "4.3.9";
-  };
-  gem_kit = {
-    groups = ["default"];
-    platforms = [];
-    source = {
-      remotes = ["https://rubygems.org"];
-      sha256 = "0dx9w041lqzr4jd0m9as0v5v6n3fj2hcg74p2gyswr2y2a6zc5v9";
-      type = "gem";
-    };
-    version = "0.2.0";
   };
   gettext = {
     dependencies = ["erubi" "locale" "prime" "racc" "text"];

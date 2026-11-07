@@ -14,12 +14,18 @@ module Blanket
   # Upstream's autostart switch asks the XDG Background portal
   # (`Xdp.Portal#request_background`) for permission before writing the
   # setting, so a user who refuses the portal prompt keeps the switch off.
-  # This app's binding gem for XDG portals is `ashpd`, and its native
-  # extension defines only the Screenshot, OpenUri, Trash, Settings, Camera
-  # and Account portals — no Background portal — so there is nothing to call
-  # here. The switch instead writes the setting directly, the way
-  # start-paused and inhibit-suspension already do; it grants no background
-  # permission the portal would otherwise have to confirm.
+  #
+  # `ashpd` (the gem the gemspec briefly declared) binds Account, Camera,
+  # OpenUri, Screenshot, Settings and Trash — checked with
+  # `Ashpd.constants.sort` in nix develop — but not Background. No other
+  # upstream code calls any XDG portal either: the open-file dialog
+  # (window.py) uses `Gtk.FileDialog` directly, which brokers its own
+  # portal call without any explicit `Xdp`/`ashpd` binding. So nothing in
+  # this app has a portal for `ashpd` to call, and the dependency was
+  # removed rather than kept unused. The switch instead writes the setting
+  # directly, the way start-paused and inhibit-suspension already do; it
+  # grants no background permission a portal would otherwise have to
+  # confirm.
   class PreferencesDialog
     include GetText
 

@@ -108,11 +108,6 @@ Gem::Specification.new do |spec|
   # through, pinned to the exact release nix/Gemfile.lock already resolved.
   spec.add_dependency("gstreamer", "4.3.9")
 
-  # The XDG desktop portal client. Reaches no portal this app currently
-  # uses — see the note atop PreferencesDialog — but is wired in as this
-  # app's mandated binding gem regardless, proven to load in nix develop.
-  spec.add_dependency("ashpd", "~> 0.1")
-
   # Translation catalogue. lib/blanket/i18n.rb binds the "blanket" text
   # domain against the compiled .mo catalogues under locale/, carried over
   # from upstream's po/*.po.
