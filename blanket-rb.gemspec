@@ -99,7 +99,13 @@ Gem::Specification.new do |spec|
   # Runtime dependencies. This gemspec had none at all: the app's gems were
   # declared only in nix/Gemfile, so `gem install blanket-rb` produced
   # something that could not load its own toolkit.
-  spec.add_dependency("gem_kit", "~> 0.2")
+  #
+  # `gem_kit` (GemKit::Deprecate, a deprecation-declaration DSL) was listed
+  # here too, but nothing in lib/ ever `extend`s it or declares a
+  # deprecation -- there is no renamed/moved API in this port for it to
+  # cover -- and it was never even added to nix/Gemfile, so the packaged
+  # devshell closure never actually carried it. Removed rather than kept
+  # "mandated regardless"; add it back if a real deprecation shows up.
   spec.add_dependency("gtk4", "~> 4.3")
   spec.add_dependency("adwaita", "~> 4.3")
   spec.add_dependency("glib2", "~> 4.3")

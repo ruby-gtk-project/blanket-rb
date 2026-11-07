@@ -157,6 +157,22 @@ GtkDriver.drive(Blanket::Application.new, shots: "tmp/shots", interval: 900) do 
     d.check("inhibit-suspension flipped") { Blanket::Settings.get.inhibit_suspension == @prefs.inhibition_row.active? }
   end
 
+  # The one feature a removed `ashpd` dependency might have served: upstream
+  # gates this switch behind the XDG Background portal
+  # (`Xdp.Portal#request_background`), but this port has no binding for that
+  # portal (ashpd's gem binds Account/Camera/OpenUri/Screenshot/Settings/Trash,
+  # not Background -- see preferences_dialog.rb), so the switch here writes
+  # the "autostart" GSetting directly via the same Gio::Settings#bind every
+  # other switch on this dialog uses. Exercise that bound path end to end
+  # rather than only checking its resting state.
+  d.step("toggling autostart writes the setting directly (no portal)") do
+    @prefs.autostart_row.active = !@prefs.autostart_row.active?
+  end
+
+  d.step("the autostart setting followed") do
+    d.check("autostart flipped") { Blanket::Settings.get.autostart == @prefs.autostart_row.active? }
+  end
+
   # The action lives on the window itself, unprefixed; toggling a stateful
   # action's state from code is #change_action_state, not #activate_action
   # (which takes the *activate* parameter — null for this action, since it
