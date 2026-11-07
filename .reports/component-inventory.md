@@ -31,8 +31,8 @@ blockers section are corrected in place rather than re-run from scratch.
 | Distinct widget types | ~30 | ~16 |
 | CSS classes applied | 15 (`accent`, `caption-heading`, `circular`, `devel`, `error`, `flat`, `menu`, `playpause`, `preset-row`, `selected`, `sound-item`, `sound-view`, `suggested-action`, `volume-row`, `volume-separator`) | 5 (`menu`, `preset-row`, `selected`, `flat`, `circular`, `suggested-action`) |
 | Stylesheet | `data/resources/style.css`, 17 rules | `lib/blanket/style.css`, 17 rules — **ported whole** |
-| GActions | 14 (`app.*` ×12, `win.*` ×2) | 6 (`app.quit`, `app.about`, `app.shortcuts`, `app.add-preset`, `app.background-playback`, `win.close`) |
-| Accelerators | 6 | 3 (`<Control>q`, `<Control>question`, `<Control>w`) |
+| GActions | 14 (`app.*` ×12, `win.*` ×2) | 14 + the port's own `app.shortcuts` (see "Round N+2" below) |
+| Accelerators | 6 | 6 + the port's own `app.shortcuts` accelerator (see "Round N+2" below) |
 | GSettings schemas | 2 (app + `.preset`), 13 + 4 keys | **both present**, same key names, under `org.rubygtkproject.Blanket`, compiled to `data/schemas/` |
 | Assets | 16 symbolic icons, 14 `.ogg` sounds in GResource | **all present on disk** (`data/icons/hicolor/scalable/emblems`, `data/sounds`) |
 | Translated strings | 87 msgids, 57 `po/*.po` locales | none |
@@ -54,15 +54,16 @@ Targets below therefore keep this fork's existing namespace,
 
 ## lib/blanket/application.rb — the application object: actions, accelerators, MPRIS, power monitor
 
-Upstream: `blanket/main.py`. **Partial** — exists with the window shell, the
-primary menu, six actions, three accelerators and the CSS provider. Missing:
-the `--hidden` command-line option, the power-profile monitor, the playback
-actions, the sound actions, the dark-mode fallback and the full accelerator set.
+Upstream: `blanket/main.py`. **Present**, including the window, the primary
+menu, all 14 actions, all 6 accelerators, the CSS provider and the `--hidden`
+command-line option (landed in `d49f71b`, see "Round N+2" below). Still
+missing: the power-profile monitor and the dark-mode system-colour-scheme
+fallback.
 
 | Thing | × | Present | Notes |
 |---|---:|---|---|
-| `Gtk::Application` (upstream `Adw.Application`) | 1 | yes | upstream sets `HANDLES_COMMAND_LINE`, `resource_base_path` and `PULSE_PROP_application.icon_name`; the port sets none of these. `Adwaita::Application` is broken in the Ruby bindings, so the app object is `Gtk::Application` |
-| `--hidden` command-line option | 1 | no | starts the window hidden; `do_command_line` |
+| `Gtk::Application` (upstream `Adw.Application`) | 1 | yes | upstream sets `HANDLES_COMMAND_LINE`, `resource_base_path` and `PULSE_PROP_application.icon_name`; the port sets `:handles_command_line` and the `--hidden` option but not `resource_base_path`/`PULSE_PROP_application.icon_name` (there is no GResource bundle to base a path on). `Adwaita::Application` is broken in the Ruby bindings, so the app object is `Gtk::Application` |
+| `--hidden` command-line option | 1 | yes | `add_main_option` + `#on_command_line`; starts the window hidden on first build |
 | `Gio::PowerProfileMonitor` | 1 | no | `notify::power-saver-enabled` → pause playback + show power toast |
 | `Adwaita::StyleManager` | 1 | partial | reachable as `style_manager`; the force-dark fallback for systems without colour schemes is not wired |
 | Signal `shutdown` | 1 | partial | the port saves presets; upstream also stops the player |
@@ -77,18 +78,22 @@ removed while a text-entry dialog is open and restored on close —
 |---|---|---|---|
 | `app.quit` | simple | `<Ctl>q` | yes |
 | `app.about` | simple | — | yes |
-| `app.preferences` | simple | `<Ctl>comma` | no |
+| `app.preferences` | simple | `<Ctl>comma` | yes |
 | `app.background-playback` | stateful (boolean) | — | yes |
-| `app.playpause` | simple | `<Ctl>m`, `space` | no |
-| `app.play` | simple | — | no |
+| `app.playpause` | simple | `<Ctl>m`, `space` | yes |
+| `app.play` | simple | — | yes |
 | `app.add-preset` | simple | — | yes |
-| `app.reset-volumes` | simple | — | no |
-| `app.open` | simple | `<Ctl>o` | no |
-| `app.remove-sound` | simple, param `u` | — | no |
-| `app.rename-sound` | simple, param `u` | — | no |
+| `app.reset-volumes` | simple | — | yes |
+| `app.open` | simple | `<Ctl>o` | yes |
+| `app.remove-sound` | simple, param `u` | — | yes |
+| `app.rename-sound` | simple, param `u` | — | yes |
 | `win.close` | simple | `<Ctl>w` | yes |
-| `win.hide-inactive` | stateful (boolean) | `<Ctl>h` | no |
+| `win.hide-inactive` | stateful (boolean) | `<Ctl>h` | yes |
 | `app.shortcuts` | — (never installed upstream) | — | **installed in the port**, with `<Control>question` |
+
+All 14 actions and all 6 accelerators are present as of `d49f71b` (see "Round
+N+2" below); `main.py`'s `pause` is a plain method upstream too (never a
+`GSimpleAction`), and the port's `Window#on_pause`/`#on_play` match that shape.
 
 ## lib/blanket/window.rb — the main window: sound grid, bottom bar, menus
 
@@ -419,3 +424,71 @@ Reproduces with pre-existing `sound.rb`/`main_player.rb` alone, unrelated
 to anything landed this round; `NoiseBin` (`audiotestsrc`, no dynamic pads)
 is unaffected, which is why `test/drive_window.rb` only ever tells a noise
 sound to play.
+
+## Round N+2: every action, the `--hidden` option, and the full accelerator set
+
+Re-surveyed at `d49f71b Port Application's --hidden command-line option from
+main.py` (after `52d2541`, which recorded the MPRIS `Metadata` binding gap and
+the empty spec scaffolding in `.reports/drive-verification.md` — not a UI
+change, so the component inventory is untouched by it).
+
+All 14 upstream `GSimpleAction`s now exist and are installed —
+`application.rb` carries `quit`, `about`, `preferences`, `background-playback`
+(stateful), `playpause`, `play`, `add-preset`, `reset-volumes`, `open`,
+`remove-sound` (param `u`), `rename-sound` (param `u`) on `app.*`, and
+`window.rb` carries `close` and `hide-inactive` (stateful) on `win.*`, plus the
+port's own `app.shortcuts`. All 6 accelerators from `main.py`'s
+`setup_actions` are bound: `<Ctl>q`/`<Ctl>comma`/`<Ctl>m`+`space`/`<Ctl>o` on
+`app.*`, `<Ctl>w`/`<Ctl>h` on `win.*` — plus the port's own
+`<Control>question` for `app.shortcuts`. `main.py`'s `pause` method (never a
+`GSimpleAction` upstream either) is a plain Ruby method, matching.
+
+`Application#on_command_line` now does what `do_command_line` did: reads the
+`--hidden` option, and — because `:handles_command_line` stops
+`Gtk::Application` from calling `activate` on its own — calls it explicitly,
+hiding the window on first build when the flag was given. The application
+object's row for this is now **yes**, closing the one outstanding gap in that
+unit's table.
+
+The `application.rb` unit above is accordingly no longer "partial" on actions
+or accelerators — the only items still open for that file are the power
+monitor (`Gio::PowerProfileMonitor`, pause-on-power-saver) and the dark-mode
+system-colour-scheme fallback, both already tracked in its table.
+
+### Totals, corrected
+
+| | Upstream | `ruby` branch |
+|---|---|---|
+| GActions | 14 (`app.*` ×12, `win.*` ×2) | 14 + the port's own `app.shortcuts` |
+| Accelerators | 6 | 6 + the port's own `app.shortcuts` accelerator |
+
+Everything else in the Totals table above (UI units, blueprint files, Python
+modules, widget types, CSS classes, stylesheet, GSettings schemas, assets,
+translated strings) is unchanged by this round; MPRIS, the window, the sound
+widgets and preferences all landed in the prior round and are not touched by
+`d49f71b`.
+
+## Blockers, corrected
+
+Blocker 2 (ashpd/autostart) and blocker 4 (`Adwaita::ApplicationWindow`) were
+already resolved as of the prior round. Blocker 3 (how the grid reaches
+`MainPlayer`) was already answered the same round: `Window` rebuilds from
+`MainPlayer#to_a` directly, not through a bound `Gio::ListModel`. Still open,
+unchanged by this round:
+
+5. **No translations.** 57 locales and 87 msgids upstream; the port has no
+   gettext and no catalogue — every string in every file above, including the
+   ones landed this round and last, is a literal English string. This is the
+   only item in the original "Blockers and open questions" list with no
+   resolution recorded anywhere in this file, and it covers every user-facing
+   string in the entire app.
+
+**New finding this round, not yet investigated:** `Gio::DBusConnection`'s
+registered-object handler cannot convert the MPRIS `Metadata` property
+(`a{sv}`) through `GLib::Variant#value` — see
+`.reports/drive-verification.md` for the ruby-gnome binding gap and how
+`test/drive_app.rb` routes around it for its own assertion. `mpris.rb` itself
+builds a correct variant; nothing in this file's component tables changes
+because of it, but a real D-Bus client reading `org.mpris.MediaPlayer2.Player`
+`Metadata` through the normal property-get path on this binding gets the same
+`NotImplementedError`, not a track title.
