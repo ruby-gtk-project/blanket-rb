@@ -1,0 +1,426 @@
+# Japanese translations for blanket package.
+# Copyright (C) 2022 THE blanket'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the blanket package.
+# Nobuaki Takahashi <taka@nob13.com>, 2021.
+# 小山田 純 <oyamadajun@outlook.jp>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: blanket\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-07 13:35+0000\n"
+"PO-Revision-Date: 2025-01-08 14:02+0000\n"
+"Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/blanket/blanket/j"
+"a/>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.10-dev\n"
+
+#: ../lib/blanket/about_dialog.rb:19
+msgid "Source Code"
+msgstr "ソースコード"
+
+#: ../lib/blanket/about_dialog.rb:20
+msgid "Sounds by"
+msgstr "サウンド作成"
+
+#: ../lib/blanket/about_dialog.rb:21
+msgid "Sounds edited by"
+msgstr "サウンド編集"
+
+#: ../lib/blanket/about_dialog.rb:29 ../lib/blanket/mpris.rb:221
+#: ../lib/blanket/mpris.rb:246 ../lib/blanket/window.rb:96
+msgid "Blanket"
+msgstr "Blanket"
+
+#: ../lib/blanket/about_dialog.rb:31 ../lib/blanket/mpris.rb:245
+msgid "Listen to different sounds"
+msgstr "環境音で集中"
+
+#: ../lib/blanket/about_dialog.rb:32
+msgid "Copyright 2020-2022 Rafael Mardojai CM"
+msgstr "Copyright 2020-2022 Rafael Mardojai CM"
+
+#: ../lib/blanket/about_dialog.rb:42
+#, fuzzy
+msgid "translator-credits"
+msgstr ""
+"Nobuaki Takahashi\n"
+"小山田 純 <oyamadajun@outlook.jp>\n"
+"Gnuey56 <gnuey56@proton.me>"
+
+#: ../lib/blanket/define.rb:31
+msgid "Nature"
+msgstr "自然"
+
+#: ../lib/blanket/define.rb:33 ../lib/blanket/define.rb:72
+#: ../lib/blanket/define.rb:91
+msgid "Rain"
+msgstr "雨"
+
+#: ../lib/blanket/define.rb:34 ../lib/blanket/define.rb:73
+#: ../lib/blanket/define.rb:92
+msgid "Storm"
+msgstr "嵐"
+
+#: ../lib/blanket/define.rb:35 ../lib/blanket/define.rb:84
+#: ../lib/blanket/define.rb:96
+msgid "Wind"
+msgstr "風"
+
+#: ../lib/blanket/define.rb:36 ../lib/blanket/define.rb:81
+#: ../lib/blanket/define.rb:93
+msgid "Waves"
+msgstr "波"
+
+#: ../lib/blanket/define.rb:37 ../lib/blanket/define.rb:77
+msgid "Stream"
+msgstr "せせらぎ"
+
+#: ../lib/blanket/define.rb:38 ../lib/blanket/define.rb:79
+#: ../lib/blanket/define.rb:90
+msgid "Birds"
+msgstr "鳥"
+
+#: ../lib/blanket/define.rb:39 ../lib/blanket/define.rb:80
+msgid "Summer Night"
+msgstr "夏の夜"
+
+#: ../lib/blanket/define.rb:43
+msgid "Travel"
+msgstr "旅行"
+
+#: ../lib/blanket/define.rb:45 ../lib/blanket/define.rb:85
+msgid "Train"
+msgstr "電車"
+
+#: ../lib/blanket/define.rb:46 ../lib/blanket/define.rb:75
+#: ../lib/blanket/define.rb:94
+msgid "Boat"
+msgstr "ボート"
+
+#: ../lib/blanket/define.rb:47 ../lib/blanket/define.rb:76
+#: ../lib/blanket/define.rb:95
+msgid "City"
+msgstr "街"
+
+#: ../lib/blanket/define.rb:51
+msgid "Interiors"
+msgstr "室内"
+
+#: ../lib/blanket/define.rb:53 ../lib/blanket/define.rb:82
+msgid "Coffee Shop"
+msgstr "カフェ"
+
+#: ../lib/blanket/define.rb:54 ../lib/blanket/define.rb:74
+msgid "Fireplace"
+msgstr "暖炉"
+
+#: ../lib/blanket/define.rb:60 ../lib/blanket/define.rb:83
+msgid "Pink Noise"
+msgstr "ピンクノイズ"
+
+#: ../lib/blanket/define.rb:61 ../lib/blanket/define.rb:78
+msgid "White Noise"
+msgstr "ホワイトノイズ"
+
+#: ../lib/blanket/define.rb:67
+msgid "Sounds icons"
+msgstr "サウンドアイコン"
+
+#: ../lib/blanket/define.rb:68
+msgid "App icon"
+msgstr "アプリアイコン"
+
+#: ../lib/blanket/preferences_dialog.rb:65
+msgid "Appearance"
+msgstr "外観"
+
+#: ../lib/blanket/preferences_dialog.rb:70
+msgid "Behavior"
+msgstr "挙動"
+
+#: ../lib/blanket/preferences_dialog.rb:74
+msgid "Dark Mode"
+msgstr "ダークモード"
+
+#: ../lib/blanket/preferences_dialog.rb:79
+msgid "Autostart in Background"
+msgstr "バックグラウンドで自動スタート"
+
+#: ../lib/blanket/preferences_dialog.rb:83
+msgid "Always Start on Pause"
+msgstr "起動時に一時停止"
+
+#: ../lib/blanket/preferences_dialog.rb:95
+msgid "Inhibit suspension while playing"
+msgstr ""
+
+#: ../lib/blanket/preset_dialog.rb:81 ../lib/blanket/sound_rename_dialog.rb:83
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: ../lib/blanket/preset_dialog.rb:84 ../lib/blanket/sound_rename_dialog.rb:86
+msgid "Save"
+msgstr "保存"
+
+#: ../lib/blanket/preset_dialog.rb:95
+msgid "Preset Name"
+msgstr "プリセットの名前"
+
+#: ../lib/blanket/preset_dialog.rb:109
+msgid "Edit Preset"
+msgstr "プリセットの編集"
+
+#: ../lib/blanket/preset_dialog.rb:111
+msgid "New Preset"
+msgstr "新しいプリセット"
+
+#: ../lib/blanket/preset_row.rb:101
+msgid "Rename Preset"
+msgstr "プリセットの名前変更"
+
+#: ../lib/blanket/preset_row.rb:110
+msgid "Delete Preset"
+msgstr "プリセットを削除"
+
+#: ../lib/blanket/shortcuts_dialog.rb:18
+msgid "General"
+msgstr "一般"
+
+#: ../lib/blanket/shortcuts_dialog.rb:19
+msgid "Play/Pause Sounds"
+msgstr "音を再生/一時停止"
+
+#: ../lib/blanket/shortcuts_dialog.rb:20
+msgid "Add Custom Sound"
+msgstr "音を追加"
+
+#: ../lib/blanket/shortcuts_dialog.rb:21
+msgid "Close Window"
+msgstr "ウィンドウを閉じる"
+
+#: ../lib/blanket/shortcuts_dialog.rb:22 ../lib/blanket/window.rb:138
+msgid "Preferences"
+msgstr "設定"
+
+#: ../lib/blanket/shortcuts_dialog.rb:23 ../lib/blanket/shortcuts_dialog.rb:38
+#: ../lib/blanket/window.rb:139
+msgid "Keyboard Shortcuts"
+msgstr "キーボードショートカット"
+
+#: ../lib/blanket/shortcuts_dialog.rb:24 ../lib/blanket/window.rb:145
+msgid "Quit"
+msgstr "終了"
+
+#: ../lib/blanket/sound_context_menu.rb:60
+msgid "Rename"
+msgstr ""
+
+#: ../lib/blanket/sound_context_menu.rb:65
+msgid "Remove"
+msgstr "削除"
+
+#: ../lib/blanket/sound_rename_dialog.rb:65
+#: ../lib/blanket/sound_rename_dialog.rb:81
+msgid "Rename Sound"
+msgstr ""
+
+#: ../lib/blanket/sound_rename_dialog.rb:97
+msgid "Sound Name"
+msgstr ""
+
+#: ../lib/blanket/window.rb:116
+msgid "Main Menu"
+msgstr "メインメニュー"
+
+#: ../lib/blanket/window.rb:132
+msgid "Keep Playing when Closed"
+msgstr "ウィンドウを閉じても再生し続ける"
+
+#: ../lib/blanket/window.rb:140
+msgid "About Blanket"
+msgstr "Blanketについて"
+
+#: ../lib/blanket/window.rb:182
+msgid "Volume Menu"
+msgstr "音量メニュー"
+
+#: ../lib/blanket/window.rb:195
+msgid "Sounds Menu"
+msgstr "サウンドメニュー"
+
+#: ../lib/blanket/window.rb:209
+msgid "Hide Inactive Sounds"
+msgstr "利用していないサウンドを隠す"
+
+#: ../lib/blanket/window.rb:210
+msgid "Save as New Preset…"
+msgstr "新しいプリセットとして保存…"
+
+#: ../lib/blanket/window.rb:215
+msgid "Add Sound…"
+msgstr "音を追加…"
+
+#: ../lib/blanket/window.rb:235
+msgid "Reset Sounds"
+msgstr "サウンドをリセット"
+
+#: ../lib/blanket/window.rb:285
+msgid "Paused to save power"
+msgstr "電源節約のため一時停止されています"
+
+#: ../lib/blanket/window.rb:287
+msgid "_Resume Playing"
+msgstr "再生を再開 (_R)"
+
+#: ../lib/blanket/window.rb:313
+msgid "Open audio"
+msgstr "追加したい音を選択"
+
+#: ../lib/blanket/window.rb:397
+msgid "File not found"
+msgstr ""
+
+#: ../lib/blanket/window.rb:452
+msgid "Add…"
+msgstr "追加…"
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/com.rafaelmardojai.Blanket.desktop.in:10
+#~ msgid "Concentrate;Focus;Noise;Productivity;Sleep;"
+#~ msgstr "集中;フォーカス;雑音;生産性;睡眠;環境音;"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:7
+#~ msgid "Listen to ambient sounds"
+#~ msgstr "環境音を聴く"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:9
+#~ msgid ""
+#~ "Improve focus and increase your productivity by listening to different ambient"
+#~ " sounds"
+#~ msgstr "いろいろな環境音を聞いて、集中力を高め生産性を向上できます"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:10
+#~ msgid "Also can help you to fall asleep in a noisy environment."
+#~ msgstr "騒がしい環境においても眠りに落ちることを助けます。"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:11
+#~ msgid "Features:"
+#~ msgstr "機能:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:13
+#~ msgid "Save presets"
+#~ msgstr "プリセットを保存"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:14
+#~ msgid "Add custom sounds"
+#~ msgstr "カスタムサウンドを追加"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:15
+#~ msgid "Auto start in background"
+#~ msgstr "バックグラウンドで自動スタート"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:16
+#~ msgid "MPRIS integration"
+#~ msgstr "MPRIS統合"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:18
+#~ msgid "Included Sounds in the App:"
+#~ msgstr "アプリケーションに含まれるサウンド:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:57
+#~ msgid "The default screen in light theme"
+#~ msgstr "ライトテーマのデフォルト画面"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:62
+#~ msgid "The default screen in dark theme"
+#~ msgstr "ダークテーマのデフォルトスクリーン"
+
+#. Translators: Keep single quote please!
+#: data/com.rafaelmardojai.Blanket.gschema.xml:45
+#~ msgctxt "visible-name"
+#~ msgid "'Default'"
+#~ msgstr "'デフォルト'"
+
+#. Translators: Replace me with your names, You can make a mailto link: translator-name <user@domain.org>
+#: data/resources/about.blp:15
+#~ msgctxt "Add your names here, do not remove previous names!"
+#~ msgid "translator-credits"
+#~ msgstr ""
+#~ "Nobuaki Takahashi\n"
+#~ "小山田 純 <oyamadajun@outlook.jp>\n"
+#~ "Gnuey56 <gnuey56@proton.me>"
+
+#: data/resources/window.blp:24
+#~ msgid "Presets Menu"
+#~ msgstr "プリセットメニュー"
+
+#: blanket/define.py:38
+#~ msgid "Noise"
+#~ msgstr "雑音"
+
+#: blanket/preferences.py:79
+#~ msgid "Autostart Blanket in background."
+#~ msgstr "バックグラウンドでBlanketを自動スタートします。"
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "Request error"
+#~ msgstr "リクエストエラー"
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "The autostart request failed."
+#~ msgstr "自動スタートの設定ができませんでした。"
+
+#: blanket/preferences.py:108 blanket/preferences.py:125
+#: blanket/preferences.py:129
+#~ msgid "Ok"
+#~ msgstr "OK"
+
+#: blanket/preferences.py:124
+#~ msgid "Authorization failed"
+#~ msgstr "権限がありません"
+
+#: blanket/preferences.py:124
+#~ msgid ""
+#~ "Make sure Blanket has permission to run in the background in Settings → Applic"
+#~ "ations → Blanket and try again."
+#~ msgstr "設定 → アプリケーション → Blanket で、「バックグランドで実行」をONにしてから再度お試しください。"
+
+#: blanket/window.py:133
+#~ msgid "Sound Automatically Removed"
+#~ msgstr "サウンドは自動的に削除されました"
+
+#: blanket/window.py:135
+#, python-brace-format
+#~ msgid "The {name} sound is no longer accessible, so it has been removed"
+#~ msgstr "サウンド「{name}」はアクセスできなくなったため、削除されました"
+
+#: blanket/window.py:138
+#~ msgid "Accept"
+#~ msgstr "許可"
+
+#~ msgid "Rafael Mardojai CM"
+#~ msgstr "Rafael Mardojai CM"
+#~ msgid "Keyboard Shortcus"
+#~ msgstr "キーボードショートカット"
+#~ msgid "Add Preset…"
+#~ msgstr "プリセットの追加"
+#~ msgid "Reset Volume Levels"
+#~ msgstr "音量レベルをリセット"
+#~ msgid "Add custom sound"
+#~ msgstr "音を追加"
+#~ msgid "Custom"
+#~ msgstr "カスタム"
+#~ msgid "Add Preset"
+#~ msgstr "プリセットの追加"
+#~ msgid "Create"
+#~ msgstr "作成"
+#~ msgid "Pink noise"
+#~ msgstr "ピンクノイズ"
+#~ msgid "Add Preset..."
+#~ msgstr "プリセットを追加..."

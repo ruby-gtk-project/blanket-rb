@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "rb/version"
+require_relative "i18n"
 
 module Blanket
   # Ported from blanket/define.in.
@@ -12,6 +13,8 @@ module Blanket
   # the port reads its assets from, since this port ships its sounds, icons and
   # stylesheet as files rather than as a compiled GResource bundle.
   module Define
+    include GetText
+
     VERSION = Blanket::Rb::VERSION
     APP_ID = "org.rubygtkproject.Blanket"
     RES_PATH = "/org/rubygtkproject/Blanket"
@@ -25,72 +28,72 @@ module Blanket
 
     SOUNDS = [
       {
-        name:   "Nature",
+        name:   _("Nature"),
         sounds: [
-          {name: "rain", title: "Rain"},
-          {name: "storm", title: "Storm"},
-          {name: "wind", title: "Wind"},
-          {name: "waves", title: "Waves"},
-          {name: "stream", title: "Stream"},
-          {name: "birds", title: "Birds"},
-          {name: "summer-night", title: "Summer Night"},
+          {name: "rain", title: _("Rain")},
+          {name: "storm", title: _("Storm")},
+          {name: "wind", title: _("Wind")},
+          {name: "waves", title: _("Waves")},
+          {name: "stream", title: _("Stream")},
+          {name: "birds", title: _("Birds")},
+          {name: "summer-night", title: _("Summer Night")},
         ],
       },
       {
-        name:   "Travel",
+        name:   _("Travel"),
         sounds: [
-          {name: "train", title: "Train"},
-          {name: "boat", title: "Boat"},
-          {name: "city", title: "City"},
+          {name: "train", title: _("Train")},
+          {name: "boat", title: _("Boat")},
+          {name: "city", title: _("City")},
         ],
       },
       {
-        name:   "Interiors",
+        name:   _("Interiors"),
         sounds: [
-          {name: "coffee-shop", title: "Coffee Shop"},
-          {name: "fireplace", title: "Fireplace"},
+          {name: "coffee-shop", title: _("Coffee Shop")},
+          {name: "fireplace", title: _("Fireplace")},
         ],
       },
     ].freeze
 
     NOISES = [
-      {name: "pink-noise", title: "Pink Noise"},
-      {name: "white-noise", title: "White Noise"},
+      {name: "pink-noise", title: _("Pink Noise")},
+      {name: "white-noise", title: _("White Noise")},
     ].freeze
 
     AUTHORS = ["Rafael Mardojai CM"].freeze
 
     ARTISTS = {
-      "Jakub Steiner"      => ["Sounds icons"],
-      "Rafael Mardojai CM" => ["App icon"],
+      "Jakub Steiner"      => [_("Sounds icons")],
+      "Rafael Mardojai CM" => [_("App icon")],
     }.freeze
 
     SOUND_ARTISTS = {
-      "alex36917"      => ["Rain"],
-      "Digifish music" => ["Storm"],
-      "ezwa"           => ["Fireplace"],
-      "Falcet"         => ["Boat"],
-      "gezortenplotz"  => ["City"],
-      "gluckose"       => ["Stream"],
-      "Jorge Stolfi"   => ["White Noise"],
-      "kvgarlic"       => ["Birds"],
-      "Lisa Redfern"   => ["Summer Night"],
-      "Luftrum"        => ["Waves"],
-      "stephan"        => ["Coffee Shop"],
-      "Omegatron"      => ["Pink Noise"],
-      "felix.blume"    => ["Wind"],
-      "SDLx"           => ["Train"],
+      "alex36917"      => [_("Rain")],
+      "Digifish music" => [_("Storm")],
+      "ezwa"           => [_("Fireplace")],
+      "Falcet"         => [_("Boat")],
+      "gezortenplotz"  => [_("City")],
+      "gluckose"       => [_("Stream")],
+      "Jorge Stolfi"   => [_("White Noise")],
+      "kvgarlic"       => [_("Birds")],
+      "Lisa Redfern"   => [_("Summer Night")],
+      "Luftrum"        => [_("Waves")],
+      "stephan"        => [_("Coffee Shop")],
+      "Omegatron"      => [_("Pink Noise")],
+      "felix.blume"    => [_("Wind")],
+      "SDLx"           => [_("Train")],
     }.freeze
 
     SOUND_EDITORS = {
       "Porrumentzio" => [
-        "Birds",
-        "Rain",
-        "Storm",
-        "Waves",
-        "Boat",
-        "City",
-        "Wind",
+        _("Birds"),
+        _("Rain"),
+        _("Storm"),
+        _("Waves"),
+        _("Boat"),
+        _("City"),
+        _("Wind"),
       ],
     }.freeze
 

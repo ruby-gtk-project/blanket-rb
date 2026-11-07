@@ -1,0 +1,426 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the blanket package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# Rafael Mardojai CM <mardojai.cardenas@gmail.com>, 2023
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: blanket\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-07 13:35+0000\n"
+"PO-Revision-Date: 2024-12-04 14:00+0000\n"
+"Last-Translator: Eder Etxebarria Rojo <eder@betxepare.eus>\n"
+"Language-Team: Basque <https://hosted.weblate.org/projects/blanket/blanket/eu/"
+">\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.9-dev\n"
+
+#: ../lib/blanket/about_dialog.rb:19
+msgid "Source Code"
+msgstr "Kode-iturburua"
+
+#: ../lib/blanket/about_dialog.rb:20
+msgid "Sounds by"
+msgstr "Soinuak"
+
+#: ../lib/blanket/about_dialog.rb:21
+msgid "Sounds edited by"
+msgstr "Soinu-edizioa"
+
+#: ../lib/blanket/about_dialog.rb:29 ../lib/blanket/mpris.rb:221
+#: ../lib/blanket/mpris.rb:246 ../lib/blanket/window.rb:96
+msgid "Blanket"
+msgstr "Blanket"
+
+#: ../lib/blanket/about_dialog.rb:31 ../lib/blanket/mpris.rb:245
+msgid "Listen to different sounds"
+msgstr "Entzun hainbat soinu"
+
+#: ../lib/blanket/about_dialog.rb:32
+msgid "Copyright 2020-2022 Rafael Mardojai CM"
+msgstr "Copyright 2020-2021 Rafael Mardojai CM"
+
+#: ../lib/blanket/about_dialog.rb:42
+#, fuzzy
+msgid "translator-credits"
+msgstr ""
+"Porrumentzio <porrumentzio@riseup.net>\n"
+"Sergio Varela <sergiovg01@outlook.com>\n"
+"Eder Etxebarria <eder.etxebarria@ni.eus>"
+
+#: ../lib/blanket/define.rb:31
+msgid "Nature"
+msgstr "Natura"
+
+#: ../lib/blanket/define.rb:33 ../lib/blanket/define.rb:72
+#: ../lib/blanket/define.rb:91
+msgid "Rain"
+msgstr "Euria"
+
+#: ../lib/blanket/define.rb:34 ../lib/blanket/define.rb:73
+#: ../lib/blanket/define.rb:92
+msgid "Storm"
+msgstr "Ekaitza"
+
+#: ../lib/blanket/define.rb:35 ../lib/blanket/define.rb:84
+#: ../lib/blanket/define.rb:96
+msgid "Wind"
+msgstr "Haizea"
+
+#: ../lib/blanket/define.rb:36 ../lib/blanket/define.rb:81
+#: ../lib/blanket/define.rb:93
+msgid "Waves"
+msgstr "Olatuak"
+
+#: ../lib/blanket/define.rb:37 ../lib/blanket/define.rb:77
+msgid "Stream"
+msgstr "Zurrusta"
+
+#: ../lib/blanket/define.rb:38 ../lib/blanket/define.rb:79
+#: ../lib/blanket/define.rb:90
+msgid "Birds"
+msgstr "Txoriak"
+
+#: ../lib/blanket/define.rb:39 ../lib/blanket/define.rb:80
+msgid "Summer Night"
+msgstr "Udako gaua"
+
+#: ../lib/blanket/define.rb:43
+msgid "Travel"
+msgstr "Bidaia"
+
+#: ../lib/blanket/define.rb:45 ../lib/blanket/define.rb:85
+msgid "Train"
+msgstr "Trena"
+
+#: ../lib/blanket/define.rb:46 ../lib/blanket/define.rb:75
+#: ../lib/blanket/define.rb:94
+msgid "Boat"
+msgstr "Batela"
+
+#: ../lib/blanket/define.rb:47 ../lib/blanket/define.rb:76
+#: ../lib/blanket/define.rb:95
+msgid "City"
+msgstr "Hiria"
+
+#: ../lib/blanket/define.rb:51
+msgid "Interiors"
+msgstr "Barrualdeak"
+
+#: ../lib/blanket/define.rb:53 ../lib/blanket/define.rb:82
+msgid "Coffee Shop"
+msgstr "Kafetegia"
+
+#: ../lib/blanket/define.rb:54 ../lib/blanket/define.rb:74
+msgid "Fireplace"
+msgstr "Sutondoa"
+
+#: ../lib/blanket/define.rb:60 ../lib/blanket/define.rb:83
+msgid "Pink Noise"
+msgstr "Soinu arrosa"
+
+#: ../lib/blanket/define.rb:61 ../lib/blanket/define.rb:78
+msgid "White Noise"
+msgstr "Soinu zuria"
+
+#: ../lib/blanket/define.rb:67
+msgid "Sounds icons"
+msgstr "Soinuen ikonoak"
+
+#: ../lib/blanket/define.rb:68
+msgid "App icon"
+msgstr "Aplikazioaren ikonoa"
+
+#: ../lib/blanket/preferences_dialog.rb:65
+msgid "Appearance"
+msgstr "Itxura"
+
+#: ../lib/blanket/preferences_dialog.rb:70
+msgid "Behavior"
+msgstr "Portaera"
+
+#: ../lib/blanket/preferences_dialog.rb:74
+msgid "Dark Mode"
+msgstr "Itxura iluna"
+
+#: ../lib/blanket/preferences_dialog.rb:79
+msgid "Autostart in Background"
+msgstr "Abiarazi automatikoki atzeko planoan"
+
+#: ../lib/blanket/preferences_dialog.rb:83
+msgid "Always Start on Pause"
+msgstr "Hasi beti pausaldian"
+
+#: ../lib/blanket/preferences_dialog.rb:95
+msgid "Inhibit suspension while playing"
+msgstr ""
+
+#: ../lib/blanket/preset_dialog.rb:81 ../lib/blanket/sound_rename_dialog.rb:83
+msgid "Cancel"
+msgstr "Ezeztatu"
+
+#: ../lib/blanket/preset_dialog.rb:84 ../lib/blanket/sound_rename_dialog.rb:86
+msgid "Save"
+msgstr "Gorde"
+
+#: ../lib/blanket/preset_dialog.rb:95
+msgid "Preset Name"
+msgstr "Aurrehautaketaren izena"
+
+#: ../lib/blanket/preset_dialog.rb:109
+msgid "Edit Preset"
+msgstr "Editatu aurrehautaketa"
+
+#: ../lib/blanket/preset_dialog.rb:111
+msgid "New Preset"
+msgstr "Aurrezarpen berria"
+
+#: ../lib/blanket/preset_row.rb:101
+msgid "Rename Preset"
+msgstr "Aldatu aurrehautaketaren izena"
+
+#: ../lib/blanket/preset_row.rb:110
+msgid "Delete Preset"
+msgstr "Ezabatu aurrehautaketa"
+
+#: ../lib/blanket/shortcuts_dialog.rb:18
+msgid "General"
+msgstr "Orokorra"
+
+#: ../lib/blanket/shortcuts_dialog.rb:19
+msgid "Play/Pause Sounds"
+msgstr "Erreproduzitu/Gelditu soinuak"
+
+#: ../lib/blanket/shortcuts_dialog.rb:20
+msgid "Add Custom Sound"
+msgstr "Gehitu soinu pertsonalizatua"
+
+#: ../lib/blanket/shortcuts_dialog.rb:21
+msgid "Close Window"
+msgstr "Itxi leihoa"
+
+#: ../lib/blanket/shortcuts_dialog.rb:22 ../lib/blanket/window.rb:138
+msgid "Preferences"
+msgstr "Hobespenak"
+
+#: ../lib/blanket/shortcuts_dialog.rb:23 ../lib/blanket/shortcuts_dialog.rb:38
+#: ../lib/blanket/window.rb:139
+msgid "Keyboard Shortcuts"
+msgstr "Laster-teklak"
+
+#: ../lib/blanket/shortcuts_dialog.rb:24 ../lib/blanket/window.rb:145
+msgid "Quit"
+msgstr "Irten"
+
+#: ../lib/blanket/sound_context_menu.rb:60
+msgid "Rename"
+msgstr ""
+
+#: ../lib/blanket/sound_context_menu.rb:65
+msgid "Remove"
+msgstr "Kendu"
+
+#: ../lib/blanket/sound_rename_dialog.rb:65
+#: ../lib/blanket/sound_rename_dialog.rb:81
+msgid "Rename Sound"
+msgstr ""
+
+#: ../lib/blanket/sound_rename_dialog.rb:97
+msgid "Sound Name"
+msgstr ""
+
+#: ../lib/blanket/window.rb:116
+msgid "Main Menu"
+msgstr "Menu orokorra"
+
+#: ../lib/blanket/window.rb:132
+msgid "Keep Playing when Closed"
+msgstr "Jarraitu erreproduzitzen ixtean"
+
+#: ../lib/blanket/window.rb:140
+msgid "About Blanket"
+msgstr "Honi buruz"
+
+#: ../lib/blanket/window.rb:182
+msgid "Volume Menu"
+msgstr "Bolumenaren menua"
+
+#: ../lib/blanket/window.rb:195
+msgid "Sounds Menu"
+msgstr "Soinuen menua"
+
+#: ../lib/blanket/window.rb:209
+msgid "Hide Inactive Sounds"
+msgstr "Ezkutatu soinu inaktiboak"
+
+#: ../lib/blanket/window.rb:210
+msgid "Save as New Preset…"
+msgstr "Gorde aurrezarpen berri gisa…"
+
+#: ../lib/blanket/window.rb:215
+msgid "Add Sound…"
+msgstr "Gehitu soinua…"
+
+#: ../lib/blanket/window.rb:235
+msgid "Reset Sounds"
+msgstr "Soinuak berrezarri"
+
+#: ../lib/blanket/window.rb:285
+msgid "Paused to save power"
+msgstr "Gelditu da energia aurrezteko"
+
+#: ../lib/blanket/window.rb:287
+msgid "_Resume Playing"
+msgstr "_Berrekin erreproduzitzeari"
+
+#: ../lib/blanket/window.rb:313
+msgid "Open audio"
+msgstr "Ireki audioa"
+
+#: ../lib/blanket/window.rb:397
+msgid "File not found"
+msgstr ""
+
+#: ../lib/blanket/window.rb:452
+msgid "Add…"
+msgstr "Gehitu…"
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/com.rafaelmardojai.Blanket.desktop.in:10
+#~ msgid "Concentrate;Focus;Noise;Productivity;Sleep;"
+#~ msgstr "Kontzentratu;Arreta;Zarata;Soinua;Produktibitatea;Lo;"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:7
+#~ msgid "Listen to ambient sounds"
+#~ msgstr "Entzun inguruneko soinuak"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:9
+#~ msgid ""
+#~ "Improve focus and increase your productivity by listening to different ambient"
+#~ " sounds"
+#~ msgstr "Kontzentrazioa hobetu eta produktibitatea handitu soinu desberdinak entzunez"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:10
+#~ msgid "Also can help you to fall asleep in a noisy environment."
+#~ msgstr "Ingurune zaratatsuan loak hartzen ere lagun dezake."
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:11
+#~ msgid "Features:"
+#~ msgstr "Ezaugarriak:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:13
+#~ msgid "Save presets"
+#~ msgstr "Gorde aurredoikuntzak"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:14
+#~ msgid "Add custom sounds"
+#~ msgstr "Gehitu soinu pertsonalizatuak"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:15
+#~ msgid "Auto start in background"
+#~ msgstr "Hasiera automatikoa bigarren planoan"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:16
+#~ msgid "MPRIS integration"
+#~ msgstr "MPRISen integrazioa"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:18
+#~ msgid "Included Sounds in the App:"
+#~ msgstr "Aplikazioak dakartzan soinuak:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:57
+#~ msgid "The default screen in light theme"
+#~ msgstr "Pantaila lehenetsia gai argian"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:62
+#~ msgid "The default screen in dark theme"
+#~ msgstr "Pantaila lehenetsia gai ilunean"
+
+#. Translators: Keep single quote please!
+#: data/com.rafaelmardojai.Blanket.gschema.xml:45
+#~ msgctxt "visible-name"
+#~ msgid "'Default'"
+#~ msgstr "'Lehenetsita'"
+
+#. Translators: Replace me with your names, You can make a mailto link: translator-name <user@domain.org>
+#: data/resources/about.blp:15
+#~ msgctxt "Add your names here, do not remove previous names!"
+#~ msgid "translator-credits"
+#~ msgstr ""
+#~ "Porrumentzio <porrumentzio@riseup.net>\n"
+#~ "Sergio Varela <sergiovg01@outlook.com>\n"
+#~ "Eder Etxebarria <eder.etxebarria@ni.eus>"
+
+#: data/resources/window.blp:24
+#~ msgid "Presets Menu"
+#~ msgstr "Aurrezarpenen menua"
+
+#: blanket/define.py:38
+#~ msgid "Noise"
+#~ msgstr "Zarata"
+
+#: blanket/preferences.py:79
+#~ msgid "Autostart Blanket in background."
+#~ msgstr "Abiarazi Blanket automatikoki atzealdean."
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "Request error"
+#~ msgstr "Eskaera errorea"
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "The autostart request failed."
+#~ msgstr "Bakarrik abiarazteko eskaerak huts egin du."
+
+#: blanket/preferences.py:108 blanket/preferences.py:125
+#: blanket/preferences.py:129
+#~ msgid "Ok"
+#~ msgstr "Ados"
+
+#: blanket/preferences.py:124
+#~ msgid "Authorization failed"
+#~ msgstr "Baimentzeak huts egin du"
+
+#: blanket/preferences.py:124
+#~ msgid ""
+#~ "Make sure Blanket has permission to run in the background in Settings → Applic"
+#~ "ations → Blanket and try again."
+#~ msgstr ""
+#~ "Ziurtatu Blanket-ek atzeko planoan exekutatzeko baimena duela Ezarpenak → Apli"
+#~ "kazioak → Blanket atalean eta saiatu berriro."
+
+#: blanket/window.py:133
+#~ msgid "Sound Automatically Removed"
+#~ msgstr "Soinua automatikoki kendu da"
+
+#: blanket/window.py:135
+#, python-brace-format
+#~ msgid "The {name} sound is no longer accessible, so it has been removed"
+#~ msgstr "{name} soinua jada ez dago eskuragarri, beraz, kendu egin da"
+
+#: blanket/window.py:138
+#~ msgid "Accept"
+#~ msgstr "Onartu"
+
+#~ msgid "Rafael Mardojai CM"
+#~ msgstr "Rafael Mardojai CM"
+#~ msgid "Keyboard Shortcus"
+#~ msgstr "Laster-teklak"
+#~ msgid "Add Preset…"
+#~ msgstr "Aurrehautaketa gehitu…"
+#~ msgid "Reset Volume Levels"
+#~ msgstr "Bolumen-mailak berrezartzea"
+#~ msgid "Add custom sound"
+#~ msgstr "Gehitu soinu pertsonalizatua"
+#~ msgid "Custom"
+#~ msgstr "Pertsonalizatua"
+#~ msgid "Add Preset"
+#~ msgstr "Gehitu aurrehautaketa"
+#~ msgid "Create"
+#~ msgstr "Sortu"

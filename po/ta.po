@@ -1,0 +1,423 @@
+#
+# TAMIL TRANSLATION FOR BLANKET
+# This file is distributed under the same license as the blanket package.
+# SURVESH VRL <123SURVESH@GMAIL.COM>, 2021
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: blanket v0.4.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-07 13:35+0000\n"
+"PO-Revision-Date: 2026-06-22 06:01+0000\n"
+"Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/blanket/blanket/ta/>"
+"\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2026.7.dev0\n"
+
+#: ../lib/blanket/about_dialog.rb:19
+msgid "Source Code"
+msgstr "மூலக் குறியீடு"
+
+#: ../lib/blanket/about_dialog.rb:20
+msgid "Sounds by"
+msgstr "ஒலிகளை இயற்றியவர்"
+
+#: ../lib/blanket/about_dialog.rb:21
+msgid "Sounds edited by"
+msgstr "ஒலிகளை திருத்தியவர்"
+
+#: ../lib/blanket/about_dialog.rb:29 ../lib/blanket/mpris.rb:221
+#: ../lib/blanket/mpris.rb:246 ../lib/blanket/window.rb:96
+msgid "Blanket"
+msgstr "பிளாங்கெட்"
+
+#: ../lib/blanket/about_dialog.rb:31 ../lib/blanket/mpris.rb:245
+msgid "Listen to different sounds"
+msgstr "வெவ்வேறு ஒலிகளை கேள்"
+
+#: ../lib/blanket/about_dialog.rb:32
+msgid "Copyright 2020-2022 Rafael Mardojai CM"
+msgstr "பதிப்புரிமை 2020-2022 ரஃபேல் மார்டோசாய் சி.எம்"
+
+#: ../lib/blanket/about_dialog.rb:42
+#, fuzzy
+msgid "translator-credits"
+msgstr "தமிழ்நேரம் <TamilNeran247@gmail.com>"
+
+#: ../lib/blanket/define.rb:31
+msgid "Nature"
+msgstr "இயற்கை"
+
+#: ../lib/blanket/define.rb:33 ../lib/blanket/define.rb:72
+#: ../lib/blanket/define.rb:91
+msgid "Rain"
+msgstr "மழை"
+
+#: ../lib/blanket/define.rb:34 ../lib/blanket/define.rb:73
+#: ../lib/blanket/define.rb:92
+msgid "Storm"
+msgstr "புயல்"
+
+#: ../lib/blanket/define.rb:35 ../lib/blanket/define.rb:84
+#: ../lib/blanket/define.rb:96
+msgid "Wind"
+msgstr "காற்று"
+
+#: ../lib/blanket/define.rb:36 ../lib/blanket/define.rb:81
+#: ../lib/blanket/define.rb:93
+msgid "Waves"
+msgstr "அலைகள்"
+
+#: ../lib/blanket/define.rb:37 ../lib/blanket/define.rb:77
+msgid "Stream"
+msgstr "நீரோடை"
+
+#: ../lib/blanket/define.rb:38 ../lib/blanket/define.rb:79
+#: ../lib/blanket/define.rb:90
+msgid "Birds"
+msgstr "பறவைகள்"
+
+#: ../lib/blanket/define.rb:39 ../lib/blanket/define.rb:80
+msgid "Summer Night"
+msgstr "கோடை இரவு"
+
+#: ../lib/blanket/define.rb:43
+msgid "Travel"
+msgstr "பயணம்"
+
+#: ../lib/blanket/define.rb:45 ../lib/blanket/define.rb:85
+msgid "Train"
+msgstr "ரயில்"
+
+#: ../lib/blanket/define.rb:46 ../lib/blanket/define.rb:75
+#: ../lib/blanket/define.rb:94
+msgid "Boat"
+msgstr "படகு"
+
+#: ../lib/blanket/define.rb:47 ../lib/blanket/define.rb:76
+#: ../lib/blanket/define.rb:95
+msgid "City"
+msgstr "நகரம்"
+
+#: ../lib/blanket/define.rb:51
+msgid "Interiors"
+msgstr "உட்புறங்கள்"
+
+#: ../lib/blanket/define.rb:53 ../lib/blanket/define.rb:82
+msgid "Coffee Shop"
+msgstr "காபி கடை"
+
+#: ../lib/blanket/define.rb:54 ../lib/blanket/define.rb:74
+msgid "Fireplace"
+msgstr "நெருப்பிடம்"
+
+#: ../lib/blanket/define.rb:60 ../lib/blanket/define.rb:83
+msgid "Pink Noise"
+msgstr "இளஞ்சிவப்பு இரைச்சல்"
+
+#: ../lib/blanket/define.rb:61 ../lib/blanket/define.rb:78
+msgid "White Noise"
+msgstr "வெள்ளை இரைச்சல்"
+
+#: ../lib/blanket/define.rb:67
+msgid "Sounds icons"
+msgstr "ஒலிகளின் சின்னங்கள்"
+
+#: ../lib/blanket/define.rb:68
+msgid "App icon"
+msgstr "செயலியின் சின்னம்"
+
+#: ../lib/blanket/preferences_dialog.rb:65
+msgid "Appearance"
+msgstr "தோற்றம்"
+
+#: ../lib/blanket/preferences_dialog.rb:70
+msgid "Behavior"
+msgstr "நடத்தை"
+
+#: ../lib/blanket/preferences_dialog.rb:74
+msgid "Dark Mode"
+msgstr "இருண்ட முறை"
+
+#: ../lib/blanket/preferences_dialog.rb:79
+msgid "Autostart in Background"
+msgstr "பின்னணியில் ஆட்டோச்டார்ட்"
+
+#: ../lib/blanket/preferences_dialog.rb:83
+msgid "Always Start on Pause"
+msgstr "எப்போதும் இடைநிறுத்தத்தைத் தொடங்குங்கள்"
+
+#: ../lib/blanket/preferences_dialog.rb:95
+msgid "Inhibit suspension while playing"
+msgstr ""
+
+#: ../lib/blanket/preset_dialog.rb:81 ../lib/blanket/sound_rename_dialog.rb:83
+msgid "Cancel"
+msgstr "ரத்து செய்"
+
+#: ../lib/blanket/preset_dialog.rb:84 ../lib/blanket/sound_rename_dialog.rb:86
+msgid "Save"
+msgstr "சேமி"
+
+#: ../lib/blanket/preset_dialog.rb:95
+msgid "Preset Name"
+msgstr "முன்தொகுப்பின் பெயர்"
+
+#: ../lib/blanket/preset_dialog.rb:109
+msgid "Edit Preset"
+msgstr "முன்தொகுப்பை திருத்து"
+
+#: ../lib/blanket/preset_dialog.rb:111
+msgid "New Preset"
+msgstr "புதிய முன்னமைவு"
+
+#: ../lib/blanket/preset_row.rb:101
+msgid "Rename Preset"
+msgstr "முன்தொகுப்பை மறுபெயரிடு"
+
+#: ../lib/blanket/preset_row.rb:110
+msgid "Delete Preset"
+msgstr "முன்தொகுப்பை அழி"
+
+#: ../lib/blanket/shortcuts_dialog.rb:18
+msgid "General"
+msgstr "பொதுவானவை"
+
+#: ../lib/blanket/shortcuts_dialog.rb:19
+msgid "Play/Pause Sounds"
+msgstr "ஒலி/இடைநிறுத்தங்கள்"
+
+#: ../lib/blanket/shortcuts_dialog.rb:20
+msgid "Add Custom Sound"
+msgstr "தனிப்பயன் ஒலியைச் சேர்க்கவும்"
+
+#: ../lib/blanket/shortcuts_dialog.rb:21
+msgid "Close Window"
+msgstr "சாளரத்தை மூடு"
+
+#: ../lib/blanket/shortcuts_dialog.rb:22 ../lib/blanket/window.rb:138
+msgid "Preferences"
+msgstr "விருப்பங்கள்"
+
+#: ../lib/blanket/shortcuts_dialog.rb:23 ../lib/blanket/shortcuts_dialog.rb:38
+#: ../lib/blanket/window.rb:139
+msgid "Keyboard Shortcuts"
+msgstr "விசைப்பலகை குறுக்குவழிகள்"
+
+#: ../lib/blanket/shortcuts_dialog.rb:24 ../lib/blanket/window.rb:145
+msgid "Quit"
+msgstr "விட்டுச்செல்"
+
+#: ../lib/blanket/sound_context_menu.rb:60
+msgid "Rename"
+msgstr ""
+
+#: ../lib/blanket/sound_context_menu.rb:65
+msgid "Remove"
+msgstr "அகற்று"
+
+#: ../lib/blanket/sound_rename_dialog.rb:65
+#: ../lib/blanket/sound_rename_dialog.rb:81
+msgid "Rename Sound"
+msgstr ""
+
+#: ../lib/blanket/sound_rename_dialog.rb:97
+msgid "Sound Name"
+msgstr ""
+
+#: ../lib/blanket/window.rb:116
+msgid "Main Menu"
+msgstr "பட்டியல் விளையாடுங்கள்"
+
+#: ../lib/blanket/window.rb:132
+msgid "Keep Playing when Closed"
+msgstr "மூடும்போது தொடர்ந்து விளையாடுங்கள்"
+
+#: ../lib/blanket/window.rb:140
+msgid "About Blanket"
+msgstr "பிளாங்கெட்டைப் பத்தி"
+
+#: ../lib/blanket/window.rb:182
+msgid "Volume Menu"
+msgstr "தொகுதி பட்டியல்"
+
+#: ../lib/blanket/window.rb:195
+msgid "Sounds Menu"
+msgstr "பட்டியல் ஒலிக்கிறது"
+
+#: ../lib/blanket/window.rb:209
+msgid "Hide Inactive Sounds"
+msgstr "செயலற்ற ஒலிகளை மறைக்கவும்"
+
+#: ../lib/blanket/window.rb:210
+msgid "Save as New Preset…"
+msgstr "புதிய முன்னமைக்கப்பட்டதாக சேமிக்கவும்…"
+
+#: ../lib/blanket/window.rb:215
+msgid "Add Sound…"
+msgstr "ஒலி சேர்க்கவும்…"
+
+#: ../lib/blanket/window.rb:235
+msgid "Reset Sounds"
+msgstr "ஒலிகளை மீட்டமை"
+
+#: ../lib/blanket/window.rb:285
+msgid "Paused to save power"
+msgstr "சக்தியைக் காப்பாற்ற இடைநிறுத்தப்பட்டது"
+
+#: ../lib/blanket/window.rb:287
+msgid "_Resume Playing"
+msgstr "_ ரெசூம் விளையாடுவது"
+
+#: ../lib/blanket/window.rb:313
+msgid "Open audio"
+msgstr "ஒளியை திற"
+
+#: ../lib/blanket/window.rb:397
+msgid "File not found"
+msgstr ""
+
+#: ../lib/blanket/window.rb:452
+msgid "Add…"
+msgstr "சேர்க்கவும்…"
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/com.rafaelmardojai.Blanket.desktop.in:10
+#~ msgid "Concentrate;Focus;Noise;Productivity;Sleep;"
+#~ msgstr "ஆழ்ந்த கவனம்;கவனம்;இரைச்சல்;உற்பத்தித்திறன்;தூக்கம்;"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:7
+#~ msgid "Listen to ambient sounds"
+#~ msgstr "அமைதி சூழ் ஒலிகளை கேள்"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:9
+#~ msgid ""
+#~ "Improve focus and increase your productivity by listening to different ambient"
+#~ " sounds"
+#~ msgstr ""
+#~ "வெவ்வேறு ஒலிகளைக் கேட்டு, உங்கள் கவனத்தை மேம்படுத்தி உற்பத்தித்திறனை அதிகரியுங"
+#~ "்கள்"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:10
+#~ msgid "Also can help you to fall asleep in a noisy environment."
+#~ msgstr "மேலும், ஒரு சத்தமான சூழலில் தூங்கவும் உதவும்."
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:11
+#~ msgid "Features:"
+#~ msgstr "பண்புகள்:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:13
+#~ msgid "Save presets"
+#~ msgstr "முன்னமைவுகளை சேமிக்கவும்"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:14
+#~ msgid "Add custom sounds"
+#~ msgstr "தனிப்பயன் ஒலிகளைச் சேர்க்கவும்"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:15
+#~ msgid "Auto start in background"
+#~ msgstr "பின்னணியில் ஆட்டோ தொடக்க"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:16
+#~ msgid "MPRIS integration"
+#~ msgstr "MPRIS ஒருங்கிணைப்பு"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:18
+#~ msgid "Included Sounds in the App:"
+#~ msgstr "பயன்பாட்டில் ஒலிகள் சேர்க்கப்பட்டுள்ளன:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:57
+#~ msgid "The default screen in light theme"
+#~ msgstr "ஒளி கருப்பொருளில் இயல்புநிலை திரை"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:62
+#~ msgid "The default screen in dark theme"
+#~ msgstr "இருண்ட கருப்பொருளில் இயல்புநிலை திரை"
+
+#. Translators: Keep single quote please!
+#: data/com.rafaelmardojai.Blanket.gschema.xml:45
+#~ msgctxt "visible-name"
+#~ msgid "'Default'"
+#~ msgstr "'இயல்புநிலை'"
+
+#. Translators: Replace me with your names, You can make a mailto link: translator-name <user@domain.org>
+#: data/resources/about.blp:15
+#~ msgctxt "Add your names here, do not remove previous names!"
+#~ msgid "translator-credits"
+#~ msgstr "தமிழ்நேரம் <TamilNeran247@gmail.com>"
+
+#: data/resources/window.blp:24
+#~ msgid "Presets Menu"
+#~ msgstr "முன்னமைவு பட்டியல்"
+
+#: blanket/define.py:38
+#~ msgid "Noise"
+#~ msgstr "இரைச்சல்"
+
+#: blanket/preferences.py:79
+#~ msgid "Autostart Blanket in background."
+#~ msgstr "பின்னணியில் ஆட்டோச்டார்ட் வெற்று."
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "Request error"
+#~ msgstr "கோரிக்கை பிழை"
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "The autostart request failed."
+#~ msgstr "தானியக்க கோரிக்கை தோல்வியுற்றது."
+
+#: blanket/preferences.py:108 blanket/preferences.py:125
+#: blanket/preferences.py:129
+#~ msgid "Ok"
+#~ msgstr "சரி"
+
+#: blanket/preferences.py:124
+#~ msgid "Authorization failed"
+#~ msgstr "அங்கீகரிப்பு தோல்வியுற்றது"
+
+#: blanket/preferences.py:124
+#~ msgid ""
+#~ "Make sure Blanket has permission to run in the background in Settings → Applic"
+#~ "ations → Blanket and try again."
+#~ msgstr ""
+#~ "அமைப்புகள் → பயன்பாடுகள் → போர்வையில் பின்னணியில் இயக்க போர்வைக்கு இசைவு இருப்"
+#~ "பதை உறுதிசெய்து மீண்டும் முயற்சிக்கவும்."
+
+#: blanket/window.py:133
+#~ msgid "Sound Automatically Removed"
+#~ msgstr "ஒலி தானாக அகற்றப்படும்"
+
+#: blanket/window.py:135
+#, python-brace-format
+#~ msgid "The {name} sound is no longer accessible, so it has been removed"
+#~ msgstr "{name} ஒலி இனி அணுக முடியாது, எனவே அது அகற்றப்பட்டது"
+
+#: blanket/window.py:138
+#~ msgid "Accept"
+#~ msgstr "ஏற்றுக்கொள்"
+
+#~ msgid "Rafael Mardojai CM"
+#~ msgstr "ரபேல் மார்டோசாய் சிஎம்"
+#~ msgid "Keyboard Shortcus"
+#~ msgstr "விசைப்பலகை குறுக்குவழிகள்"
+#~ msgid "Add Preset…"
+#~ msgstr "முன்தொகுப்பை சேர்"
+#~ msgid "Reset Volume Levels"
+#~ msgstr "ஒலி அளவை மீட்டமை"
+#~ msgid "Add custom sound"
+#~ msgstr "தனிப்பயனுடைய ஒளியை சேறுக"
+#~ msgid "Custom"
+#~ msgstr "தனிப்பயன்"
+#~ msgid "Add Preset"
+#~ msgstr "முன்தொகுப்பை சேர்"
+#~ msgid "Create"
+#~ msgstr "உருவாக்கு"
+#~ msgid "Pink noise"
+#~ msgstr "இளஞ்சிவப்பு இரைச்சல்"
+#~ msgid "Add Preset..."
+#~ msgstr "முன்தொகுப்பை சேர்..."

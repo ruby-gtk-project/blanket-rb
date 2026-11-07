@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "adwaita"
+require_relative "i18n"
 require_relative "preset"
 
 module Blanket
@@ -15,6 +16,8 @@ module Blanket
   # Upstream reaches the chooser through the active window to rename or delete;
   # here both arrive as callbacks, so the row never has to know what opened it.
   class PresetRow
+    include GetText
+
     attr_reader :preset
 
     def initialize(preset, on_rename:, on_delete:)
@@ -95,7 +98,7 @@ module Blanket
     def rename_button
       @rename_button ||= Gtk::Button.new.tap do |button|
         button.icon_name = "document-edit-symbolic"
-        button.tooltip_text = "Rename Preset"
+        button.tooltip_text = _("Rename Preset")
         button.add_css_class("flat")
         button.add_css_class("circular")
       end
@@ -104,7 +107,7 @@ module Blanket
     def delete_button
       @delete_button ||= Gtk::Button.new.tap do |button|
         button.icon_name = "edit-delete-symbolic"
-        button.tooltip_text = "Delete Preset"
+        button.tooltip_text = _("Delete Preset")
         button.add_css_class("flat")
         button.add_css_class("circular")
       end

@@ -1,0 +1,423 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the blanket package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# Rafael Mardojai CM <mardojai.cardenas@gmail.com>, 2023
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: blanket\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-07 13:35+0000\n"
+"PO-Revision-Date: 2026-05-09 14:11+0000\n"
+"Last-Translator: Yoav Morag <yoavm08@gmail.com>\n"
+"Language-Team: Hebrew <https://hosted.weblate.org/projects/blanket/blanket/he/"
+">\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && n "
+"% 10 == 0) ? 2 : 3));\n"
+"X-Generator: Weblate 2026.5-dev\n"
+
+#: ../lib/blanket/about_dialog.rb:19
+msgid "Source Code"
+msgstr "קוד מקור"
+
+#: ../lib/blanket/about_dialog.rb:20
+msgid "Sounds by"
+msgstr "צלילים מאת"
+
+#: ../lib/blanket/about_dialog.rb:21
+msgid "Sounds edited by"
+msgstr "צלילים נערכו על ידי"
+
+#: ../lib/blanket/about_dialog.rb:29 ../lib/blanket/mpris.rb:221
+#: ../lib/blanket/mpris.rb:246 ../lib/blanket/window.rb:96
+msgid "Blanket"
+msgstr "סמיכה"
+
+#: ../lib/blanket/about_dialog.rb:31 ../lib/blanket/mpris.rb:245
+msgid "Listen to different sounds"
+msgstr "האזנה לצלילים שונים"
+
+#: ../lib/blanket/about_dialog.rb:32
+msgid "Copyright 2020-2022 Rafael Mardojai CM"
+msgstr "כל הזכויות שמורות 2020‏-2022 ל־Rafael Mardojai CM"
+
+#: ../lib/blanket/about_dialog.rb:42
+#, fuzzy
+msgid "translator-credits"
+msgstr ""
+"ירון שהרבני <sh.yaron@gmail.com>\n"
+"יוסף אור בוצ׳קו <yoseforb@gmail.com>"
+
+#: ../lib/blanket/define.rb:31
+msgid "Nature"
+msgstr "טבע"
+
+#: ../lib/blanket/define.rb:33 ../lib/blanket/define.rb:72
+#: ../lib/blanket/define.rb:91
+msgid "Rain"
+msgstr "גשם"
+
+#: ../lib/blanket/define.rb:34 ../lib/blanket/define.rb:73
+#: ../lib/blanket/define.rb:92
+msgid "Storm"
+msgstr "סערה"
+
+#: ../lib/blanket/define.rb:35 ../lib/blanket/define.rb:84
+#: ../lib/blanket/define.rb:96
+msgid "Wind"
+msgstr "רוח"
+
+#: ../lib/blanket/define.rb:36 ../lib/blanket/define.rb:81
+#: ../lib/blanket/define.rb:93
+msgid "Waves"
+msgstr "גלים"
+
+#: ../lib/blanket/define.rb:37 ../lib/blanket/define.rb:77
+msgid "Stream"
+msgstr "זרם"
+
+#: ../lib/blanket/define.rb:38 ../lib/blanket/define.rb:79
+#: ../lib/blanket/define.rb:90
+msgid "Birds"
+msgstr "ציפורים"
+
+#: ../lib/blanket/define.rb:39 ../lib/blanket/define.rb:80
+msgid "Summer Night"
+msgstr "לילה קיצי"
+
+#: ../lib/blanket/define.rb:43
+msgid "Travel"
+msgstr "טיול"
+
+#: ../lib/blanket/define.rb:45 ../lib/blanket/define.rb:85
+msgid "Train"
+msgstr "רכבת"
+
+#: ../lib/blanket/define.rb:46 ../lib/blanket/define.rb:75
+#: ../lib/blanket/define.rb:94
+msgid "Boat"
+msgstr "סירה"
+
+#: ../lib/blanket/define.rb:47 ../lib/blanket/define.rb:76
+#: ../lib/blanket/define.rb:95
+msgid "City"
+msgstr "עיר"
+
+#: ../lib/blanket/define.rb:51
+msgid "Interiors"
+msgstr "בפנים"
+
+#: ../lib/blanket/define.rb:53 ../lib/blanket/define.rb:82
+msgid "Coffee Shop"
+msgstr "בית קפה"
+
+#: ../lib/blanket/define.rb:54 ../lib/blanket/define.rb:74
+msgid "Fireplace"
+msgstr "אח"
+
+#: ../lib/blanket/define.rb:60 ../lib/blanket/define.rb:83
+msgid "Pink Noise"
+msgstr "רעש ורוד"
+
+#: ../lib/blanket/define.rb:61 ../lib/blanket/define.rb:78
+msgid "White Noise"
+msgstr "רעש לבן"
+
+#: ../lib/blanket/define.rb:67
+msgid "Sounds icons"
+msgstr "סמלי צלילים"
+
+#: ../lib/blanket/define.rb:68
+msgid "App icon"
+msgstr "סמל היישום"
+
+#: ../lib/blanket/preferences_dialog.rb:65
+msgid "Appearance"
+msgstr "מראה"
+
+#: ../lib/blanket/preferences_dialog.rb:70
+msgid "Behavior"
+msgstr "התנהגות"
+
+#: ../lib/blanket/preferences_dialog.rb:74
+msgid "Dark Mode"
+msgstr "מצב כהה"
+
+#: ../lib/blanket/preferences_dialog.rb:79
+msgid "Autostart in Background"
+msgstr "הפעלה אוטומטית ברקע"
+
+#: ../lib/blanket/preferences_dialog.rb:83
+msgid "Always Start on Pause"
+msgstr "תמיד להתחיל בהשהיה"
+
+#: ../lib/blanket/preferences_dialog.rb:95
+msgid "Inhibit suspension while playing"
+msgstr ""
+
+#: ../lib/blanket/preset_dialog.rb:81 ../lib/blanket/sound_rename_dialog.rb:83
+msgid "Cancel"
+msgstr "ביטול"
+
+#: ../lib/blanket/preset_dialog.rb:84 ../lib/blanket/sound_rename_dialog.rb:86
+msgid "Save"
+msgstr "שמירה"
+
+#: ../lib/blanket/preset_dialog.rb:95
+msgid "Preset Name"
+msgstr "שם הערכה"
+
+#: ../lib/blanket/preset_dialog.rb:109
+msgid "Edit Preset"
+msgstr "עריכת ערכה"
+
+#: ../lib/blanket/preset_dialog.rb:111
+msgid "New Preset"
+msgstr "ערכה חדשה"
+
+#: ../lib/blanket/preset_row.rb:101
+msgid "Rename Preset"
+msgstr "שינוי שם הערכה"
+
+#: ../lib/blanket/preset_row.rb:110
+msgid "Delete Preset"
+msgstr "מחיקת הערכה"
+
+#: ../lib/blanket/shortcuts_dialog.rb:18
+msgid "General"
+msgstr "כללי"
+
+#: ../lib/blanket/shortcuts_dialog.rb:19
+msgid "Play/Pause Sounds"
+msgstr "ניגון/השהיית צלילים"
+
+#: ../lib/blanket/shortcuts_dialog.rb:20
+msgid "Add Custom Sound"
+msgstr "הוספת צליל מותאם"
+
+#: ../lib/blanket/shortcuts_dialog.rb:21
+msgid "Close Window"
+msgstr "סגירת חלון"
+
+#: ../lib/blanket/shortcuts_dialog.rb:22 ../lib/blanket/window.rb:138
+msgid "Preferences"
+msgstr "העדפות"
+
+#: ../lib/blanket/shortcuts_dialog.rb:23 ../lib/blanket/shortcuts_dialog.rb:38
+#: ../lib/blanket/window.rb:139
+msgid "Keyboard Shortcuts"
+msgstr "מקשי קיצור"
+
+#: ../lib/blanket/shortcuts_dialog.rb:24 ../lib/blanket/window.rb:145
+msgid "Quit"
+msgstr "יציאה"
+
+#: ../lib/blanket/sound_context_menu.rb:60
+msgid "Rename"
+msgstr ""
+
+#: ../lib/blanket/sound_context_menu.rb:65
+msgid "Remove"
+msgstr "הסרה"
+
+#: ../lib/blanket/sound_rename_dialog.rb:65
+#: ../lib/blanket/sound_rename_dialog.rb:81
+msgid "Rename Sound"
+msgstr ""
+
+#: ../lib/blanket/sound_rename_dialog.rb:97
+msgid "Sound Name"
+msgstr ""
+
+#: ../lib/blanket/window.rb:116
+msgid "Main Menu"
+msgstr "תפריט ראשי"
+
+#: ../lib/blanket/window.rb:132
+msgid "Keep Playing when Closed"
+msgstr "להמשיך לנגן עם סגירה"
+
+#: ../lib/blanket/window.rb:140
+msgid "About Blanket"
+msgstr "על סמיכה"
+
+#: ../lib/blanket/window.rb:182
+msgid "Volume Menu"
+msgstr "תפריט עצמת שמע"
+
+#: ../lib/blanket/window.rb:195
+msgid "Sounds Menu"
+msgstr "תפריט צלילים"
+
+#: ../lib/blanket/window.rb:209
+msgid "Hide Inactive Sounds"
+msgstr "הסתרת צלילים לא פעילים"
+
+#: ../lib/blanket/window.rb:210
+msgid "Save as New Preset…"
+msgstr "שמירה כערכה חדשה…"
+
+#: ../lib/blanket/window.rb:215
+msgid "Add Sound…"
+msgstr "הוספת צליל…"
+
+#: ../lib/blanket/window.rb:235
+msgid "Reset Sounds"
+msgstr "איפוס צלילים"
+
+#: ../lib/blanket/window.rb:285
+msgid "Paused to save power"
+msgstr "מושהה כדי לחסוך בחשמל"
+
+#: ../lib/blanket/window.rb:287
+msgid "_Resume Playing"
+msgstr "_להמשיך לנגן"
+
+#: ../lib/blanket/window.rb:313
+msgid "Open audio"
+msgstr "פתיחת שמע"
+
+#: ../lib/blanket/window.rb:397
+msgid "File not found"
+msgstr ""
+
+#: ../lib/blanket/window.rb:452
+msgid "Add…"
+msgstr "הוספה…"
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/com.rafaelmardojai.Blanket.desktop.in:10
+#~ msgid "Concentrate;Focus;Noise;Productivity;Sleep;"
+#~ msgstr "ריכוז; מיקוד; רעש; פרודוקטיביות; יעילות; שינה;"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:7
+#~ msgid "Listen to ambient sounds"
+#~ msgstr "האזנה לצלילי אווירה שונים"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:9
+#~ msgid ""
+#~ "Improve focus and increase your productivity by listening to different ambient"
+#~ " sounds"
+#~ msgstr "שיפור המיקוד והגברת היעילות באמצעות האזנה למגוון צלילי אווירה שונים"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:10
+#~ msgid "Also can help you to fall asleep in a noisy environment."
+#~ msgstr "יכול גם לעזור לך להירדם בסביבה רועשת."
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:11
+#~ msgid "Features:"
+#~ msgstr "יכולות:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:13
+#~ msgid "Save presets"
+#~ msgstr "שמירת ערכות"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:14
+#~ msgid "Add custom sounds"
+#~ msgstr "הוספת צלילים משלך"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:15
+#~ msgid "Auto start in background"
+#~ msgstr "הפעלה אוטומטית ברקע"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:16
+#~ msgid "MPRIS integration"
+#~ msgstr "אינטגרציה מול MPRIS"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:18
+#~ msgid "Included Sounds in the App:"
+#~ msgstr "צלילים כלולים ביישום:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:57
+#~ msgid "The default screen in light theme"
+#~ msgstr "ברירת המחדל היא ערכת נושא בהירה"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:62
+#~ msgid "The default screen in dark theme"
+#~ msgstr "ברירת המחדל היא ערכת נושא כהה"
+
+#. Translators: Keep single quote please!
+#: data/com.rafaelmardojai.Blanket.gschema.xml:45
+#~ msgctxt "visible-name"
+#~ msgid "'Default'"
+#~ msgstr "'ברירת מחדל'"
+
+#. Translators: Replace me with your names, You can make a mailto link: translator-name <user@domain.org>
+#: data/resources/about.blp:15
+#~ msgctxt "Add your names here, do not remove previous names!"
+#~ msgid "translator-credits"
+#~ msgstr ""
+#~ "ירון שהרבני <sh.yaron@gmail.com>\n"
+#~ "יוסף אור בוצ׳קו <yoseforb@gmail.com>"
+
+#: data/resources/window.blp:24
+#~ msgid "Presets Menu"
+#~ msgstr "הצגת תפריט"
+
+#: blanket/define.py:38
+#~ msgid "Noise"
+#~ msgstr "רעש"
+
+#: blanket/preferences.py:79
+#~ msgid "Autostart Blanket in background."
+#~ msgstr "הפעלת סמיכה ברקע אוטומטית."
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "Request error"
+#~ msgstr "שגיאת בקשה"
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "The autostart request failed."
+#~ msgstr "בקשת ההפעלה האוטומטית נכשלה."
+
+#: blanket/preferences.py:108 blanket/preferences.py:125
+#: blanket/preferences.py:129
+#~ msgid "Ok"
+#~ msgstr "אישור"
+
+#: blanket/preferences.py:124
+#~ msgid "Authorization failed"
+#~ msgstr "האימות נכשל"
+
+#: blanket/preferences.py:124
+#~ msgid ""
+#~ "Make sure Blanket has permission to run in the background in Settings → Applic"
+#~ "ations → Blanket and try again."
+#~ msgstr "נא לוודא שלסמיכה יש הרשאות לפעול ברקע דרך הגדרות ← יישומים ← סמיכה ולנסות שוב."
+
+#: blanket/window.py:133
+#~ msgid "Sound Automatically Removed"
+#~ msgstr "צליל הוסר אוטומטית"
+
+#: blanket/window.py:135
+#, python-brace-format
+#~ msgid "The {name} sound is no longer accessible, so it has been removed"
+#~ msgstr "הצליל {name} לא נגיש עוד ולכן הוסר"
+
+#: blanket/window.py:138
+#~ msgid "Accept"
+#~ msgstr "לקבל"
+
+#~ msgid "Rafael Mardojai CM"
+#~ msgstr "Rafael Mardojai CM"
+#~ msgid "Keyboard Shortcus"
+#~ msgstr "מקשי קיצור"
+#~ msgid "Add Preset…"
+#~ msgstr "הוספת ערכה…"
+#~ msgid "Reset Volume Levels"
+#~ msgstr "איפוס עצמת השמע"
+#~ msgid "Add custom sound"
+#~ msgstr "הוספת צליל משלך"
+#~ msgid "Custom"
+#~ msgstr "התאמה אישית"
+#~ msgid "Add Preset"
+#~ msgstr "הוספת ערכה"
+#~ msgid "Create"
+#~ msgstr "יצירה"

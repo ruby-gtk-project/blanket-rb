@@ -1,0 +1,413 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the blanket package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# Rafael Mardojai CM <mardojai.cardenas@gmail.com>, 2023
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: blanket\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-07 13:35+0000\n"
+"PO-Revision-Date: 2023-02-16 03:00+0000\n"
+"Last-Translator: Rafael Mardojai CM <mardojai.cardenas@gmail.com>, 2023\n"
+"Language-Team: Romanian (https://app.transifex.com/rafaelmardojai/teams/135055"
+"/ro/)\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2"
+":1));\n"
+
+#: ../lib/blanket/about_dialog.rb:19
+msgid "Source Code"
+msgstr ""
+
+#: ../lib/blanket/about_dialog.rb:20
+msgid "Sounds by"
+msgstr "Sunete de"
+
+#: ../lib/blanket/about_dialog.rb:21
+msgid "Sounds edited by"
+msgstr "Sunetele editate de"
+
+#: ../lib/blanket/about_dialog.rb:29 ../lib/blanket/mpris.rb:221
+#: ../lib/blanket/mpris.rb:246 ../lib/blanket/window.rb:96
+msgid "Blanket"
+msgstr "Pătură"
+
+#: ../lib/blanket/about_dialog.rb:31 ../lib/blanket/mpris.rb:245
+msgid "Listen to different sounds"
+msgstr "Ascultați sunete diferite"
+
+#: ../lib/blanket/about_dialog.rb:32
+#, fuzzy
+msgid "Copyright 2020-2022 Rafael Mardojai CM"
+msgstr "Copyright 2020-2021 Rafael Mardojai CM"
+
+#: ../lib/blanket/about_dialog.rb:42
+#, fuzzy
+msgid "translator-credits"
+msgstr "EnderIce2"
+
+#: ../lib/blanket/define.rb:31
+msgid "Nature"
+msgstr "Natură"
+
+#: ../lib/blanket/define.rb:33 ../lib/blanket/define.rb:72
+#: ../lib/blanket/define.rb:91
+msgid "Rain"
+msgstr "Ploaie"
+
+#: ../lib/blanket/define.rb:34 ../lib/blanket/define.rb:73
+#: ../lib/blanket/define.rb:92
+msgid "Storm"
+msgstr "Furtună"
+
+#: ../lib/blanket/define.rb:35 ../lib/blanket/define.rb:84
+#: ../lib/blanket/define.rb:96
+msgid "Wind"
+msgstr "Vânt"
+
+#: ../lib/blanket/define.rb:36 ../lib/blanket/define.rb:81
+#: ../lib/blanket/define.rb:93
+msgid "Waves"
+msgstr "Valuri"
+
+#: ../lib/blanket/define.rb:37 ../lib/blanket/define.rb:77
+msgid "Stream"
+msgstr "Pârâu"
+
+#: ../lib/blanket/define.rb:38 ../lib/blanket/define.rb:79
+#: ../lib/blanket/define.rb:90
+msgid "Birds"
+msgstr "Păsări"
+
+#: ../lib/blanket/define.rb:39 ../lib/blanket/define.rb:80
+msgid "Summer Night"
+msgstr "Noapte de vară"
+
+#: ../lib/blanket/define.rb:43
+msgid "Travel"
+msgstr "Călătorie"
+
+#: ../lib/blanket/define.rb:45 ../lib/blanket/define.rb:85
+msgid "Train"
+msgstr "Tren"
+
+#: ../lib/blanket/define.rb:46 ../lib/blanket/define.rb:75
+#: ../lib/blanket/define.rb:94
+msgid "Boat"
+msgstr "Barcă"
+
+#: ../lib/blanket/define.rb:47 ../lib/blanket/define.rb:76
+#: ../lib/blanket/define.rb:95
+msgid "City"
+msgstr "Oraș"
+
+#: ../lib/blanket/define.rb:51
+msgid "Interiors"
+msgstr "Interioare"
+
+#: ../lib/blanket/define.rb:53 ../lib/blanket/define.rb:82
+msgid "Coffee Shop"
+msgstr "Cafenea"
+
+#: ../lib/blanket/define.rb:54 ../lib/blanket/define.rb:74
+msgid "Fireplace"
+msgstr "Șemineu"
+
+#: ../lib/blanket/define.rb:60 ../lib/blanket/define.rb:83
+msgid "Pink Noise"
+msgstr "Zgomot roz"
+
+#: ../lib/blanket/define.rb:61 ../lib/blanket/define.rb:78
+msgid "White Noise"
+msgstr "Zgomot alb"
+
+#: ../lib/blanket/define.rb:67
+msgid "Sounds icons"
+msgstr "Pictograma de Sunete"
+
+#: ../lib/blanket/define.rb:68
+msgid "App icon"
+msgstr "Pictograma Aplicației"
+
+#: ../lib/blanket/preferences_dialog.rb:65
+msgid "Appearance"
+msgstr "Aspect"
+
+#: ../lib/blanket/preferences_dialog.rb:70
+msgid "Behavior"
+msgstr "Comportament"
+
+#: ../lib/blanket/preferences_dialog.rb:74
+msgid "Dark Mode"
+msgstr "Mod Întunecat"
+
+#: ../lib/blanket/preferences_dialog.rb:79
+#, fuzzy
+msgid "Autostart in Background"
+msgstr "Pornește automat în fundal"
+
+#: ../lib/blanket/preferences_dialog.rb:83
+msgid "Always Start on Pause"
+msgstr ""
+
+#: ../lib/blanket/preferences_dialog.rb:95
+msgid "Inhibit suspension while playing"
+msgstr ""
+
+#: ../lib/blanket/preset_dialog.rb:81 ../lib/blanket/sound_rename_dialog.rb:83
+msgid "Cancel"
+msgstr "Anulează"
+
+#: ../lib/blanket/preset_dialog.rb:84 ../lib/blanket/sound_rename_dialog.rb:86
+msgid "Save"
+msgstr "Salvează"
+
+#: ../lib/blanket/preset_dialog.rb:95
+msgid "Preset Name"
+msgstr "Nume Presetare"
+
+#: ../lib/blanket/preset_dialog.rb:109
+msgid "Edit Preset"
+msgstr "Editează Presetarea"
+
+#: ../lib/blanket/preset_dialog.rb:111
+#, fuzzy
+msgid "New Preset"
+msgstr "Presetări"
+
+#: ../lib/blanket/preset_row.rb:101
+msgid "Rename Preset"
+msgstr "Redenumește Presetarea"
+
+#: ../lib/blanket/preset_row.rb:110
+msgid "Delete Preset"
+msgstr "Şterge Presetarea"
+
+#: ../lib/blanket/shortcuts_dialog.rb:18
+msgid "General"
+msgstr "General"
+
+#: ../lib/blanket/shortcuts_dialog.rb:19
+#, fuzzy
+msgid "Play/Pause Sounds"
+msgstr "Redați/Întrerupeți sunetele"
+
+#: ../lib/blanket/shortcuts_dialog.rb:20
+#, fuzzy
+msgid "Add Custom Sound"
+msgstr "Adaugă Sunet Personalizat..."
+
+#: ../lib/blanket/shortcuts_dialog.rb:21
+#, fuzzy
+msgid "Close Window"
+msgstr "Închide fereastra"
+
+#: ../lib/blanket/shortcuts_dialog.rb:22 ../lib/blanket/window.rb:138
+msgid "Preferences"
+msgstr "Preferinţe"
+
+#: ../lib/blanket/shortcuts_dialog.rb:23 ../lib/blanket/shortcuts_dialog.rb:38
+#: ../lib/blanket/window.rb:139
+msgid "Keyboard Shortcuts"
+msgstr "Scurtături de tastatură"
+
+#: ../lib/blanket/shortcuts_dialog.rb:24 ../lib/blanket/window.rb:145
+msgid "Quit"
+msgstr "Părăseşte"
+
+#: ../lib/blanket/sound_context_menu.rb:60
+msgid "Rename"
+msgstr ""
+
+#: ../lib/blanket/sound_context_menu.rb:65
+msgid "Remove"
+msgstr ""
+
+#: ../lib/blanket/sound_rename_dialog.rb:65
+#: ../lib/blanket/sound_rename_dialog.rb:81
+msgid "Rename Sound"
+msgstr ""
+
+#: ../lib/blanket/sound_rename_dialog.rb:97
+msgid "Sound Name"
+msgstr ""
+
+#: ../lib/blanket/window.rb:116
+msgid "Main Menu"
+msgstr ""
+
+#: ../lib/blanket/window.rb:132
+#, fuzzy
+msgid "Keep Playing when Closed"
+msgstr "Continuă să redați când este închis"
+
+#: ../lib/blanket/window.rb:140
+msgid "About Blanket"
+msgstr "Despre Pătură"
+
+#: ../lib/blanket/window.rb:182
+msgid "Volume Menu"
+msgstr ""
+
+#: ../lib/blanket/window.rb:195
+#, fuzzy
+msgid "Sounds Menu"
+msgstr "Sunete de"
+
+#: ../lib/blanket/window.rb:209
+#, fuzzy
+msgid "Hide Inactive Sounds"
+msgstr "Sunete Incluse:"
+
+#: ../lib/blanket/window.rb:210
+#, fuzzy
+msgid "Save as New Preset…"
+msgstr "Salvează presetări"
+
+#: ../lib/blanket/window.rb:215
+#, fuzzy
+msgid "Add Sound…"
+msgstr "Adaugă Sunet Personalizat..."
+
+#: ../lib/blanket/window.rb:235
+msgid "Reset Sounds"
+msgstr ""
+
+#: ../lib/blanket/window.rb:285
+msgid "Paused to save power"
+msgstr ""
+
+#: ../lib/blanket/window.rb:287
+msgid "_Resume Playing"
+msgstr ""
+
+#: ../lib/blanket/window.rb:313
+msgid "Open audio"
+msgstr "Deschideți audio"
+
+#: ../lib/blanket/window.rb:397
+msgid "File not found"
+msgstr ""
+
+#: ../lib/blanket/window.rb:452
+msgid "Add…"
+msgstr ""
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/com.rafaelmardojai.Blanket.desktop.in:10
+#~ msgid "Concentrate;Focus;Noise;Productivity;Sleep;"
+#~ msgstr "Concentrate;Focus;Noise;Productivity;Sleep;"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:7
+#, fuzzy
+#~ msgid "Listen to ambient sounds"
+#~ msgstr "Ascultați sunete diferite"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:9
+#, fuzzy
+#~ msgid ""
+#~ "Improve focus and increase your productivity by listening to different ambient"
+#~ " sounds"
+#~ msgstr ""
+#~ "Îmbunătățiți concentrarea și creșteți-vă productivitatea ascultând diferite su"
+#~ "nete"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:10
+#~ msgid "Also can help you to fall asleep in a noisy environment."
+#~ msgstr "De asemenea, vă poate ajuta să adormiți într-un mediu zgomotos."
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:11
+#~ msgid "Features:"
+#~ msgstr "Caracteristici:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:13
+#~ msgid "Save presets"
+#~ msgstr "Salvează presetări"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:14
+#~ msgid "Add custom sounds"
+#~ msgstr "Adaugă sunete personalizate"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:15
+#~ msgid "Auto start in background"
+#~ msgstr "Pornește automat în fundal"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:16
+#~ msgid "MPRIS integration"
+#~ msgstr "Integrarea MPRIS"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:18
+#, fuzzy
+#~ msgid "Included Sounds in the App:"
+#~ msgstr "Sunete Incluse:"
+
+#. Translators: Keep single quote please!
+#: data/com.rafaelmardojai.Blanket.gschema.xml:45
+#~ msgctxt "visible-name"
+#~ msgid "'Default'"
+#~ msgstr "'Implicit'"
+
+#. Translators: Replace me with your names, You can make a mailto link: translator-name <user@domain.org>
+#: data/resources/about.blp:15
+#~ msgctxt "Add your names here, do not remove previous names!"
+#~ msgid "translator-credits"
+#~ msgstr "EnderIce2"
+
+#: data/resources/window.blp:24
+#, fuzzy
+#~ msgid "Presets Menu"
+#~ msgstr "Presetări"
+
+#: blanket/define.py:38
+#~ msgid "Noise"
+#~ msgstr "Zgomot"
+
+#: blanket/preferences.py:79
+#~ msgid "Autostart Blanket in background."
+#~ msgstr "Pornește Pătură automat în fundal."
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "Request error"
+#~ msgstr "Eroare de solicitare"
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "The autostart request failed."
+#~ msgstr "Solicitarea de pornire automată a eșuat."
+
+#: blanket/preferences.py:124
+#~ msgid "Authorization failed"
+#~ msgstr "Autorizație eșuată"
+
+#: blanket/preferences.py:124
+#, fuzzy
+#~ msgid ""
+#~ "Make sure Blanket has permission to run in the background in Settings → Applic"
+#~ "ations → Blanket and try again."
+#~ msgstr ""
+#~ "Asigurați-vă că Pătură are permisiunea de a rula\n"
+#~ "în fundal în Configurări → Aplicații → Pătură \n"
+#~ "și încerați din nou."
+
+#~ msgid "Rafael Mardojai CM"
+#~ msgstr "Rafael Mardojai CM"
+#~ msgid "Keyboard Shortcus"
+#~ msgstr "Scurtături de tastatură"
+#~ msgid "Add Preset…"
+#~ msgstr "Adaugă Presetare"
+#~ msgid "Reset Volume Levels"
+#~ msgstr "Resetează Nivelul Volumului"
+#~ msgid "Add custom sound"
+#~ msgstr "Adaugă un sunet personalizat"
+#~ msgid "Custom"
+#~ msgstr "Personalizat"
+#~ msgid "Add Preset"
+#~ msgstr "Adaugă Presetare"
+#~ msgid "Create"
+#~ msgstr "Creează"

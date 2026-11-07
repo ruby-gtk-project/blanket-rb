@@ -113,6 +113,11 @@ Gem::Specification.new do |spec|
   # app's mandated binding gem regardless, proven to load in nix develop.
   spec.add_dependency("ashpd", "~> 0.1")
 
+  # Translation catalogue. lib/blanket/i18n.rb binds the "blanket" text
+  # domain against the compiled .mo catalogues under locale/, carried over
+  # from upstream's po/*.po.
+  spec.add_dependency("gettext", "~> 3.4")
+
   # NOTE: It is preferable to list development dependencies in the gemspec due to increased
   #       visibility and discoverability.
   #       However, development dependencies in gemspec will install on

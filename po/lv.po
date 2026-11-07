@@ -1,0 +1,410 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the blanket package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: blanket\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-07 13:35+0000\n"
+"PO-Revision-Date: 2026-07-17 12:01+0000\n"
+"Last-Translator: Hosted Weblate user 152808 <anonymous0474@users.noreply.hoste"
+"d.weblate.org>\n"
+"Language-Team: Latvian <https://hosted.weblate.org/projects/blanket/blanket/lv"
+"/>\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 0 || n % 100 >= 11 && n % 100 <= 1"
+"9) ? 0 : ((n % 10 == 1 && n % 100 != 11) ? 1 : 2);\n"
+"X-Generator: Weblate 2026.8.dev0\n"
+
+#: ../lib/blanket/about_dialog.rb:19
+msgid "Source Code"
+msgstr "Atvērtais pirmkods"
+
+#: ../lib/blanket/about_dialog.rb:20
+msgid "Sounds by"
+msgstr "Skaņu autors:"
+
+#: ../lib/blanket/about_dialog.rb:21
+msgid "Sounds edited by"
+msgstr "Skaņas rediģēja:"
+
+#: ../lib/blanket/about_dialog.rb:29 ../lib/blanket/mpris.rb:221
+#: ../lib/blanket/mpris.rb:246 ../lib/blanket/window.rb:96
+msgid "Blanket"
+msgstr "Blanket"
+
+#: ../lib/blanket/about_dialog.rb:31 ../lib/blanket/mpris.rb:245
+msgid "Listen to different sounds"
+msgstr "Klausieties dažādas skaņas"
+
+#: ../lib/blanket/about_dialog.rb:32
+msgid "Copyright 2020-2022 Rafael Mardojai CM"
+msgstr "Autortiesības 2020-2022 Rafaels Mardojai CM"
+
+#: ../lib/blanket/about_dialog.rb:42
+#, fuzzy
+msgid "translator-credits"
+msgstr "Anonīms"
+
+#: ../lib/blanket/define.rb:31
+msgid "Nature"
+msgstr "Daba"
+
+#: ../lib/blanket/define.rb:33 ../lib/blanket/define.rb:72
+#: ../lib/blanket/define.rb:91
+msgid "Rain"
+msgstr "Lietus"
+
+#: ../lib/blanket/define.rb:34 ../lib/blanket/define.rb:73
+#: ../lib/blanket/define.rb:92
+msgid "Storm"
+msgstr "Pērkons"
+
+#: ../lib/blanket/define.rb:35 ../lib/blanket/define.rb:84
+#: ../lib/blanket/define.rb:96
+msgid "Wind"
+msgstr "Vējš"
+
+#: ../lib/blanket/define.rb:36 ../lib/blanket/define.rb:81
+#: ../lib/blanket/define.rb:93
+msgid "Waves"
+msgstr "Viļņi"
+
+#: ../lib/blanket/define.rb:37 ../lib/blanket/define.rb:77
+msgid "Stream"
+msgstr "Strauts"
+
+#: ../lib/blanket/define.rb:38 ../lib/blanket/define.rb:79
+#: ../lib/blanket/define.rb:90
+msgid "Birds"
+msgstr "Putni"
+
+#: ../lib/blanket/define.rb:39 ../lib/blanket/define.rb:80
+msgid "Summer Night"
+msgstr "Vasaras nakts"
+
+#: ../lib/blanket/define.rb:43
+msgid "Travel"
+msgstr "Ceļojums"
+
+#: ../lib/blanket/define.rb:45 ../lib/blanket/define.rb:85
+msgid "Train"
+msgstr "Vilciens"
+
+#: ../lib/blanket/define.rb:46 ../lib/blanket/define.rb:75
+#: ../lib/blanket/define.rb:94
+msgid "Boat"
+msgstr "Laiva"
+
+#: ../lib/blanket/define.rb:47 ../lib/blanket/define.rb:76
+#: ../lib/blanket/define.rb:95
+msgid "City"
+msgstr "Pilsēta"
+
+#: ../lib/blanket/define.rb:51
+msgid "Interiors"
+msgstr "Telpā"
+
+#: ../lib/blanket/define.rb:53 ../lib/blanket/define.rb:82
+msgid "Coffee Shop"
+msgstr "Kafejnīca"
+
+#: ../lib/blanket/define.rb:54 ../lib/blanket/define.rb:74
+msgid "Fireplace"
+msgstr "Kamīns"
+
+#: ../lib/blanket/define.rb:60 ../lib/blanket/define.rb:83
+msgid "Pink Noise"
+msgstr "Rozā troksnis"
+
+#: ../lib/blanket/define.rb:61 ../lib/blanket/define.rb:78
+msgid "White Noise"
+msgstr "Baltais troksnis"
+
+#: ../lib/blanket/define.rb:67
+msgid "Sounds icons"
+msgstr "Skaņas ikonas"
+
+#: ../lib/blanket/define.rb:68
+msgid "App icon"
+msgstr "Lietotnes ikona"
+
+#: ../lib/blanket/preferences_dialog.rb:65
+msgid "Appearance"
+msgstr "Izskats"
+
+#: ../lib/blanket/preferences_dialog.rb:70
+msgid "Behavior"
+msgstr "Uzvedība"
+
+#: ../lib/blanket/preferences_dialog.rb:74
+msgid "Dark Mode"
+msgstr "Tumšais režīms"
+
+#: ../lib/blanket/preferences_dialog.rb:79
+msgid "Autostart in Background"
+msgstr "Automātiska palaišana fonā"
+
+#: ../lib/blanket/preferences_dialog.rb:83
+#, fuzzy
+msgid "Always Start on Pause"
+msgstr "Vienmēr palaist pēc pauzes"
+
+#: ../lib/blanket/preferences_dialog.rb:95
+msgid "Inhibit suspension while playing"
+msgstr ""
+
+#: ../lib/blanket/preset_dialog.rb:81 ../lib/blanket/sound_rename_dialog.rb:83
+msgid "Cancel"
+msgstr "Atcelt"
+
+#: ../lib/blanket/preset_dialog.rb:84 ../lib/blanket/sound_rename_dialog.rb:86
+msgid "Save"
+msgstr "Saglabāt"
+
+#: ../lib/blanket/preset_dialog.rb:95
+msgid "Preset Name"
+msgstr "Iestatījumu profila nosaukums"
+
+#: ../lib/blanket/preset_dialog.rb:109
+msgid "Edit Preset"
+msgstr "Rediģēt iestatījumu profilu"
+
+#: ../lib/blanket/preset_dialog.rb:111
+#, fuzzy
+msgid "New Preset"
+msgstr "Jauns iestatījumu profils"
+
+#: ../lib/blanket/preset_row.rb:101
+msgid "Rename Preset"
+msgstr "Pārdēvēt iestatījumu profilu"
+
+#: ../lib/blanket/preset_row.rb:110
+msgid "Delete Preset"
+msgstr "Izdzēst iestatījumu profilu"
+
+#: ../lib/blanket/shortcuts_dialog.rb:18
+msgid "General"
+msgstr "Vispārīgi"
+
+#: ../lib/blanket/shortcuts_dialog.rb:19
+#, fuzzy
+msgid "Play/Pause Sounds"
+msgstr "Atskaņot/Pauzēt"
+
+#: ../lib/blanket/shortcuts_dialog.rb:20
+msgid "Add Custom Sound"
+msgstr "Pievienot savu skaņu"
+
+#: ../lib/blanket/shortcuts_dialog.rb:21
+msgid "Close Window"
+msgstr "Aizvērt logu"
+
+#: ../lib/blanket/shortcuts_dialog.rb:22 ../lib/blanket/window.rb:138
+msgid "Preferences"
+msgstr "Iestatījumi"
+
+#: ../lib/blanket/shortcuts_dialog.rb:23 ../lib/blanket/shortcuts_dialog.rb:38
+#: ../lib/blanket/window.rb:139
+msgid "Keyboard Shortcuts"
+msgstr "Taustiņu kombinācijas"
+
+#: ../lib/blanket/shortcuts_dialog.rb:24 ../lib/blanket/window.rb:145
+msgid "Quit"
+msgstr "Iziet"
+
+#: ../lib/blanket/sound_context_menu.rb:60
+msgid "Rename"
+msgstr "Pārdēvēt"
+
+#: ../lib/blanket/sound_context_menu.rb:65
+msgid "Remove"
+msgstr "Izdzēst"
+
+#: ../lib/blanket/sound_rename_dialog.rb:65
+#: ../lib/blanket/sound_rename_dialog.rb:81
+msgid "Rename Sound"
+msgstr "Pārdēvēt skaņu"
+
+#: ../lib/blanket/sound_rename_dialog.rb:97
+msgid "Sound Name"
+msgstr "Skaņas nosaukums"
+
+#: ../lib/blanket/window.rb:116
+msgid "Main Menu"
+msgstr "Galvenā izvēlne"
+
+#: ../lib/blanket/window.rb:132
+msgid "Keep Playing when Closed"
+msgstr "Turpināt atskaņošanu pēc aizvēršanas"
+
+#: ../lib/blanket/window.rb:140
+msgid "About Blanket"
+msgstr "Par lietotni"
+
+#: ../lib/blanket/window.rb:182
+#, fuzzy
+msgid "Volume Menu"
+msgstr "Regulēt skaļumu"
+
+#: ../lib/blanket/window.rb:195
+msgid "Sounds Menu"
+msgstr "Skaņas"
+
+#: ../lib/blanket/window.rb:209
+msgid "Hide Inactive Sounds"
+msgstr "Paslēpt neaktīvās skaņas"
+
+#: ../lib/blanket/window.rb:210
+msgid "Save as New Preset…"
+msgstr "Saglabāt kā jaunu iestatījumu profilu…"
+
+#: ../lib/blanket/window.rb:215
+msgid "Add Sound…"
+msgstr "Pievienot skaņu…"
+
+#: ../lib/blanket/window.rb:235
+msgid "Reset Sounds"
+msgstr "Atiestatīt skaņas"
+
+#: ../lib/blanket/window.rb:285
+msgid "Paused to save power"
+msgstr "Apturēts, lai taupītu enerģiju"
+
+#: ../lib/blanket/window.rb:287
+msgid "_Resume Playing"
+msgstr "_Turpināt klausīties"
+
+#: ../lib/blanket/window.rb:313
+msgid "Open audio"
+msgstr "Atvert audio"
+
+#: ../lib/blanket/window.rb:397
+msgid "File not found"
+msgstr ""
+
+#: ../lib/blanket/window.rb:452
+msgid "Add…"
+msgstr "Pievienot…"
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/com.rafaelmardojai.Blanket.desktop.in:10
+#~ msgid "Concentrate;Focus;Noise;Productivity;Sleep;"
+#~ msgstr "Koncentrācija;Fokus;Troksnis;Produktivitāte;Miegs;"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:7
+#~ msgid "Listen to ambient sounds"
+#~ msgstr "Klausieties apkārtējās vides skaņas"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:9
+#~ msgid ""
+#~ "Improve focus and increase your productivity by listening to different ambient"
+#~ " sounds"
+#~ msgstr ""
+#~ "Uzlabojiet koncentrāciju un paaugstiniet produktivitāti klausoties apkārtējās "
+#~ "vides skaņas"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:10
+#~ msgid "Also can help you to fall asleep in a noisy environment."
+#~ msgstr "Arī var palīdzēt jums aizmigt trokšņainā vidē."
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:11
+#~ msgid "Features:"
+#~ msgstr "Funkcijas:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:13
+#~ msgid "Save presets"
+#~ msgstr "Saglabāt iestatījumu profilus"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:14
+#~ msgid "Add custom sounds"
+#~ msgstr "Pievienot savas skaņas"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:15
+#~ msgid "Auto start in background"
+#~ msgstr "Automātiska palaišana fonā"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:16
+#~ msgid "MPRIS integration"
+#~ msgstr "MPRIS integrācija"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:18
+#~ msgid "Included Sounds in the App:"
+#~ msgstr "Lietotnē iekļautās skaņas:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:67
+#~ msgid "The default screen in light theme"
+#~ msgstr "Sākuma ekrāns ar gaišu tēmu"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:72
+#~ msgid "The default screen in dark theme"
+#~ msgstr "Sākuma ekrāns ar tumšu tēmu"
+
+#. Translators: Keep single quote please!
+#: data/com.rafaelmardojai.Blanket.gschema.xml:45
+#~ msgctxt "visible-name"
+#~ msgid "'Default'"
+#~ msgstr "'Pēc noklusējuma'"
+
+#. Translators: Replace me with your names, You can make a mailto link: translator-name <user@domain.org>
+#: data/resources/about.blp:15
+#~ msgctxt "Add your names here, do not remove previous names!"
+#~ msgid "translator-credits"
+#~ msgstr "Anonīms"
+
+#: data/resources/window.blp:24
+#~ msgid "Presets Menu"
+#~ msgstr "Iestatījumu profili"
+
+#: blanket/define.py:38
+#~ msgid "Noise"
+#~ msgstr "Troksnis"
+
+#: blanket/preferences.py:79
+#~ msgid "Autostart Blanket in background."
+#~ msgstr "Automātiski palaist lietotni fonā."
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "Request error"
+#~ msgstr "Pieprasījuma kļūda"
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "The autostart request failed."
+#~ msgstr "Automātiskās palaišanas fonā pieprasījums neizdevās."
+
+#: blanket/preferences.py:108 blanket/preferences.py:125
+#: blanket/preferences.py:129
+#~ msgid "Ok"
+#~ msgstr "Labi"
+
+#: blanket/preferences.py:124
+#~ msgid "Authorization failed"
+#~ msgstr "Autorizācija neizdevās"
+
+#: blanket/preferences.py:124
+#, fuzzy
+#~ msgid ""
+#~ "Make sure Blanket has permission to run in the background in Settings → Applic"
+#~ "ations → Blanket and try again."
+#~ msgstr ""
+#~ "Atveriet iestatījumus → Aplikācijas → Blanket\n"
+#~ "Pārliecinaties ka lietotnei ir tiesības automātiski palaisties fonā un pamēģin"
+#~ "iet vēlreiz."
+
+#: blanket/window.py:133
+#~ msgid "Sound Automatically Removed"
+#~ msgstr "Skaņa tika automātiski izdzēsta"
+
+#: blanket/window.py:135
+#, python-brace-format
+#~ msgid "The {name} sound is no longer accessible, so it has been removed"
+#~ msgstr "Skaņa {name} vairs nav pieejama, tāpēc tas bija izdzēsts"
+
+#: blanket/window.py:138
+#~ msgid "Accept"
+#~ msgstr "Pieņemt"

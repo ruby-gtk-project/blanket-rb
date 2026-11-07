@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "gtk4"
+require_relative "i18n"
 
 module Blanket
   # Ported from blanket/widgets/sound_context_menu.py and
@@ -12,6 +13,8 @@ module Blanket
   # while the popover is open, and unbound when it closes, matching
   # upstream's do_closed.
   class SoundContextMenu
+    include GetText
+
     def initialize(sound, index)
       @sound = sound
       @index = index
@@ -54,12 +57,12 @@ module Blanket
     def custom_section
       @custom_section ||= Gio::Menu.new.tap do |section|
         section.append_item(
-          Gio::MenuItem.new("Rename", nil).tap do |item|
+          Gio::MenuItem.new(_("Rename"), nil).tap do |item|
             item.set_action_and_target_value("app.rename-sound", GLib::Variant.new(@index, "u"))
           end,
         )
         section.append_item(
-          Gio::MenuItem.new("Remove", nil).tap do |item|
+          Gio::MenuItem.new(_("Remove"), nil).tap do |item|
             item.set_action_and_target_value("app.remove-sound", GLib::Variant.new(@index, "u"))
           end,
         )

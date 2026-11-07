@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "adwaita"
+require_relative "i18n"
 require_relative "preset"
 require_relative "settings"
 
@@ -14,6 +15,8 @@ module Blanket
   # the entry holds a name that is neither empty nor the name the preset
   # already has.
   class PresetDialog
+    include GetText
+
     # `on_created` is called with the new Preset, so the chooser that opened
     # the dialog can add a row for it and select it.
     def initialize(preset: nil, on_created: nil)
@@ -75,10 +78,10 @@ module Blanket
       @title_widget ||= Adwaita::WindowTitle.new(dialog_title, subtitle)
     end
 
-    def cancel_button = @cancel_button ||= Gtk::Button.new(label: "Cancel")
+    def cancel_button = @cancel_button ||= Gtk::Button.new(label: _("Cancel"))
 
     def accept_button
-      @accept_button ||= Gtk::Button.new(label: "Save").tap do |button|
+      @accept_button ||= Gtk::Button.new(label: _("Save")).tap do |button|
         button.sensitive = false
         button.add_css_class("suggested-action")
       end
@@ -89,7 +92,7 @@ module Blanket
 
     def name_row
       @name_row ||= Adwaita::EntryRow.new.tap do |row|
-        row.title = "Preset Name"
+        row.title = _("Preset Name")
         row.selectable = false
         row.text = initial_name
       end
@@ -103,9 +106,9 @@ module Blanket
       # bans `x = cond ? a : b`.
       def dialog_title
         if editing?
-          "Edit Preset"
+          _("Edit Preset")
         else
-          "New Preset"
+          _("New Preset")
         end
       end
 

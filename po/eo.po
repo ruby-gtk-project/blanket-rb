@@ -1,0 +1,401 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the blanket package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: blanket\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-07 13:35+0000\n"
+"PO-Revision-Date: 2025-02-11 20:34+0000\n"
+"Last-Translator: \"Fredy Ivan Sucari-Callohuanca (fredsu92)\" <fredsu92@gmail.co"
+"m>\n"
+"Language-Team: Esperanto <https://hosted.weblate.org/projects/blanket/blanket/"
+"eo/>\n"
+"Language: eo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10-dev\n"
+
+#: ../lib/blanket/about_dialog.rb:19
+msgid "Source Code"
+msgstr ""
+
+#: ../lib/blanket/about_dialog.rb:20
+msgid "Sounds by"
+msgstr "Sonoj de"
+
+#: ../lib/blanket/about_dialog.rb:21
+msgid "Sounds edited by"
+msgstr "Sonoj redaktitaj de"
+
+#: ../lib/blanket/about_dialog.rb:29 ../lib/blanket/mpris.rb:221
+#: ../lib/blanket/mpris.rb:246 ../lib/blanket/window.rb:96
+msgid "Blanket"
+msgstr "Blanket"
+
+#: ../lib/blanket/about_dialog.rb:31 ../lib/blanket/mpris.rb:245
+msgid "Listen to different sounds"
+msgstr "Aŭskulti diversajn sonojn"
+
+#: ../lib/blanket/about_dialog.rb:32
+msgid "Copyright 2020-2022 Rafael Mardojai CM"
+msgstr "Aŭtorrajto 2020-2022 Rafael Mardojai CM"
+
+#: ../lib/blanket/about_dialog.rb:42
+#, fuzzy
+msgid "translator-credits"
+msgstr "Porrumentzio <porrumentzio@riseup.net>"
+
+#: ../lib/blanket/define.rb:31
+msgid "Nature"
+msgstr "Naturo"
+
+#: ../lib/blanket/define.rb:33 ../lib/blanket/define.rb:72
+#: ../lib/blanket/define.rb:91
+msgid "Rain"
+msgstr "Pluvo"
+
+#: ../lib/blanket/define.rb:34 ../lib/blanket/define.rb:73
+#: ../lib/blanket/define.rb:92
+msgid "Storm"
+msgstr "Ŝtormo"
+
+#: ../lib/blanket/define.rb:35 ../lib/blanket/define.rb:84
+#: ../lib/blanket/define.rb:96
+msgid "Wind"
+msgstr "Vento"
+
+#: ../lib/blanket/define.rb:36 ../lib/blanket/define.rb:81
+#: ../lib/blanket/define.rb:93
+msgid "Waves"
+msgstr "Ondoj"
+
+#: ../lib/blanket/define.rb:37 ../lib/blanket/define.rb:77
+msgid "Stream"
+msgstr "Torento"
+
+#: ../lib/blanket/define.rb:38 ../lib/blanket/define.rb:79
+#: ../lib/blanket/define.rb:90
+msgid "Birds"
+msgstr "Birdoj"
+
+#: ../lib/blanket/define.rb:39 ../lib/blanket/define.rb:80
+msgid "Summer Night"
+msgstr "Somera nokto"
+
+#: ../lib/blanket/define.rb:43
+msgid "Travel"
+msgstr "Veturo"
+
+#: ../lib/blanket/define.rb:45 ../lib/blanket/define.rb:85
+msgid "Train"
+msgstr "Trajno"
+
+#: ../lib/blanket/define.rb:46 ../lib/blanket/define.rb:75
+#: ../lib/blanket/define.rb:94
+msgid "Boat"
+msgstr "Barko"
+
+#: ../lib/blanket/define.rb:47 ../lib/blanket/define.rb:76
+#: ../lib/blanket/define.rb:95
+msgid "City"
+msgstr "Urbo"
+
+#: ../lib/blanket/define.rb:51
+msgid "Interiors"
+msgstr "Internoj"
+
+#: ../lib/blanket/define.rb:53 ../lib/blanket/define.rb:82
+msgid "Coffee Shop"
+msgstr "Kafejo"
+
+#: ../lib/blanket/define.rb:54 ../lib/blanket/define.rb:74
+msgid "Fireplace"
+msgstr "Fajrejo"
+
+#: ../lib/blanket/define.rb:60 ../lib/blanket/define.rb:83
+msgid "Pink Noise"
+msgstr "Rozkolora bruo"
+
+#: ../lib/blanket/define.rb:61 ../lib/blanket/define.rb:78
+msgid "White Noise"
+msgstr "Blanka bruo"
+
+#: ../lib/blanket/define.rb:67
+msgid "Sounds icons"
+msgstr "Bildsimboloj de sonoj"
+
+#: ../lib/blanket/define.rb:68
+msgid "App icon"
+msgstr "Aplikaĵa bildsimbolo"
+
+#: ../lib/blanket/preferences_dialog.rb:65
+msgid "Appearance"
+msgstr "Aspekto"
+
+#: ../lib/blanket/preferences_dialog.rb:70
+msgid "Behavior"
+msgstr "Konduto"
+
+#: ../lib/blanket/preferences_dialog.rb:74
+msgid "Dark Mode"
+msgstr "Malhela reĝimo"
+
+#: ../lib/blanket/preferences_dialog.rb:79
+msgid "Autostart in Background"
+msgstr "Aŭtolanĉi en la fono"
+
+#: ../lib/blanket/preferences_dialog.rb:83
+msgid "Always Start on Pause"
+msgstr "Ĉiam komenci en paŭzo"
+
+#: ../lib/blanket/preferences_dialog.rb:95
+msgid "Inhibit suspension while playing"
+msgstr ""
+
+#: ../lib/blanket/preset_dialog.rb:81 ../lib/blanket/sound_rename_dialog.rb:83
+msgid "Cancel"
+msgstr "Rezigni"
+
+#: ../lib/blanket/preset_dialog.rb:84 ../lib/blanket/sound_rename_dialog.rb:86
+msgid "Save"
+msgstr "Konservi"
+
+#: ../lib/blanket/preset_dialog.rb:95
+msgid "Preset Name"
+msgstr ""
+
+#: ../lib/blanket/preset_dialog.rb:109
+msgid "Edit Preset"
+msgstr ""
+
+#: ../lib/blanket/preset_dialog.rb:111
+msgid "New Preset"
+msgstr ""
+
+#: ../lib/blanket/preset_row.rb:101
+msgid "Rename Preset"
+msgstr ""
+
+#: ../lib/blanket/preset_row.rb:110
+msgid "Delete Preset"
+msgstr ""
+
+#: ../lib/blanket/shortcuts_dialog.rb:18
+msgid "General"
+msgstr "Ĝeneralaj"
+
+#: ../lib/blanket/shortcuts_dialog.rb:19
+msgid "Play/Pause Sounds"
+msgstr "Ludi/Paŭzigi sonojn"
+
+#: ../lib/blanket/shortcuts_dialog.rb:20
+msgid "Add Custom Sound"
+msgstr "Aldoni propran sonon"
+
+#: ../lib/blanket/shortcuts_dialog.rb:21
+msgid "Close Window"
+msgstr "Fermi fenestron"
+
+#: ../lib/blanket/shortcuts_dialog.rb:22 ../lib/blanket/window.rb:138
+msgid "Preferences"
+msgstr "Preferoj"
+
+#: ../lib/blanket/shortcuts_dialog.rb:23 ../lib/blanket/shortcuts_dialog.rb:38
+#: ../lib/blanket/window.rb:139
+msgid "Keyboard Shortcuts"
+msgstr "Ŝparvojoj"
+
+#: ../lib/blanket/shortcuts_dialog.rb:24 ../lib/blanket/window.rb:145
+msgid "Quit"
+msgstr "Eliri"
+
+#: ../lib/blanket/sound_context_menu.rb:60
+msgid "Rename"
+msgstr ""
+
+#: ../lib/blanket/sound_context_menu.rb:65
+msgid "Remove"
+msgstr "Forigi"
+
+#: ../lib/blanket/sound_rename_dialog.rb:65
+#: ../lib/blanket/sound_rename_dialog.rb:81
+msgid "Rename Sound"
+msgstr ""
+
+#: ../lib/blanket/sound_rename_dialog.rb:97
+msgid "Sound Name"
+msgstr ""
+
+#: ../lib/blanket/window.rb:116
+msgid "Main Menu"
+msgstr "Ĉefa menuo"
+
+#: ../lib/blanket/window.rb:132
+#, fuzzy
+msgid "Keep Playing when Closed"
+msgstr "Plu ludi kiam fermite"
+
+#: ../lib/blanket/window.rb:140
+msgid "About Blanket"
+msgstr "Pri Blanket"
+
+#: ../lib/blanket/window.rb:182
+msgid "Volume Menu"
+msgstr ""
+
+#: ../lib/blanket/window.rb:195
+msgid "Sounds Menu"
+msgstr "Menuo de sonoj"
+
+#: ../lib/blanket/window.rb:209
+msgid "Hide Inactive Sounds"
+msgstr ""
+
+#: ../lib/blanket/window.rb:210
+msgid "Save as New Preset…"
+msgstr ""
+
+#: ../lib/blanket/window.rb:215
+msgid "Add Sound…"
+msgstr "Aldoni sonon…"
+
+#: ../lib/blanket/window.rb:235
+msgid "Reset Sounds"
+msgstr ""
+
+#: ../lib/blanket/window.rb:285
+msgid "Paused to save power"
+msgstr ""
+
+#: ../lib/blanket/window.rb:287
+msgid "_Resume Playing"
+msgstr ""
+
+#: ../lib/blanket/window.rb:313
+msgid "Open audio"
+msgstr "Malfermi sondosieron"
+
+#: ../lib/blanket/window.rb:397
+msgid "File not found"
+msgstr ""
+
+#: ../lib/blanket/window.rb:452
+msgid "Add…"
+msgstr "Aldoni…"
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/com.rafaelmardojai.Blanket.desktop.in:10
+#~ msgid "Concentrate;Focus;Noise;Productivity;Sleep;"
+#~ msgstr "Koncentriĝi;Fokusiĝi;Bruo;Sono;Produktemo;Dormo;"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:7
+#~ msgid "Listen to ambient sounds"
+#~ msgstr "Aŭskulti sonojn de ĉirkaŭaĵo"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:9
+#~ msgid ""
+#~ "Improve focus and increase your productivity by listening to different ambient"
+#~ " sounds"
+#~ msgstr ""
+#~ "Plibonigi vian fokuson kaj produktemon aŭskultante diversajn sonojn de ĉirkaŭa"
+#~ "ĵo"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:10
+#~ msgid "Also can help you to fall asleep in a noisy environment."
+#~ msgstr "Ankaŭ povas helpi vin endormiĝi en bruaj medioj."
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:11
+#~ msgid "Features:"
+#~ msgstr "Kapabloj:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:13
+#~ msgid "Save presets"
+#~ msgstr "Konservi antaŭagordojn"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:14
+#~ msgid "Add custom sounds"
+#~ msgstr "Aldoni proprajn sonojn"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:15
+#~ msgid "Auto start in background"
+#~ msgstr "Aŭtomate lanĉi fone"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:16
+#~ msgid "MPRIS integration"
+#~ msgstr "MPRIS-integrado"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:18
+#~ msgid "Included Sounds in the App:"
+#~ msgstr "Sonoroj inkluditaj en la aplikaĵo:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:57
+#~ msgid "The default screen in light theme"
+#~ msgstr "La defaŭlta ekrano en klara temo"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:62
+#~ msgid "The default screen in dark theme"
+#~ msgstr "La defaŭlta ekrano en nokta temo"
+
+#. Translators: Keep single quote please!
+#: data/com.rafaelmardojai.Blanket.gschema.xml:45
+#~ msgctxt "visible-name"
+#~ msgid "'Default'"
+#~ msgstr "'Defaŭlta'"
+
+#. Translators: Replace me with your names, You can make a mailto link: translator-name <user@domain.org>
+#: data/resources/about.blp:15
+#~ msgctxt "Add your names here, do not remove previous names!"
+#~ msgid "translator-credits"
+#~ msgstr "Porrumentzio <porrumentzio@riseup.net>"
+
+#: blanket/define.py:38
+#~ msgid "Noise"
+#~ msgstr "Bruo"
+
+#: blanket/preferences.py:79
+#~ msgid "Autostart Blanket in background."
+#~ msgstr "Aŭtolanĉi Blanket en la fono."
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "Request error"
+#~ msgstr "Petado eraro"
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "The autostart request failed."
+#~ msgstr "La aŭtolanĉa petado malsukcesis."
+
+#: blanket/preferences.py:124
+#~ msgid "Authorization failed"
+#~ msgstr "Rajtigo malsukcesis"
+
+#: blanket/preferences.py:124
+#, fuzzy
+#~ msgid ""
+#~ "Make sure Blanket has permission to run in the background in Settings → Applic"
+#~ "ations → Blanket and try again."
+#~ msgstr ""
+#~ "Kontroli ĉu Blanket estas permesita funkcii \n"
+#~ "en la fono, en Agordoj → Aplikaĵoj → \n"
+#~ "Blanket, kaj reprovu."
+
+#: blanket/window.py:138
+#~ msgid "Accept"
+#~ msgstr "Akcepti"
+
+#~ msgid "Rafael Mardojai CM"
+#~ msgstr "Rafael Mardojai CM"
+#~ msgid "Keyboard Shortcus"
+#~ msgstr "Ŝparvojoj"
+#~ msgid "Add custom sound"
+#~ msgstr "Aldoni personecigitan sonon"
+#~ msgid "Custom"
+#~ msgstr "Personecigita"
+#~ msgid "Pink noise"
+#~ msgstr "Rozkolora bruo"
+#~ msgid "Unknown"
+#~ msgstr "Nekonato"

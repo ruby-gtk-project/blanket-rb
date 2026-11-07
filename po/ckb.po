@@ -1,0 +1,400 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the blanket package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: blanket\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-07 13:35+0000\n"
+"PO-Revision-Date: 2024-05-14 03:00+0000\n"
+"Last-Translator: Koshan Othman <koshan0othman@gmail.com>\n"
+"Language-Team: Kurdish (Central) <https://hosted.weblate.org/projects/blanket/"
+"blanket/ckb/>\n"
+"Language: ckb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.5.5\n"
+
+#: ../lib/blanket/about_dialog.rb:19
+msgid "Source Code"
+msgstr "سەرچاوەی کۆد"
+
+#: ../lib/blanket/about_dialog.rb:20
+msgid "Sounds by"
+msgstr "دەنگەکان لەلایەن"
+
+#: ../lib/blanket/about_dialog.rb:21
+msgid "Sounds edited by"
+msgstr "دەنگەکان دەستکاریکراوە لەلایەن"
+
+#: ../lib/blanket/about_dialog.rb:29 ../lib/blanket/mpris.rb:221
+#: ../lib/blanket/mpris.rb:246 ../lib/blanket/window.rb:96
+msgid "Blanket"
+msgstr "بلانکێت"
+
+#: ../lib/blanket/about_dialog.rb:31 ../lib/blanket/mpris.rb:245
+msgid "Listen to different sounds"
+msgstr "گوێ لە دەنگە جیاوازەکان بگرە"
+
+#: ../lib/blanket/about_dialog.rb:32
+msgid "Copyright 2020-2022 Rafael Mardojai CM"
+msgstr "مافی لەبەرگرتنەوە 2020-2022 Rafael Mardojai CM"
+
+#: ../lib/blanket/about_dialog.rb:42
+#, fuzzy
+msgid "translator-credits"
+msgstr "کۆشان عوسمان سەعید <koshan0othman@gmail.com>"
+
+#: ../lib/blanket/define.rb:31
+msgid "Nature"
+msgstr "سروشت"
+
+#: ../lib/blanket/define.rb:33 ../lib/blanket/define.rb:72
+#: ../lib/blanket/define.rb:91
+msgid "Rain"
+msgstr "باران"
+
+#: ../lib/blanket/define.rb:34 ../lib/blanket/define.rb:73
+#: ../lib/blanket/define.rb:92
+msgid "Storm"
+msgstr "زریان"
+
+#: ../lib/blanket/define.rb:35 ../lib/blanket/define.rb:84
+#: ../lib/blanket/define.rb:96
+msgid "Wind"
+msgstr "با"
+
+#: ../lib/blanket/define.rb:36 ../lib/blanket/define.rb:81
+#: ../lib/blanket/define.rb:93
+msgid "Waves"
+msgstr "شەپۆلەکان"
+
+#: ../lib/blanket/define.rb:37 ../lib/blanket/define.rb:77
+msgid "Stream"
+msgstr "تەوژم"
+
+#: ../lib/blanket/define.rb:38 ../lib/blanket/define.rb:79
+#: ../lib/blanket/define.rb:90
+msgid "Birds"
+msgstr "باڵندەکان"
+
+#: ../lib/blanket/define.rb:39 ../lib/blanket/define.rb:80
+msgid "Summer Night"
+msgstr "شەوی هاوین"
+
+#: ../lib/blanket/define.rb:43
+msgid "Travel"
+msgstr "گەشتکردن"
+
+#: ../lib/blanket/define.rb:45 ../lib/blanket/define.rb:85
+msgid "Train"
+msgstr "شەمەندەفەر"
+
+#: ../lib/blanket/define.rb:46 ../lib/blanket/define.rb:75
+#: ../lib/blanket/define.rb:94
+msgid "Boat"
+msgstr "بەلەم"
+
+#: ../lib/blanket/define.rb:47 ../lib/blanket/define.rb:76
+#: ../lib/blanket/define.rb:95
+msgid "City"
+msgstr "شار"
+
+#: ../lib/blanket/define.rb:51
+msgid "Interiors"
+msgstr "ژوورەوە"
+
+#: ../lib/blanket/define.rb:53 ../lib/blanket/define.rb:82
+msgid "Coffee Shop"
+msgstr "قاوەخانە"
+
+#: ../lib/blanket/define.rb:54 ../lib/blanket/define.rb:74
+msgid "Fireplace"
+msgstr "ئاگردان"
+
+#: ../lib/blanket/define.rb:60 ../lib/blanket/define.rb:83
+msgid "Pink Noise"
+msgstr "ژاوەژاوی پەمەیی"
+
+#: ../lib/blanket/define.rb:61 ../lib/blanket/define.rb:78
+msgid "White Noise"
+msgstr "ژاوەژاوی سپی"
+
+#: ../lib/blanket/define.rb:67
+msgid "Sounds icons"
+msgstr "ئایکۆنەکانی دەنگەکان"
+
+#: ../lib/blanket/define.rb:68
+msgid "App icon"
+msgstr "ئایکۆنی بەرنامە"
+
+#: ../lib/blanket/preferences_dialog.rb:65
+msgid "Appearance"
+msgstr "ڕووخسار"
+
+#: ../lib/blanket/preferences_dialog.rb:70
+msgid "Behavior"
+msgstr "ڕەفتار"
+
+#: ../lib/blanket/preferences_dialog.rb:74
+msgid "Dark Mode"
+msgstr "دۆخی تاریک"
+
+#: ../lib/blanket/preferences_dialog.rb:79
+msgid "Autostart in Background"
+msgstr "دەستپێکردنی ئۆتۆماتیکی لە پاشبنەما"
+
+#: ../lib/blanket/preferences_dialog.rb:83
+msgid "Always Start on Pause"
+msgstr "هەمیشە دەستپێبکات لە وەستانەوە"
+
+#: ../lib/blanket/preferences_dialog.rb:95
+msgid "Inhibit suspension while playing"
+msgstr ""
+
+#: ../lib/blanket/preset_dialog.rb:81 ../lib/blanket/sound_rename_dialog.rb:83
+msgid "Cancel"
+msgstr "ڕەتکردنەوە"
+
+#: ../lib/blanket/preset_dialog.rb:84 ../lib/blanket/sound_rename_dialog.rb:86
+msgid "Save"
+msgstr "هەڵگرتن"
+
+#: ../lib/blanket/preset_dialog.rb:95
+msgid "Preset Name"
+msgstr "ناوی پریسێت"
+
+#: ../lib/blanket/preset_dialog.rb:109
+msgid "Edit Preset"
+msgstr "دەستکاری پریسێت"
+
+#: ../lib/blanket/preset_dialog.rb:111
+msgid "New Preset"
+msgstr "پریسێتی نوێ"
+
+#: ../lib/blanket/preset_row.rb:101
+msgid "Rename Preset"
+msgstr "گۆڕینی ناوی پریسێت"
+
+#: ../lib/blanket/preset_row.rb:110
+msgid "Delete Preset"
+msgstr "سڕینەوەی پریسێت"
+
+#: ../lib/blanket/shortcuts_dialog.rb:18
+msgid "General"
+msgstr "گشتی"
+
+#: ../lib/blanket/shortcuts_dialog.rb:19
+msgid "Play/Pause Sounds"
+msgstr "دەنگەکان دەستپێبکە/بوەستێنە"
+
+#: ../lib/blanket/shortcuts_dialog.rb:20
+msgid "Add Custom Sound"
+msgstr "دەنگی تایبەت زیاد بکە"
+
+#: ../lib/blanket/shortcuts_dialog.rb:21
+msgid "Close Window"
+msgstr "پەنجەرە دابخە"
+
+#: ../lib/blanket/shortcuts_dialog.rb:22 ../lib/blanket/window.rb:138
+msgid "Preferences"
+msgstr "هەڵبژاردنەکان"
+
+#: ../lib/blanket/shortcuts_dialog.rb:23 ../lib/blanket/shortcuts_dialog.rb:38
+#: ../lib/blanket/window.rb:139
+msgid "Keyboard Shortcuts"
+msgstr "کورتکراوەکانی تەختەکلیل"
+
+#: ../lib/blanket/shortcuts_dialog.rb:24 ../lib/blanket/window.rb:145
+msgid "Quit"
+msgstr "وازهێنان"
+
+#: ../lib/blanket/sound_context_menu.rb:60
+msgid "Rename"
+msgstr ""
+
+#: ../lib/blanket/sound_context_menu.rb:65
+msgid "Remove"
+msgstr "لابردن"
+
+#: ../lib/blanket/sound_rename_dialog.rb:65
+#: ../lib/blanket/sound_rename_dialog.rb:81
+msgid "Rename Sound"
+msgstr ""
+
+#: ../lib/blanket/sound_rename_dialog.rb:97
+msgid "Sound Name"
+msgstr ""
+
+#: ../lib/blanket/window.rb:116
+msgid "Main Menu"
+msgstr "لیستی سەرەکی"
+
+#: ../lib/blanket/window.rb:132
+msgid "Keep Playing when Closed"
+msgstr "بەردەوامبە لە لێدان کاتێک داخراوە"
+
+#: ../lib/blanket/window.rb:140
+msgid "About Blanket"
+msgstr "دەربارەی بلانکێت"
+
+#: ../lib/blanket/window.rb:182
+msgid "Volume Menu"
+msgstr "لیستی دەنگ"
+
+#: ../lib/blanket/window.rb:195
+msgid "Sounds Menu"
+msgstr "لیستی دەنگەکان"
+
+#: ../lib/blanket/window.rb:209
+msgid "Hide Inactive Sounds"
+msgstr "شاردنەوەی دەنگە ناچالاکەکان"
+
+#: ../lib/blanket/window.rb:210
+msgid "Save as New Preset…"
+msgstr "وەک پریسێتێکی نوێ هەڵیبگرە…"
+
+#: ../lib/blanket/window.rb:215
+msgid "Add Sound…"
+msgstr "دەنگ زیاد بکە…"
+
+#: ../lib/blanket/window.rb:235
+msgid "Reset Sounds"
+msgstr "دەنگەکان ڕێکبخەرەوە"
+
+#: ../lib/blanket/window.rb:285
+msgid "Paused to save power"
+msgstr "وەستان بۆ هەڵگرتنی کارەبا"
+
+#: ../lib/blanket/window.rb:287
+msgid "_Resume Playing"
+msgstr "_دەستبکەرەوە بە لێدان"
+
+#: ../lib/blanket/window.rb:313
+msgid "Open audio"
+msgstr "دەنگ بکەرەوە"
+
+#: ../lib/blanket/window.rb:397
+msgid "File not found"
+msgstr ""
+
+#: ../lib/blanket/window.rb:452
+msgid "Add…"
+msgstr "زیادکردن…"
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/com.rafaelmardojai.Blanket.desktop.in:10
+#~ msgid "Concentrate;Focus;Noise;Productivity;Sleep;"
+#~ msgstr "جەختکردن;سەرنج;ژاوەژاو;بەرهەمهێنان;نووستن;"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:7
+#~ msgid "Listen to ambient sounds"
+#~ msgstr "گوێ لە دەنگەکانی دەوروبەر بگرە"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:9
+#~ msgid ""
+#~ "Improve focus and increase your productivity by listening to different ambient"
+#~ " sounds"
+#~ msgstr "سەرنجت باشتر بکە و بەرهەمهێنانت زیاد بکە بە گوێگرتن لە دەنگەکانی دەوروبەر"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:10
+#~ msgid "Also can help you to fall asleep in a noisy environment."
+#~ msgstr "هەروەها دەتوانێت یارمەتیت بدات بۆ نووستن لە ژینگەیەکی ژاوەژاودا."
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:11
+#~ msgid "Features:"
+#~ msgstr "تایبەتمەندییەکان:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:13
+#~ msgid "Save presets"
+#~ msgstr "پریسێتەکان هەڵبگرە"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:14
+#~ msgid "Add custom sounds"
+#~ msgstr "دەنگە تایبەتەکان زیاد بکە"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:15
+#~ msgid "Auto start in background"
+#~ msgstr "دەستپێکردنی ئۆتۆماتیکی لە پاشبنەمادا"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:16
+#~ msgid "MPRIS integration"
+#~ msgstr "یەکخستنی MPRIS"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:18
+#~ msgid "Included Sounds in the App:"
+#~ msgstr "دەنگەکانی ناو بەرنامەکە:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:57
+#~ msgid "The default screen in light theme"
+#~ msgstr "ڕوونمای بنەڕەت لە ڕووکاری ڕووناک"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:62
+#~ msgid "The default screen in dark theme"
+#~ msgstr "ڕوونمای بنەڕەت لە ڕووکاری تاریک"
+
+#. Translators: Keep single quote please!
+#: data/com.rafaelmardojai.Blanket.gschema.xml:45
+#~ msgctxt "visible-name"
+#~ msgid "'Default'"
+#~ msgstr "'بنەڕەت'"
+
+#. Translators: Replace me with your names, You can make a mailto link: translator-name <user@domain.org>
+#: data/resources/about.blp:15
+#~ msgctxt "Add your names here, do not remove previous names!"
+#~ msgid "translator-credits"
+#~ msgstr "کۆشان عوسمان سەعید <koshan0othman@gmail.com>"
+
+#: data/resources/window.blp:24
+#~ msgid "Presets Menu"
+#~ msgstr "لیستی پریسێتەکان"
+
+#: blanket/define.py:38
+#~ msgid "Noise"
+#~ msgstr "ژاوەژاو"
+
+#: blanket/preferences.py:79
+#~ msgid "Autostart Blanket in background."
+#~ msgstr "دەستپێکردنی ئۆتۆماتیکی Blanket لە پاشبنەما."
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "Request error"
+#~ msgstr "هەڵەی داواکاری"
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "The autostart request failed."
+#~ msgstr "داواکاری دەستپێکردنی ئۆتۆماتیکی شکستی هێنا."
+
+#: blanket/preferences.py:108 blanket/preferences.py:125
+#: blanket/preferences.py:129
+#~ msgid "Ok"
+#~ msgstr "باشە"
+
+#: blanket/preferences.py:124
+#~ msgid "Authorization failed"
+#~ msgstr "ڕێگەپێدان شکستی هێنا"
+
+#: blanket/preferences.py:124
+#~ msgid ""
+#~ "Make sure Blanket has permission to run in the background in Settings → Applic"
+#~ "ations → Blanket and try again."
+#~ msgstr ""
+#~ "دڵنیابە کە Blanket مۆڵەتی کارکردنی لە پاشبنەمادا هەیە لە ڕێکخستنەکان ← بەرنامە"
+#~ "کان ← Blanket و دووبارە هەوڵبدەرەوە."
+
+#: blanket/window.py:133
+#~ msgid "Sound Automatically Removed"
+#~ msgstr "دەنگ بە شێوەیەکی ئۆتۆماتیکی لادەبرێت"
+
+#: blanket/window.py:135
+#, python-brace-format
+#~ msgid "The {name} sound is no longer accessible, so it has been removed"
+#~ msgstr "دەنگی {name} ئیتر دەستڕاگەیشتنی نییە، بۆیە لابراوە"
+
+#: blanket/window.py:138
+#~ msgid "Accept"
+#~ msgstr "پەسەندکردن"

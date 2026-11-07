@@ -2,6 +2,7 @@
 
 require "gio2"
 require_relative "define"
+require_relative "i18n"
 require_relative "main_player"
 require_relative "settings"
 
@@ -20,6 +21,8 @@ module Blanket
   # these bindings, so each interface here is looked up by name and
   # registered on its own, all four sharing the one method-call dispatcher.
   class Mpris
+    include GetText
+
     BUS_NAME = "org.mpris.MediaPlayer2.Blanket"
     OBJECT_PATH = "/org/mpris/MediaPlayer2"
     INTROSPECTABLE_IFACE = "org.freedesktop.DBus.Introspectable"
@@ -215,7 +218,7 @@ module Blanket
         when "CanGoPrevious"
           "<#{MainPlayer.get.can_prev?}>"
         when "Identity"
-          "<'Blanket'>"
+          "<#{quote(_("Blanket"))}>"
         when "DesktopEntry"
           "<#{quote(Define::APP_ID)}>"
         when "PlaybackStatus"
@@ -239,8 +242,8 @@ module Blanket
         fields = {
           "mpris:trackid" => "<@o #{quote("#{Define::RES_PATH}/Track/#{@track_id}")}>",
           "xesam:title"   => "<#{quote(Settings.get.active_preset_name)}>",
-          "xesam:album"   => "<'Listen to different sounds'>",
-          "xesam:artist"  => "<@as ['Blanket']>",
+          "xesam:album"   => "<#{quote(_("Listen to different sounds"))}>",
+          "xesam:artist"  => "<@as [#{quote(_("Blanket"))}]>",
         }
         "@a{sv} {#{fields.map { |key, value| "#{quote(key)}: #{value}" }.join(", ")}}"
       end

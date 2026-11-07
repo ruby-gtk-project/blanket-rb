@@ -4,6 +4,7 @@ require "adwaita"
 require "uri"
 require_relative "define"
 require_relative "dummy_item_model"
+require_relative "i18n"
 require_relative "main_player"
 require_relative "play_pause_button"
 require_relative "preset_chooser"
@@ -27,6 +28,8 @@ module Blanket
   # removed, any sound's own #on_changed, a preset switch, a volumes reset,
   # or the hide-inactive toggle.
   class Window
+    include GetText
+
     # `app` answers #open_audio's file-picker modality and the window
     # actions this class does not itself define (close, hide-inactive are
     # here; everything else is app-scoped).
@@ -90,7 +93,7 @@ module Blanket
       @window ||= Adwaita::ApplicationWindow.new(@app.app).tap do |win|
         win.width_request = 360
         win.height_request = 294
-        win.title = "Blanket"
+        win.title = _("Blanket")
         win.icon_name = Define::APP_ID
         win.set_default_size(window_state[:width], window_state[:height])
 
@@ -110,7 +113,7 @@ module Blanket
       @menu_button ||= Gtk::MenuButton.new.tap do |button|
         button.menu_model = primary_menu
         button.icon_name = "open-menu-symbolic"
-        button.tooltip_text = "Main Menu"
+        button.tooltip_text = _("Main Menu")
         button.primary = true
       end
     end
@@ -126,20 +129,20 @@ module Blanket
 
     def playback_section
       @playback_section ||= Gio::Menu.new.tap do |menu|
-        menu.append("Keep Playing when Closed", "app.background-playback")
+        menu.append(_("Keep Playing when Closed"), "app.background-playback")
       end
     end
 
     def app_section
       @app_section ||= Gio::Menu.new.tap do |menu|
-        menu.append("Preferences", "app.preferences")
-        menu.append("Keyboard Shortcuts", "app.shortcuts")
-        menu.append("About Blanket", "app.about")
+        menu.append(_("Preferences"), "app.preferences")
+        menu.append(_("Keyboard Shortcuts"), "app.shortcuts")
+        menu.append(_("About Blanket"), "app.about")
       end
     end
 
     def quit_section
-      @quit_section ||= Gio::Menu.new.tap { |menu| menu.append("Quit", "app.quit") }
+      @quit_section ||= Gio::Menu.new.tap { |menu| menu.append(_("Quit"), "app.quit") }
     end
 
     def scrolled
@@ -176,7 +179,7 @@ module Blanket
         button.valign = :center
         button.icon_name = "audio-speakers-symbolic"
         button.direction = :up
-        button.tooltip_text = "Volume Menu"
+        button.tooltip_text = _("Volume Menu")
         button.add_css_class("circular")
       end
     end
@@ -189,7 +192,7 @@ module Blanket
         button.valign = :center
         button.icon_name = "view-more-symbolic"
         button.direction = :up
-        button.tooltip_text = "Sounds Menu"
+        button.tooltip_text = _("Sounds Menu")
         button.add_css_class("circular")
       end
     end
@@ -203,13 +206,13 @@ module Blanket
 
     def hide_inactive_section
       @hide_inactive_section ||= Gio::Menu.new.tap do |section|
-        section.append("Hide Inactive Sounds", "win.hide-inactive")
-        section.append("Save as New Preset…", "app.add-preset")
+        section.append(_("Hide Inactive Sounds"), "win.hide-inactive")
+        section.append(_("Save as New Preset…"), "app.add-preset")
       end
     end
 
     def add_sound_section
-      @add_sound_section ||= Gio::Menu.new.tap { |section| section.append("Add Sound…", "app.open") }
+      @add_sound_section ||= Gio::Menu.new.tap { |section| section.append(_("Add Sound…"), "app.open") }
     end
 
     def volumes_popover
@@ -229,7 +232,7 @@ module Blanket
             section.append_item(Gio::MenuItem.new.tap { |item| item.set_attribute_value("custom", GLib::Variant.new("volumes")) })
           end,
         )
-        menu.append_section(nil, Gio::Menu.new.tap { |section| section.append("Reset Sounds", "app.reset-volumes") })
+        menu.append_section(nil, Gio::Menu.new.tap { |section| section.append(_("Reset Sounds"), "app.reset-volumes") })
       end
     end
 
@@ -279,9 +282,9 @@ module Blanket
     def volume_list = @volume_list ||= Gtk::ListBox.new.tap { |list| list.selection_mode = :none }
 
     def power_toast
-      @power_toast ||= Adwaita::Toast.new("Paused to save power").tap do |toast|
+      @power_toast ||= Adwaita::Toast.new(_("Paused to save power")).tap do |toast|
         toast.action_name = "app.play"
-        toast.button_label = "_Resume Playing"
+        toast.button_label = _("_Resume Playing")
         toast.timeout = 0
       end
     end
@@ -307,7 +310,7 @@ module Blanket
     # new custom Sound.
     def open_audio
       Gtk::FileDialog.new.tap do |dialog|
-        dialog.title = "Open audio"
+        dialog.title = _("Open audio")
         dialog.modal = true
         dialog.filters = audio_filters
 
@@ -391,7 +394,7 @@ module Blanket
               uri:           uri,
               custom:        true,
               failed:        !exists,
-              error_message: exists ? nil : "File not found",
+              error_message: exists ? nil : _("File not found"),
             ),
           )
         end
@@ -446,7 +449,7 @@ module Blanket
         @add_item ||= SoundItem.new(index: -> {}).tap do |item|
           labels_group.add_widget(item.label)
           item.build
-          item.title = "Add…"
+          item.title = _("Add…")
           item.icon_name = "blanket-add-symbolic"
         end
       end

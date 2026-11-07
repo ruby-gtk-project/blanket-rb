@@ -182,6 +182,7 @@
         optionalDirs = builtins.filter (d: builtins.pathExists (./. + "/${d}")) [
           "data"
           "po"
+          "locale"
         ];
       in
       {

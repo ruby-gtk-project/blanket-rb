@@ -1,0 +1,419 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the blanket package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# Rafael Mardojai CM <mardojai.cardenas@gmail.com>, 2023
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: blanket\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-07 13:35+0000\n"
+"PO-Revision-Date: 2025-01-29 08:04+0000\n"
+"Last-Translator: BlurOne! <tommyspurio@gmail.com>\n"
+"Language-Team: English (United States) <https://hosted.weblate.org/projects/bl"
+"anket/blanket/en_US/>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10-dev\n"
+
+#: ../lib/blanket/about_dialog.rb:19
+msgid "Source Code"
+msgstr ""
+
+#: ../lib/blanket/about_dialog.rb:20
+msgid "Sounds by"
+msgstr "Sounds by"
+
+#: ../lib/blanket/about_dialog.rb:21
+msgid "Sounds edited by"
+msgstr "Sounds edited by"
+
+#: ../lib/blanket/about_dialog.rb:29 ../lib/blanket/mpris.rb:221
+#: ../lib/blanket/mpris.rb:246 ../lib/blanket/window.rb:96
+msgid "Blanket"
+msgstr "Blanket"
+
+#: ../lib/blanket/about_dialog.rb:31 ../lib/blanket/mpris.rb:245
+msgid "Listen to different sounds"
+msgstr "Listen to different sounds"
+
+#: ../lib/blanket/about_dialog.rb:32
+#, fuzzy
+msgid "Copyright 2020-2022 Rafael Mardojai CM"
+msgstr "Copyright 2020-2021 Rafael Mardojai CM"
+
+#: ../lib/blanket/about_dialog.rb:42
+#, fuzzy
+msgid "translator-credits"
+msgstr "translator-credits"
+
+#: ../lib/blanket/define.rb:31
+msgid "Nature"
+msgstr "Nature"
+
+#: ../lib/blanket/define.rb:33 ../lib/blanket/define.rb:72
+#: ../lib/blanket/define.rb:91
+msgid "Rain"
+msgstr "Rain"
+
+#: ../lib/blanket/define.rb:34 ../lib/blanket/define.rb:73
+#: ../lib/blanket/define.rb:92
+msgid "Storm"
+msgstr "Storm"
+
+#: ../lib/blanket/define.rb:35 ../lib/blanket/define.rb:84
+#: ../lib/blanket/define.rb:96
+msgid "Wind"
+msgstr "Wind"
+
+#: ../lib/blanket/define.rb:36 ../lib/blanket/define.rb:81
+#: ../lib/blanket/define.rb:93
+msgid "Waves"
+msgstr "Waves"
+
+#: ../lib/blanket/define.rb:37 ../lib/blanket/define.rb:77
+msgid "Stream"
+msgstr "Stream"
+
+#: ../lib/blanket/define.rb:38 ../lib/blanket/define.rb:79
+#: ../lib/blanket/define.rb:90
+msgid "Birds"
+msgstr "Birds"
+
+#: ../lib/blanket/define.rb:39 ../lib/blanket/define.rb:80
+msgid "Summer Night"
+msgstr "Summer Night"
+
+#: ../lib/blanket/define.rb:43
+msgid "Travel"
+msgstr "Nature"
+
+#: ../lib/blanket/define.rb:45 ../lib/blanket/define.rb:85
+msgid "Train"
+msgstr "Train"
+
+#: ../lib/blanket/define.rb:46 ../lib/blanket/define.rb:75
+#: ../lib/blanket/define.rb:94
+msgid "Boat"
+msgstr "Boat"
+
+#: ../lib/blanket/define.rb:47 ../lib/blanket/define.rb:76
+#: ../lib/blanket/define.rb:95
+msgid "City"
+msgstr "City"
+
+#: ../lib/blanket/define.rb:51
+msgid "Interiors"
+msgstr "Interiors"
+
+#: ../lib/blanket/define.rb:53 ../lib/blanket/define.rb:82
+msgid "Coffee Shop"
+msgstr "Coffee Shop"
+
+#: ../lib/blanket/define.rb:54 ../lib/blanket/define.rb:74
+msgid "Fireplace"
+msgstr "Fireplace"
+
+#: ../lib/blanket/define.rb:60 ../lib/blanket/define.rb:83
+msgid "Pink Noise"
+msgstr "Pink Noise"
+
+#: ../lib/blanket/define.rb:61 ../lib/blanket/define.rb:78
+msgid "White Noise"
+msgstr "White Noise"
+
+#: ../lib/blanket/define.rb:67
+msgid "Sounds icons"
+msgstr "Sounds icons"
+
+#: ../lib/blanket/define.rb:68
+msgid "App icon"
+msgstr "App icon"
+
+#: ../lib/blanket/preferences_dialog.rb:65
+msgid "Appearance"
+msgstr "Appearance"
+
+#: ../lib/blanket/preferences_dialog.rb:70
+msgid "Behavior"
+msgstr "Behavior"
+
+#: ../lib/blanket/preferences_dialog.rb:74
+msgid "Dark Mode"
+msgstr "Dark Mode"
+
+#: ../lib/blanket/preferences_dialog.rb:79
+#, fuzzy
+msgid "Autostart in Background"
+msgstr "Autostart in background"
+
+#: ../lib/blanket/preferences_dialog.rb:83
+msgid "Always Start on Pause"
+msgstr ""
+
+#: ../lib/blanket/preferences_dialog.rb:95
+msgid "Inhibit suspension while playing"
+msgstr ""
+
+#: ../lib/blanket/preset_dialog.rb:81 ../lib/blanket/sound_rename_dialog.rb:83
+msgid "Cancel"
+msgstr "Cancel"
+
+#: ../lib/blanket/preset_dialog.rb:84 ../lib/blanket/sound_rename_dialog.rb:86
+msgid "Save"
+msgstr "Save"
+
+#: ../lib/blanket/preset_dialog.rb:95
+msgid "Preset Name"
+msgstr "Preset Name"
+
+#: ../lib/blanket/preset_dialog.rb:109
+msgid "Edit Preset"
+msgstr "Edit Preset"
+
+#: ../lib/blanket/preset_dialog.rb:111
+#, fuzzy
+msgid "New Preset"
+msgstr "Presets"
+
+#: ../lib/blanket/preset_row.rb:101
+msgid "Rename Preset"
+msgstr "Rename Preset"
+
+#: ../lib/blanket/preset_row.rb:110
+msgid "Delete Preset"
+msgstr "Delete Preset"
+
+#: ../lib/blanket/shortcuts_dialog.rb:18
+msgid "General"
+msgstr "General"
+
+#: ../lib/blanket/shortcuts_dialog.rb:19
+#, fuzzy
+msgid "Play/Pause Sounds"
+msgstr "Play/Pause sounds"
+
+#: ../lib/blanket/shortcuts_dialog.rb:20
+#, fuzzy
+msgid "Add Custom Sound"
+msgstr "Add Custom Sound…"
+
+#: ../lib/blanket/shortcuts_dialog.rb:21
+#, fuzzy
+msgid "Close Window"
+msgstr "Close window"
+
+#: ../lib/blanket/shortcuts_dialog.rb:22 ../lib/blanket/window.rb:138
+msgid "Preferences"
+msgstr "Preferences"
+
+#: ../lib/blanket/shortcuts_dialog.rb:23 ../lib/blanket/shortcuts_dialog.rb:38
+#: ../lib/blanket/window.rb:139
+msgid "Keyboard Shortcuts"
+msgstr "Keyboard Shortcuts"
+
+#: ../lib/blanket/shortcuts_dialog.rb:24 ../lib/blanket/window.rb:145
+msgid "Quit"
+msgstr "Quit"
+
+#: ../lib/blanket/sound_context_menu.rb:60
+msgid "Rename"
+msgstr ""
+
+#: ../lib/blanket/sound_context_menu.rb:65
+msgid "Remove"
+msgstr ""
+
+#: ../lib/blanket/sound_rename_dialog.rb:65
+#: ../lib/blanket/sound_rename_dialog.rb:81
+msgid "Rename Sound"
+msgstr ""
+
+#: ../lib/blanket/sound_rename_dialog.rb:97
+msgid "Sound Name"
+msgstr ""
+
+#: ../lib/blanket/window.rb:116
+msgid "Main Menu"
+msgstr ""
+
+#: ../lib/blanket/window.rb:132
+#, fuzzy
+msgid "Keep Playing when Closed"
+msgstr "Keep Playing When Closed"
+
+#: ../lib/blanket/window.rb:140
+msgid "About Blanket"
+msgstr "About Blanket"
+
+#: ../lib/blanket/window.rb:182
+msgid "Volume Menu"
+msgstr ""
+
+#: ../lib/blanket/window.rb:195
+#, fuzzy
+msgid "Sounds Menu"
+msgstr "Sounds by"
+
+#: ../lib/blanket/window.rb:209
+#, fuzzy
+msgid "Hide Inactive Sounds"
+msgstr "Included Sounds:"
+
+#: ../lib/blanket/window.rb:210
+#, fuzzy
+msgid "Save as New Preset…"
+msgstr "Save presets"
+
+#: ../lib/blanket/window.rb:215
+#, fuzzy
+msgid "Add Sound…"
+msgstr "Add Custom Sound…"
+
+#: ../lib/blanket/window.rb:235
+msgid "Reset Sounds"
+msgstr ""
+
+#: ../lib/blanket/window.rb:285
+msgid "Paused to save power"
+msgstr ""
+
+#: ../lib/blanket/window.rb:287
+msgid "_Resume Playing"
+msgstr ""
+
+#: ../lib/blanket/window.rb:313
+msgid "Open audio"
+msgstr "Open audio"
+
+#: ../lib/blanket/window.rb:397
+msgid "File not found"
+msgstr ""
+
+#: ../lib/blanket/window.rb:452
+msgid "Add…"
+msgstr ""
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/com.rafaelmardojai.Blanket.desktop.in:10
+#~ msgid "Concentrate;Focus;Noise;Productivity;Sleep;"
+#~ msgstr "Concentrate;Focus;Noise;Productivity;Sleep;"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:7
+#, fuzzy
+#~ msgid "Listen to ambient sounds"
+#~ msgstr "Listen to different sounds"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:9
+#, fuzzy
+#~ msgid ""
+#~ "Improve focus and increase your productivity by listening to different ambient"
+#~ " sounds"
+#~ msgstr "Improve focus and increase your productivity by listening to different sounds"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:10
+#~ msgid "Also can help you to fall asleep in a noisy environment."
+#~ msgstr "Also can help you to fall asleep in a noisy environment."
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:11
+#~ msgid "Features:"
+#~ msgstr "Features:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:13
+#~ msgid "Save presets"
+#~ msgstr "Save presets"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:14
+#~ msgid "Add custom sounds"
+#~ msgstr "Add custom sounds"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:15
+#~ msgid "Auto start in background"
+#~ msgstr "Auto start in background"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:16
+#~ msgid "MPRIS integration"
+#~ msgstr "MPRIS integration"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:18
+#, fuzzy
+#~ msgid "Included Sounds in the App:"
+#~ msgstr "Included Sounds:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:57
+#~ msgid "The default screen in light theme"
+#~ msgstr "The default screen in light theme"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:62
+#~ msgid "The default screen in dark theme"
+#~ msgstr "The default screen in dark theme"
+
+#. Translators: Keep single quote please!
+#: data/com.rafaelmardojai.Blanket.gschema.xml:45
+#~ msgctxt "visible-name"
+#~ msgid "'Default'"
+#~ msgstr "'Default'"
+
+#. Translators: Replace me with your names, You can make a mailto link: translator-name <user@domain.org>
+#: data/resources/about.blp:15
+#~ msgctxt "Add your names here, do not remove previous names!"
+#~ msgid "translator-credits"
+#~ msgstr "translator-credits"
+
+#: data/resources/window.blp:24
+#, fuzzy
+#~ msgid "Presets Menu"
+#~ msgstr "Presets"
+
+#: blanket/define.py:38
+#~ msgid "Noise"
+#~ msgstr "Noise"
+
+#: blanket/preferences.py:79
+#~ msgid "Autostart Blanket in background."
+#~ msgstr "Autostart Blanket in background."
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "Request error"
+#~ msgstr "Request error"
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "The autostart request failed."
+#~ msgstr "The autostart request failed."
+
+#: blanket/preferences.py:124
+#~ msgid "Authorization failed"
+#~ msgstr "Authorization failed"
+
+#: blanket/preferences.py:124
+#, fuzzy
+#~ msgid ""
+#~ "Make sure Blanket has permission to run in the background in Settings → Applic"
+#~ "ations → Blanket and try again."
+#~ msgstr ""
+#~ "Make sure Blanket has permission to run in \n"
+#~ "the background in Settings → Applications → \n"
+#~ "Blanket and try again."
+
+#~ msgid "Rafael Mardojai CM"
+#~ msgstr "Rafael Mardojai CM"
+#~ msgid "Keyboard Shortcus"
+#~ msgstr "Keyboard Shortcuts"
+#~ msgid "Add Preset…"
+#~ msgstr "Add Preset…"
+#~ msgid "Reset Volume Levels"
+#~ msgstr "Reset Volume Levels"
+#~ msgid "Add custom sound"
+#~ msgstr "Add custom sound"
+#~ msgid "Custom"
+#~ msgstr "Custom"
+#~ msgid "Add Preset"
+#~ msgstr "Add Preset"
+#~ msgid "Create"
+#~ msgstr "Create"

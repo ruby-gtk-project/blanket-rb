@@ -1,0 +1,410 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the blanket package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# Rafael Mardojai CM <mardojai.cardenas@gmail.com>, 2023
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: blanket\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-07 13:35+0000\n"
+"PO-Revision-Date: 2023-02-16 03:00+0000\n"
+"Last-Translator: Rafael Mardojai CM <mardojai.cardenas@gmail.com>, 2023\n"
+"Language-Team: Korean (https://app.transifex.com/rafaelmardojai/teams/135055/k"
+"o/)\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../lib/blanket/about_dialog.rb:19
+msgid "Source Code"
+msgstr ""
+
+#: ../lib/blanket/about_dialog.rb:20
+msgid "Sounds by"
+msgstr "사운드 제작"
+
+#: ../lib/blanket/about_dialog.rb:21
+msgid "Sounds edited by"
+msgstr "사운드 편집"
+
+#: ../lib/blanket/about_dialog.rb:29 ../lib/blanket/mpris.rb:221
+#: ../lib/blanket/mpris.rb:246 ../lib/blanket/window.rb:96
+msgid "Blanket"
+msgstr "Blanket"
+
+#: ../lib/blanket/about_dialog.rb:31 ../lib/blanket/mpris.rb:245
+msgid "Listen to different sounds"
+msgstr "다양한 소리를 들으세요"
+
+#: ../lib/blanket/about_dialog.rb:32
+#, fuzzy
+msgid "Copyright 2020-2022 Rafael Mardojai CM"
+msgstr "Copyright 2020-2021 Rafael Mardojai CM"
+
+#: ../lib/blanket/about_dialog.rb:42
+#, fuzzy
+msgid "translator-credits"
+msgstr "Moon Sungjoon <sumoon@seoulsaram.org>"
+
+#: ../lib/blanket/define.rb:31
+msgid "Nature"
+msgstr "자연"
+
+#: ../lib/blanket/define.rb:33 ../lib/blanket/define.rb:72
+#: ../lib/blanket/define.rb:91
+msgid "Rain"
+msgstr "비"
+
+#: ../lib/blanket/define.rb:34 ../lib/blanket/define.rb:73
+#: ../lib/blanket/define.rb:92
+msgid "Storm"
+msgstr "폭풍"
+
+#: ../lib/blanket/define.rb:35 ../lib/blanket/define.rb:84
+#: ../lib/blanket/define.rb:96
+msgid "Wind"
+msgstr "바람"
+
+#: ../lib/blanket/define.rb:36 ../lib/blanket/define.rb:81
+#: ../lib/blanket/define.rb:93
+msgid "Waves"
+msgstr "파도"
+
+#: ../lib/blanket/define.rb:37 ../lib/blanket/define.rb:77
+msgid "Stream"
+msgstr "개울"
+
+#: ../lib/blanket/define.rb:38 ../lib/blanket/define.rb:79
+#: ../lib/blanket/define.rb:90
+msgid "Birds"
+msgstr "새"
+
+#: ../lib/blanket/define.rb:39 ../lib/blanket/define.rb:80
+msgid "Summer Night"
+msgstr "여름 밤"
+
+#: ../lib/blanket/define.rb:43
+msgid "Travel"
+msgstr "여행"
+
+#: ../lib/blanket/define.rb:45 ../lib/blanket/define.rb:85
+msgid "Train"
+msgstr "기차"
+
+#: ../lib/blanket/define.rb:46 ../lib/blanket/define.rb:75
+#: ../lib/blanket/define.rb:94
+msgid "Boat"
+msgstr "배"
+
+#: ../lib/blanket/define.rb:47 ../lib/blanket/define.rb:76
+#: ../lib/blanket/define.rb:95
+msgid "City"
+msgstr "도시"
+
+#: ../lib/blanket/define.rb:51
+msgid "Interiors"
+msgstr "실내"
+
+#: ../lib/blanket/define.rb:53 ../lib/blanket/define.rb:82
+msgid "Coffee Shop"
+msgstr "카페"
+
+#: ../lib/blanket/define.rb:54 ../lib/blanket/define.rb:74
+msgid "Fireplace"
+msgstr "모닥불"
+
+#: ../lib/blanket/define.rb:60 ../lib/blanket/define.rb:83
+msgid "Pink Noise"
+msgstr "핑크 노이즈"
+
+#: ../lib/blanket/define.rb:61 ../lib/blanket/define.rb:78
+msgid "White Noise"
+msgstr "화이트 노이즈"
+
+#: ../lib/blanket/define.rb:67
+msgid "Sounds icons"
+msgstr "사운드 아이콘"
+
+#: ../lib/blanket/define.rb:68
+msgid "App icon"
+msgstr "앱 아이콘"
+
+#: ../lib/blanket/preferences_dialog.rb:65
+msgid "Appearance"
+msgstr "스타일"
+
+#: ../lib/blanket/preferences_dialog.rb:70
+msgid "Behavior"
+msgstr "동작"
+
+#: ../lib/blanket/preferences_dialog.rb:74
+msgid "Dark Mode"
+msgstr "다크 모드"
+
+#: ../lib/blanket/preferences_dialog.rb:79
+#, fuzzy
+msgid "Autostart in Background"
+msgstr "백그라운드에서 자동 시작"
+
+#: ../lib/blanket/preferences_dialog.rb:83
+msgid "Always Start on Pause"
+msgstr ""
+
+#: ../lib/blanket/preferences_dialog.rb:95
+msgid "Inhibit suspension while playing"
+msgstr ""
+
+#: ../lib/blanket/preset_dialog.rb:81 ../lib/blanket/sound_rename_dialog.rb:83
+msgid "Cancel"
+msgstr "취소"
+
+#: ../lib/blanket/preset_dialog.rb:84 ../lib/blanket/sound_rename_dialog.rb:86
+msgid "Save"
+msgstr "저장"
+
+#: ../lib/blanket/preset_dialog.rb:95
+msgid "Preset Name"
+msgstr "사전 설정 이름"
+
+#: ../lib/blanket/preset_dialog.rb:109
+msgid "Edit Preset"
+msgstr "사전 설정 수정"
+
+#: ../lib/blanket/preset_dialog.rb:111
+#, fuzzy
+msgid "New Preset"
+msgstr "사전 설정"
+
+#: ../lib/blanket/preset_row.rb:101
+msgid "Rename Preset"
+msgstr "사전 설정 이름 바꾸기"
+
+#: ../lib/blanket/preset_row.rb:110
+msgid "Delete Preset"
+msgstr "사전 설정 삭제"
+
+#: ../lib/blanket/shortcuts_dialog.rb:18
+msgid "General"
+msgstr "일반"
+
+#: ../lib/blanket/shortcuts_dialog.rb:19
+#, fuzzy
+msgid "Play/Pause Sounds"
+msgstr "재생/일시 정지"
+
+#: ../lib/blanket/shortcuts_dialog.rb:20
+#, fuzzy
+msgid "Add Custom Sound"
+msgstr "사용자 지정 소리 추가…"
+
+#: ../lib/blanket/shortcuts_dialog.rb:21
+#, fuzzy
+msgid "Close Window"
+msgstr "창 닫기"
+
+#: ../lib/blanket/shortcuts_dialog.rb:22 ../lib/blanket/window.rb:138
+msgid "Preferences"
+msgstr "환경설정"
+
+#: ../lib/blanket/shortcuts_dialog.rb:23 ../lib/blanket/shortcuts_dialog.rb:38
+#: ../lib/blanket/window.rb:139
+msgid "Keyboard Shortcuts"
+msgstr "키보드 단축키"
+
+#: ../lib/blanket/shortcuts_dialog.rb:24 ../lib/blanket/window.rb:145
+msgid "Quit"
+msgstr "종료"
+
+#: ../lib/blanket/sound_context_menu.rb:60
+msgid "Rename"
+msgstr ""
+
+#: ../lib/blanket/sound_context_menu.rb:65
+msgid "Remove"
+msgstr ""
+
+#: ../lib/blanket/sound_rename_dialog.rb:65
+#: ../lib/blanket/sound_rename_dialog.rb:81
+msgid "Rename Sound"
+msgstr ""
+
+#: ../lib/blanket/sound_rename_dialog.rb:97
+msgid "Sound Name"
+msgstr ""
+
+#: ../lib/blanket/window.rb:116
+msgid "Main Menu"
+msgstr ""
+
+#: ../lib/blanket/window.rb:132
+#, fuzzy
+msgid "Keep Playing when Closed"
+msgstr "닫기 후에도 계속 재생"
+
+#: ../lib/blanket/window.rb:140
+msgid "About Blanket"
+msgstr "Blanket 정보"
+
+#: ../lib/blanket/window.rb:182
+msgid "Volume Menu"
+msgstr ""
+
+#: ../lib/blanket/window.rb:195
+#, fuzzy
+msgid "Sounds Menu"
+msgstr "사운드 제작"
+
+#: ../lib/blanket/window.rb:209
+#, fuzzy
+msgid "Hide Inactive Sounds"
+msgstr "내장된 소리:"
+
+#: ../lib/blanket/window.rb:210
+#, fuzzy
+msgid "Save as New Preset…"
+msgstr "사전 설정 저장"
+
+#: ../lib/blanket/window.rb:215
+#, fuzzy
+msgid "Add Sound…"
+msgstr "사용자 지정 소리 추가…"
+
+#: ../lib/blanket/window.rb:235
+msgid "Reset Sounds"
+msgstr ""
+
+#: ../lib/blanket/window.rb:285
+msgid "Paused to save power"
+msgstr ""
+
+#: ../lib/blanket/window.rb:287
+msgid "_Resume Playing"
+msgstr ""
+
+#: ../lib/blanket/window.rb:313
+msgid "Open audio"
+msgstr "오디오 열기"
+
+#: ../lib/blanket/window.rb:397
+msgid "File not found"
+msgstr ""
+
+#: ../lib/blanket/window.rb:452
+msgid "Add…"
+msgstr ""
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/com.rafaelmardojai.Blanket.desktop.in:10
+#~ msgid "Concentrate;Focus;Noise;Productivity;Sleep;"
+#~ msgstr "Concentrate;Focus;Noise;Productivity;Sleep;"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:7
+#, fuzzy
+#~ msgid "Listen to ambient sounds"
+#~ msgstr "다양한 소리를 들으세요"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:9
+#, fuzzy
+#~ msgid ""
+#~ "Improve focus and increase your productivity by listening to different ambient"
+#~ " sounds"
+#~ msgstr "다양한 소리를 들으며 집중력과 생산성을 향상해 줍니다."
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:10
+#~ msgid "Also can help you to fall asleep in a noisy environment."
+#~ msgstr "시끄러운 환경에서 잠드는 것 또한 도와줍니다."
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:11
+#~ msgid "Features:"
+#~ msgstr "기능:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:13
+#~ msgid "Save presets"
+#~ msgstr "사전 설정 저장"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:14
+#~ msgid "Add custom sounds"
+#~ msgstr "사용자 지정 사운드 추가"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:15
+#~ msgid "Auto start in background"
+#~ msgstr "백그라운드에서 자동 시작"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:16
+#~ msgid "MPRIS integration"
+#~ msgstr "MPRIS 통합"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:18
+#, fuzzy
+#~ msgid "Included Sounds in the App:"
+#~ msgstr "내장된 소리:"
+
+#. Translators: Keep single quote please!
+#: data/com.rafaelmardojai.Blanket.gschema.xml:45
+#~ msgctxt "visible-name"
+#~ msgid "'Default'"
+#~ msgstr "'기본'"
+
+#. Translators: Replace me with your names, You can make a mailto link: translator-name <user@domain.org>
+#: data/resources/about.blp:15
+#~ msgctxt "Add your names here, do not remove previous names!"
+#~ msgid "translator-credits"
+#~ msgstr "Moon Sungjoon <sumoon@seoulsaram.org>"
+
+#: data/resources/window.blp:24
+#, fuzzy
+#~ msgid "Presets Menu"
+#~ msgstr "사전 설정"
+
+#: blanket/define.py:38
+#~ msgid "Noise"
+#~ msgstr "노이즈"
+
+#: blanket/preferences.py:79
+#~ msgid "Autostart Blanket in background."
+#~ msgstr "Blanket을 백그라운드에서 자동 시작합니다."
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "Request error"
+#~ msgstr "요청 오류"
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "The autostart request failed."
+#~ msgstr "자동 시작 요청을 실패했습니다."
+
+#: blanket/preferences.py:124
+#~ msgid "Authorization failed"
+#~ msgstr "인증 오류"
+
+#: blanket/preferences.py:124
+#, fuzzy
+#~ msgid ""
+#~ "Make sure Blanket has permission to run in the background in Settings → Applic"
+#~ "ations → Blanket and try again."
+#~ msgstr ""
+#~ "설정 → 애플리케이션 → Blanket 에서\n"
+#~ "백그라운드 실행 권한이 있는 지 확인하고\n"
+#~ "다시 시도 해 주세요."
+
+#~ msgid "Rafael Mardojai CM"
+#~ msgstr "Rafael Mardojai CM"
+#~ msgid "Keyboard Shortcus"
+#~ msgstr "키보드 단축키"
+#~ msgid "Add Preset…"
+#~ msgstr "사전 설정 추가…"
+#~ msgid "Reset Volume Levels"
+#~ msgstr "음량 초기화"
+#~ msgid "Add custom sound"
+#~ msgstr "사용자 지정 사운드 추가"
+#~ msgid "Custom"
+#~ msgstr "사용자 지정"
+#~ msgid "Add Preset"
+#~ msgstr "프리셋 추가"
+#~ msgid "Create"
+#~ msgstr "생성"

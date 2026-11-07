@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "adwaita"
+require_relative "i18n"
 require_relative "settings"
 
 module Blanket
@@ -20,6 +21,8 @@ module Blanket
   # start-paused and inhibit-suspension already do; it grants no background
   # permission the portal would otherwise have to confirm.
   class PreferencesDialog
+    include GetText
+
     def initialize(window)
       @window = window
     end
@@ -59,25 +62,25 @@ module Blanket
 
     def dark_group
       @dark_group ||= Adwaita::PreferencesGroup.new.tap do |grp|
-        grp.title = "Appearance"
+        grp.title = _("Appearance")
         grp.visible = !Adwaita::StyleManager.default.system_supports_color_schemes?
       end
     end
 
-    def behavior_group = @behavior_group ||= Adwaita::PreferencesGroup.new.tap { |grp| grp.title = "Behavior" }
+    def behavior_group = @behavior_group ||= Adwaita::PreferencesGroup.new.tap { |grp| grp.title = _("Behavior") }
 
     def dark_row
       @dark_row ||= Adwaita::SwitchRow.new.tap do |row|
-        row.title = "Dark Mode"
+        row.title = _("Dark Mode")
         row.active = Settings.get.dark_mode
       end
     end
 
-    def autostart_row = @autostart_row ||= Adwaita::SwitchRow.new.tap { |row| row.title = "Autostart in Background" }
+    def autostart_row = @autostart_row ||= Adwaita::SwitchRow.new.tap { |row| row.title = _("Autostart in Background") }
 
     def start_paused_row
       @start_paused_row ||= Adwaita::SwitchRow.new.tap do |row|
-        row.title = "Always Start on Pause"
+        row.title = _("Always Start on Pause")
         Settings.get.settings.bind(
           "start-paused",
           row,
@@ -89,7 +92,7 @@ module Blanket
 
     def inhibition_row
       @inhibition_row ||= Adwaita::SwitchRow.new.tap do |row|
-        row.title = "Inhibit suspension while playing"
+        row.title = _("Inhibit suspension while playing")
         Settings.get.settings.bind(
           "inhibit-suspension",
           row,

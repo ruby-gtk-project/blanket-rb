@@ -1,0 +1,420 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the blanket package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# Rafael Mardojai CM <mardojai.cardenas@gmail.com>, 2023
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: blanket\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-07 13:35+0000\n"
+"PO-Revision-Date: 2025-10-11 17:07+0000\n"
+"Last-Translator: Archisman Panigrahi <apandada1@gmail.com>\n"
+"Language-Team: Bengali <https://hosted.weblate.org/projects/blanket/blanket/bn"
+"/>\n"
+"Language: bn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Weblate 5.14-dev\n"
+
+#: ../lib/blanket/about_dialog.rb:19
+msgid "Source Code"
+msgstr "সোর্স কোড"
+
+#: ../lib/blanket/about_dialog.rb:20
+msgid "Sounds by"
+msgstr "শব্দের কৃতিত্ব"
+
+#: ../lib/blanket/about_dialog.rb:21
+msgid "Sounds edited by"
+msgstr "শব্দ সম্পাদনায়"
+
+#: ../lib/blanket/about_dialog.rb:29 ../lib/blanket/mpris.rb:221
+#: ../lib/blanket/mpris.rb:246 ../lib/blanket/window.rb:96
+msgid "Blanket"
+msgstr "ব্ল্যাঙ্কেট"
+
+#: ../lib/blanket/about_dialog.rb:31 ../lib/blanket/mpris.rb:245
+msgid "Listen to different sounds"
+msgstr "বিভিন্ন ধরনের শব্দ শুনুন"
+
+#: ../lib/blanket/about_dialog.rb:32
+msgid "Copyright 2020-2022 Rafael Mardojai CM"
+msgstr "স্বত্বাধিকার 2020-2022 রাফায়েল মার্দোহাই সিএম"
+
+#: ../lib/blanket/about_dialog.rb:42
+#, fuzzy
+msgid "translator-credits"
+msgstr "অনুবাদ-কৃতিত্ব"
+
+#: ../lib/blanket/define.rb:31
+msgid "Nature"
+msgstr "প্রকৃতি"
+
+#: ../lib/blanket/define.rb:33 ../lib/blanket/define.rb:72
+#: ../lib/blanket/define.rb:91
+msgid "Rain"
+msgstr "বৃষ্টি"
+
+#: ../lib/blanket/define.rb:34 ../lib/blanket/define.rb:73
+#: ../lib/blanket/define.rb:92
+msgid "Storm"
+msgstr "ঝড়"
+
+#: ../lib/blanket/define.rb:35 ../lib/blanket/define.rb:84
+#: ../lib/blanket/define.rb:96
+msgid "Wind"
+msgstr "বাতাস"
+
+#: ../lib/blanket/define.rb:36 ../lib/blanket/define.rb:81
+#: ../lib/blanket/define.rb:93
+msgid "Waves"
+msgstr "ঊর্মিমালা"
+
+#: ../lib/blanket/define.rb:37 ../lib/blanket/define.rb:77
+msgid "Stream"
+msgstr "ছোট্ট জলস্রোত"
+
+#: ../lib/blanket/define.rb:38 ../lib/blanket/define.rb:79
+#: ../lib/blanket/define.rb:90
+msgid "Birds"
+msgstr "পাখি"
+
+#: ../lib/blanket/define.rb:39 ../lib/blanket/define.rb:80
+msgid "Summer Night"
+msgstr "গ্রীষ্মের রাত"
+
+#: ../lib/blanket/define.rb:43
+msgid "Travel"
+msgstr "ভ্রমণ"
+
+#: ../lib/blanket/define.rb:45 ../lib/blanket/define.rb:85
+msgid "Train"
+msgstr "রেলগাড়ি"
+
+#: ../lib/blanket/define.rb:46 ../lib/blanket/define.rb:75
+#: ../lib/blanket/define.rb:94
+msgid "Boat"
+msgstr "নৌকা"
+
+#: ../lib/blanket/define.rb:47 ../lib/blanket/define.rb:76
+#: ../lib/blanket/define.rb:95
+msgid "City"
+msgstr "শহর"
+
+#: ../lib/blanket/define.rb:51
+msgid "Interiors"
+msgstr "অন্দরমহল"
+
+#: ../lib/blanket/define.rb:53 ../lib/blanket/define.rb:82
+msgid "Coffee Shop"
+msgstr "কফির দোকান"
+
+#: ../lib/blanket/define.rb:54 ../lib/blanket/define.rb:74
+msgid "Fireplace"
+msgstr "চুল্লি"
+
+#: ../lib/blanket/define.rb:60 ../lib/blanket/define.rb:83
+msgid "Pink Noise"
+msgstr "গোলাপি ধ্বনি"
+
+#: ../lib/blanket/define.rb:61 ../lib/blanket/define.rb:78
+msgid "White Noise"
+msgstr "সাদা ধ্বনি"
+
+#: ../lib/blanket/define.rb:67
+msgid "Sounds icons"
+msgstr "শব্দের চিহ্ন"
+
+#: ../lib/blanket/define.rb:68
+msgid "App icon"
+msgstr "অ্যাপের চিহ্ন"
+
+#: ../lib/blanket/preferences_dialog.rb:65
+msgid "Appearance"
+msgstr "রূপ"
+
+#: ../lib/blanket/preferences_dialog.rb:70
+msgid "Behavior"
+msgstr "আচরণ"
+
+#: ../lib/blanket/preferences_dialog.rb:74
+msgid "Dark Mode"
+msgstr "ডার্ক মোড"
+
+#: ../lib/blanket/preferences_dialog.rb:79
+msgid "Autostart in Background"
+msgstr "ব্যাকগ্রাউন্ডে অটো স্টার্ট"
+
+#: ../lib/blanket/preferences_dialog.rb:83
+msgid "Always Start on Pause"
+msgstr "বিরত অবস্থায় শুরু করুন"
+
+#: ../lib/blanket/preferences_dialog.rb:95
+msgid "Inhibit suspension while playing"
+msgstr ""
+
+#: ../lib/blanket/preset_dialog.rb:81 ../lib/blanket/sound_rename_dialog.rb:83
+msgid "Cancel"
+msgstr "বাতিল"
+
+#: ../lib/blanket/preset_dialog.rb:84 ../lib/blanket/sound_rename_dialog.rb:86
+msgid "Save"
+msgstr "সেভ"
+
+#: ../lib/blanket/preset_dialog.rb:95
+msgid "Preset Name"
+msgstr "প্রিসেটের নাম"
+
+#: ../lib/blanket/preset_dialog.rb:109
+msgid "Edit Preset"
+msgstr "প্রিসেট সম্পাদনা"
+
+#: ../lib/blanket/preset_dialog.rb:111
+msgid "New Preset"
+msgstr "নতুন প্রিসেট"
+
+#: ../lib/blanket/preset_row.rb:101
+msgid "Rename Preset"
+msgstr "প্রিসেটের নাম বদল"
+
+#: ../lib/blanket/preset_row.rb:110
+msgid "Delete Preset"
+msgstr "প্রিসেট ডিলিট"
+
+#: ../lib/blanket/shortcuts_dialog.rb:18
+msgid "General"
+msgstr "সবরকম"
+
+#: ../lib/blanket/shortcuts_dialog.rb:19
+msgid "Play/Pause Sounds"
+msgstr "শব্দ চালু/বিরতি"
+
+#: ../lib/blanket/shortcuts_dialog.rb:20
+msgid "Add Custom Sound"
+msgstr "নিজের মতো শব্দ যোগ"
+
+#: ../lib/blanket/shortcuts_dialog.rb:21
+msgid "Close Window"
+msgstr "উইন্ডো বন্ধ"
+
+#: ../lib/blanket/shortcuts_dialog.rb:22 ../lib/blanket/window.rb:138
+msgid "Preferences"
+msgstr "পছন্দসমূহ"
+
+#: ../lib/blanket/shortcuts_dialog.rb:23 ../lib/blanket/shortcuts_dialog.rb:38
+#: ../lib/blanket/window.rb:139
+msgid "Keyboard Shortcuts"
+msgstr "কীবোর্ড শর্টকাট"
+
+#: ../lib/blanket/shortcuts_dialog.rb:24 ../lib/blanket/window.rb:145
+msgid "Quit"
+msgstr "প্রস্থান"
+
+#: ../lib/blanket/sound_context_menu.rb:60
+msgid "Rename"
+msgstr ""
+
+#: ../lib/blanket/sound_context_menu.rb:65
+msgid "Remove"
+msgstr "মুছে ফেলা"
+
+#: ../lib/blanket/sound_rename_dialog.rb:65
+#: ../lib/blanket/sound_rename_dialog.rb:81
+msgid "Rename Sound"
+msgstr ""
+
+#: ../lib/blanket/sound_rename_dialog.rb:97
+msgid "Sound Name"
+msgstr ""
+
+#: ../lib/blanket/window.rb:116
+msgid "Main Menu"
+msgstr "মূল বিভাগ"
+
+#: ../lib/blanket/window.rb:132
+msgid "Keep Playing when Closed"
+msgstr "বন্ধ করা হলেও শব্দ চালু থাক"
+
+#: ../lib/blanket/window.rb:140
+msgid "About Blanket"
+msgstr "ব্ল্যাঙ্কেট সম্বন্ধে"
+
+#: ../lib/blanket/window.rb:182
+msgid "Volume Menu"
+msgstr "শব্দের মাত্রা"
+
+#: ../lib/blanket/window.rb:195
+msgid "Sounds Menu"
+msgstr "বিভিন্ন শব্দ"
+
+#: ../lib/blanket/window.rb:209
+msgid "Hide Inactive Sounds"
+msgstr "নিষ্ক্রিয় শব্দসমূহ"
+
+#: ../lib/blanket/window.rb:210
+msgid "Save as New Preset…"
+msgstr "প্রিসেট সেভ…"
+
+#: ../lib/blanket/window.rb:215
+msgid "Add Sound…"
+msgstr "নিজের মতো শব্দ যোগ…"
+
+#: ../lib/blanket/window.rb:235
+msgid "Reset Sounds"
+msgstr "সমস্ত শব্দ পুনস্থাপন করুন"
+
+#: ../lib/blanket/window.rb:285
+msgid "Paused to save power"
+msgstr "ব্যাটারি বাঁচাতে বিরতি"
+
+#: ../lib/blanket/window.rb:287
+msgid "_Resume Playing"
+msgstr "_পুনরায় শব্দ চালু"
+
+#: ../lib/blanket/window.rb:313
+msgid "Open audio"
+msgstr "শব্দটি খুলুন"
+
+#: ../lib/blanket/window.rb:397
+msgid "File not found"
+msgstr ""
+
+#: ../lib/blanket/window.rb:452
+msgid "Add…"
+msgstr "যোগ করুন…"
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/com.rafaelmardojai.Blanket.desktop.in:10
+#~ msgid "Concentrate;Focus;Noise;Productivity;Sleep;"
+#~ msgstr "মনোনিবেশ;একাগ্রতা;শব্দ;কার্যক্ষমতা;ঘুম;"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:7
+#~ msgid "Listen to ambient sounds"
+#~ msgstr "বিভিন্ন পারিপার্শ্বিক শব্দ শুনুন"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:9
+#~ msgid ""
+#~ "Improve focus and increase your productivity by listening to different ambient"
+#~ " sounds"
+#~ msgstr "বিভিন্ন ধরনের শব্দ শুনে আপনার মনোযোগ এবং কার্যক্ষমতা বাড়িয়ে তুলুন"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:10
+#~ msgid "Also can help you to fall asleep in a noisy environment."
+#~ msgstr "এছাড়াও কোলাহলপূর্ণ পরিবেশে আপনাকে দ্রুত ঘুমিয়ে পড়তে সাহায্য করে।"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:11
+#~ msgid "Features:"
+#~ msgstr "বৈশিষ্ট্য:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:13
+#~ msgid "Save presets"
+#~ msgstr "প্রিসেট সেভ করুন"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:14
+#~ msgid "Add custom sounds"
+#~ msgstr "নিজের মতো শব্দ যোগ করুন"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:15
+#~ msgid "Auto start in background"
+#~ msgstr "ব্যাকগ্রাউন্ডে অটো স্টার্ট করুন"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:16
+#~ msgid "MPRIS integration"
+#~ msgstr "MPRIS সংযুক্তিকরণ"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:18
+#~ msgid "Included Sounds in the App:"
+#~ msgstr "অন্তর্ভুক্ত শব্দগুলি:"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:57
+#~ msgid "The default screen in light theme"
+#~ msgstr "হালকা থিমে ডিফল্ট স্ক্রিন"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:62
+#~ msgid "The default screen in dark theme"
+#~ msgstr "গাঢ় থিমে ডিফল্ট স্ক্রীন"
+
+#. Translators: Keep single quote please!
+#: data/com.rafaelmardojai.Blanket.gschema.xml:45
+#~ msgctxt "visible-name"
+#~ msgid "'Default'"
+#~ msgstr "'পূর্বনির্ধারিত'"
+
+#. Translators: Replace me with your names, You can make a mailto link: translator-name <user@domain.org>
+#: data/resources/about.blp:15
+#~ msgctxt "Add your names here, do not remove previous names!"
+#~ msgid "translator-credits"
+#~ msgstr "অনুবাদ-কৃতিত্ব"
+
+#: data/resources/window.blp:24
+#~ msgid "Presets Menu"
+#~ msgstr "প্রিসেট মেনু"
+
+#: blanket/define.py:38
+#~ msgid "Noise"
+#~ msgstr "ধ্বনি"
+
+#: blanket/preferences.py:79
+#~ msgid "Autostart Blanket in background."
+#~ msgstr "ব্ল্যাঙ্কেটকে ব্যাকগ্রাউন্ডে অটো স্টার্ট করুন।"
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "Request error"
+#~ msgstr "প্রচেষ্টা ব্যর্থ"
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "The autostart request failed."
+#~ msgstr "অটো স্টার্ট প্রচেষ্টা ব্যর্থ হয়েছে।"
+
+#: blanket/preferences.py:108 blanket/preferences.py:125
+#: blanket/preferences.py:129
+#~ msgid "Ok"
+#~ msgstr "আচ্ছা"
+
+#: blanket/preferences.py:124
+#~ msgid "Authorization failed"
+#~ msgstr "অনুমোদন ব্যর্থ হয়েছে"
+
+#: blanket/preferences.py:124
+#~ msgid ""
+#~ "Make sure Blanket has permission to run in the background in Settings → Applic"
+#~ "ations → Blanket and try again."
+#~ msgstr ""
+#~ "ব্ল্যাঙ্কেটের ব্যাকগ্রাউন্ডে চলার অনুমতি আছে কিনা তা সেটিংস → অ্যাপ্লিকেশন থেক"
+#~ "ে নিশ্চিত করুন এবং পুনরায় চেষ্টা করুন।"
+
+#: blanket/window.py:133
+#~ msgid "Sound Automatically Removed"
+#~ msgstr "শব্দটি মুছে দেওয়া হয়েছে"
+
+#: blanket/window.py:135
+#, python-brace-format
+#~ msgid "The {name} sound is no longer accessible, so it has been removed"
+#~ msgstr "{name} শব্দটি খুঁজে পাওয়া যাচ্ছে না, তাই দেখানো হল না"
+
+#: blanket/window.py:138
+#~ msgid "Accept"
+#~ msgstr "আচ্ছা, বেশ"
+
+#~ msgid "Rafael Mardojai CM"
+#~ msgstr "রাফায়েল মার্দোহাই সিএম"
+#~ msgid "Keyboard Shortcus"
+#~ msgstr "কীবোর্ড শর্টকাট"
+#~ msgid "Add Preset…"
+#~ msgstr "প্রিসেট যোগ করুন..."
+#~ msgid "Reset Volume Levels"
+#~ msgstr "ভলিউম লেভেল রিসেট করুন"
+#~ msgid "Add custom sound"
+#~ msgstr "কাস্টম সাউন্ড যোগ করুন"
+#~ msgid "Custom"
+#~ msgstr "কাস্টম"
+#~ msgid "Add Preset"
+#~ msgstr "প্রিসেট যোগ করুন"
+#~ msgid "Create"
+#~ msgstr "তৈরি করুন"

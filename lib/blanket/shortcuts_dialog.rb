@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "adwaita"
+require_relative "i18n"
 
 module Blanket
   # Ported from data/resources/shortcuts.blp.
@@ -11,14 +12,16 @@ module Blanket
   # bindings take positionally and it keeps the dialog readable without an
   # application instance. The accelerators are the ones main.py binds.
   class ShortcutsDialog
+    include GetText
+
     SECTIONS = {
-      "General" => [
-        ["Play/Pause Sounds", "<Control>m"],
-        ["Add Custom Sound", "<Control>o"],
-        ["Close Window", "<Control>w"],
-        ["Preferences", "<Control>comma"],
-        ["Keyboard Shortcuts", "<Control>question"],
-        ["Quit", "<Control>q"],
+      _("General") => [
+        [_("Play/Pause Sounds"), "<Control>m"],
+        [_("Add Custom Sound"), "<Control>o"],
+        [_("Close Window"), "<Control>w"],
+        [_("Preferences"), "<Control>comma"],
+        [_("Keyboard Shortcuts"), "<Control>question"],
+        [_("Quit"), "<Control>q"],
       ],
     }.freeze
 
@@ -32,7 +35,7 @@ module Blanket
 
     def present(parent) = build.present(parent)
 
-    def dialog = @dialog ||= Adwaita::ShortcutsDialog.new.tap { |dlg| dlg.title = "Keyboard Shortcuts" }
+    def dialog = @dialog ||= Adwaita::ShortcutsDialog.new.tap { |dlg| dlg.title = _("Keyboard Shortcuts") }
 
     private
 

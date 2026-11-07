@@ -73,6 +73,12 @@ module Blanket
 
     def mpris = @mpris ||= Mpris.new(self)
 
+    def power_monitor
+      @power_monitor ||= Gio::PowerProfileMonitor.dup_default.tap do |monitor|
+        monitor.signal_connect("notify::power-saver-enabled") { on_power_saver_enabled }
+      end
+    end
+
     def quit_action
       @quit_action ||= Gio::SimpleAction.new("quit", nil).tap do |action|
         action.signal_connect("activate") { on_quit }
@@ -194,6 +200,8 @@ module Blanket
 
         mpris.build
 
+        power_monitor
+
         [
           quit_action,
           about_action,
@@ -292,6 +300,18 @@ module Blanket
               on_space_reset: -> { set_space_accel },
             ).present(blanket_window.window)
           end
+        end
+      end
+
+      # Ported from main.py's _on_notify_power_saver_enabled: pauses
+      # playback when the system enters power saver mode, since audio
+      # playback uses quite a lot of power. Playback is never resumed
+      # automatically when power saver mode ends, as that would be
+      # jarring for the user.
+      def on_power_saver_enabled
+        if power_monitor.power_saver_enabled? && MainPlayer.get.playing?
+          MainPlayer.get.playing = false
+          blanket_window.show_power_toast
         end
       end
 

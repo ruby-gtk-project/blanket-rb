@@ -2,6 +2,7 @@
 
 require "adwaita"
 require_relative "define"
+require_relative "i18n"
 
 module Blanket
   # Ported from data/resources/about.blp and main.py's on_about.
@@ -11,11 +12,13 @@ module Blanket
   # credit sections in code. There is no .ui file here, so all of it is set in
   # one place.
   class AboutDialog
+    include GetText
+
     def build
       dialog.tap do |dlg|
-        dlg.add_link("Source Code", "https://github.com/rafaelmardojai/blanket")
-        dlg.add_credit_section("Sounds by", Define.credits_list(Define::SOUND_ARTISTS))
-        dlg.add_credit_section("Sounds edited by", Define.credits_list(Define::SOUND_EDITORS))
+        dlg.add_link(_("Source Code"), "https://github.com/rafaelmardojai/blanket")
+        dlg.add_credit_section(_("Sounds by"), Define.credits_list(Define::SOUND_ARTISTS))
+        dlg.add_credit_section(_("Sounds edited by"), Define.credits_list(Define::SOUND_EDITORS))
       end
     end
 
@@ -23,10 +26,10 @@ module Blanket
 
     def dialog
       @dialog ||= Adwaita::AboutDialog.new.tap do |dlg|
-        dlg.application_name = "Blanket"
+        dlg.application_name = _("Blanket")
         dlg.application_icon = Define::APP_ID
-        dlg.comments = "Listen to different sounds"
-        dlg.copyright = "Copyright 2020-2022 Rafael Mardojai CM"
+        dlg.comments = _("Listen to different sounds")
+        dlg.copyright = _("Copyright 2020-2022 Rafael Mardojai CM")
         dlg.developer_name = "Rafael Mardojai CM"
         dlg.developers = Define::AUTHORS
         dlg.designers = Define.credits_list(Define::ARTISTS)
@@ -36,7 +39,7 @@ module Blanket
         dlg.version = Define::VERSION
         # Upstream's string is the gettext "translator-credits" marker, which
         # each catalogue replaces with its translators' names.
-        dlg.translator_credits = "translator-credits"
+        dlg.translator_credits = _("translator-credits")
       end
     end
   end

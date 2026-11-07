@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "adwaita"
+require_relative "i18n"
 require_relative "settings"
 
 module Blanket
@@ -16,6 +17,8 @@ module Blanket
   # toggle playback; `on_space_unset`/`on_space_reset` arrive as callbacks
   # here so this dialog never has to know about the application object.
   class SoundRenameDialog
+    include GetText
+
     def initialize(sound, index, on_space_unset: nil, on_space_reset: nil)
       @sound = sound
       @index = index
@@ -59,7 +62,7 @@ module Blanket
 
     def dialog
       @dialog ||= Adwaita::Dialog.new.tap do |dlg|
-        dlg.title = "Rename Sound"
+        dlg.title = _("Rename Sound")
         dlg.width_request = 360
         dlg.height_request = 148
         dlg.focus_widget = name_row
@@ -75,12 +78,12 @@ module Blanket
       end
     end
 
-    def title_widget = @title_widget ||= Adwaita::WindowTitle.new("Rename Sound", @sound.name)
+    def title_widget = @title_widget ||= Adwaita::WindowTitle.new(_("Rename Sound"), @sound.name)
 
-    def cancel_button = @cancel_button ||= Gtk::Button.new(label: "Cancel")
+    def cancel_button = @cancel_button ||= Gtk::Button.new(label: _("Cancel"))
 
     def accept_button
-      @accept_button ||= Gtk::Button.new(label: "Save").tap do |button|
+      @accept_button ||= Gtk::Button.new(label: _("Save")).tap do |button|
         button.sensitive = false
         button.add_css_class("suggested-action")
       end
@@ -91,7 +94,7 @@ module Blanket
 
     def name_row
       @name_row ||= Adwaita::EntryRow.new.tap do |row|
-        row.title = "Sound Name"
+        row.title = _("Sound Name")
         row.selectable = false
         row.text = @sound.name
       end

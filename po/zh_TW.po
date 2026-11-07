@@ -1,0 +1,410 @@
+# Traditional Chinese translations for blanket package.
+# Copyright (C) 2022 THE BLANKET'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the blanket package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: blanket\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-07 13:35+0000\n"
+"PO-Revision-Date: 2026-06-01 08:01+0000\n"
+"Last-Translator: hugoalh <hugoalh@users.noreply.hosted.weblate.org>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/pr"
+"ojects/blanket/blanket/zh_Hant/>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2026.6\n"
+
+#: ../lib/blanket/about_dialog.rb:19
+msgid "Source Code"
+msgstr "原始碼"
+
+#: ../lib/blanket/about_dialog.rb:20
+msgid "Sounds by"
+msgstr "聲音提供"
+
+#: ../lib/blanket/about_dialog.rb:21
+msgid "Sounds edited by"
+msgstr "聲音剪輯"
+
+#: ../lib/blanket/about_dialog.rb:29 ../lib/blanket/mpris.rb:221
+#: ../lib/blanket/mpris.rb:246 ../lib/blanket/window.rb:96
+msgid "Blanket"
+msgstr "Blanket"
+
+#: ../lib/blanket/about_dialog.rb:31 ../lib/blanket/mpris.rb:245
+msgid "Listen to different sounds"
+msgstr "聆聽不同的聲音"
+
+#: ../lib/blanket/about_dialog.rb:32
+#, fuzzy
+msgid "Copyright 2020-2022 Rafael Mardojai CM"
+msgstr "Copyright 2020-2021 Rafael Mardojai CM"
+
+#: ../lib/blanket/about_dialog.rb:42
+#, fuzzy
+msgid "translator-credits"
+msgstr "farmer87 <richard.chu.kh@gmail.com>"
+
+#: ../lib/blanket/define.rb:31
+msgid "Nature"
+msgstr "自然"
+
+#: ../lib/blanket/define.rb:33 ../lib/blanket/define.rb:72
+#: ../lib/blanket/define.rb:91
+msgid "Rain"
+msgstr "下雨"
+
+#: ../lib/blanket/define.rb:34 ../lib/blanket/define.rb:73
+#: ../lib/blanket/define.rb:92
+msgid "Storm"
+msgstr "暴風"
+
+#: ../lib/blanket/define.rb:35 ../lib/blanket/define.rb:84
+#: ../lib/blanket/define.rb:96
+msgid "Wind"
+msgstr "風吹"
+
+#: ../lib/blanket/define.rb:36 ../lib/blanket/define.rb:81
+#: ../lib/blanket/define.rb:93
+msgid "Waves"
+msgstr "波浪"
+
+#: ../lib/blanket/define.rb:37 ../lib/blanket/define.rb:77
+msgid "Stream"
+msgstr "水流"
+
+#: ../lib/blanket/define.rb:38 ../lib/blanket/define.rb:79
+#: ../lib/blanket/define.rb:90
+msgid "Birds"
+msgstr "鳥鳴"
+
+#: ../lib/blanket/define.rb:39 ../lib/blanket/define.rb:80
+msgid "Summer Night"
+msgstr "夏夜"
+
+#: ../lib/blanket/define.rb:43
+msgid "Travel"
+msgstr "旅行"
+
+#: ../lib/blanket/define.rb:45 ../lib/blanket/define.rb:85
+msgid "Train"
+msgstr "火車"
+
+#: ../lib/blanket/define.rb:46 ../lib/blanket/define.rb:75
+#: ../lib/blanket/define.rb:94
+msgid "Boat"
+msgstr "船隻"
+
+#: ../lib/blanket/define.rb:47 ../lib/blanket/define.rb:76
+#: ../lib/blanket/define.rb:95
+msgid "City"
+msgstr "城市"
+
+#: ../lib/blanket/define.rb:51
+msgid "Interiors"
+msgstr "室內"
+
+#: ../lib/blanket/define.rb:53 ../lib/blanket/define.rb:82
+msgid "Coffee Shop"
+msgstr "咖啡廳"
+
+#: ../lib/blanket/define.rb:54 ../lib/blanket/define.rb:74
+msgid "Fireplace"
+msgstr "壁爐"
+
+#: ../lib/blanket/define.rb:60 ../lib/blanket/define.rb:83
+msgid "Pink Noise"
+msgstr "粉紅噪音"
+
+#: ../lib/blanket/define.rb:61 ../lib/blanket/define.rb:78
+msgid "White Noise"
+msgstr "白噪音"
+
+#: ../lib/blanket/define.rb:67
+msgid "Sounds icons"
+msgstr "聲音圖示"
+
+#: ../lib/blanket/define.rb:68
+msgid "App icon"
+msgstr "程式圖示"
+
+#: ../lib/blanket/preferences_dialog.rb:65
+msgid "Appearance"
+msgstr "外觀"
+
+#: ../lib/blanket/preferences_dialog.rb:70
+msgid "Behavior"
+msgstr "行為"
+
+#: ../lib/blanket/preferences_dialog.rb:74
+msgid "Dark Mode"
+msgstr "深色模式"
+
+#: ../lib/blanket/preferences_dialog.rb:79
+#, fuzzy
+msgid "Autostart in Background"
+msgstr "在背景自動執行"
+
+#: ../lib/blanket/preferences_dialog.rb:83
+msgid "Always Start on Pause"
+msgstr ""
+
+#: ../lib/blanket/preferences_dialog.rb:95
+msgid "Inhibit suspension while playing"
+msgstr ""
+
+#: ../lib/blanket/preset_dialog.rb:81 ../lib/blanket/sound_rename_dialog.rb:83
+msgid "Cancel"
+msgstr "取消"
+
+#: ../lib/blanket/preset_dialog.rb:84 ../lib/blanket/sound_rename_dialog.rb:86
+msgid "Save"
+msgstr "儲存"
+
+#: ../lib/blanket/preset_dialog.rb:95
+msgid "Preset Name"
+msgstr "預設名稱"
+
+#: ../lib/blanket/preset_dialog.rb:109
+msgid "Edit Preset"
+msgstr "編輯預設"
+
+#: ../lib/blanket/preset_dialog.rb:111
+#, fuzzy
+msgid "New Preset"
+msgstr "新增預設"
+
+#: ../lib/blanket/preset_row.rb:101
+msgid "Rename Preset"
+msgstr "更名預設"
+
+#: ../lib/blanket/preset_row.rb:110
+msgid "Delete Preset"
+msgstr "刪除預設"
+
+#: ../lib/blanket/shortcuts_dialog.rb:18
+msgid "General"
+msgstr "通用組態"
+
+#: ../lib/blanket/shortcuts_dialog.rb:19
+#, fuzzy
+msgid "Play/Pause Sounds"
+msgstr "播放/暫停聲音"
+
+#: ../lib/blanket/shortcuts_dialog.rb:20
+#, fuzzy
+msgid "Add Custom Sound"
+msgstr "新增自訂聲音"
+
+#: ../lib/blanket/shortcuts_dialog.rb:21
+#, fuzzy
+msgid "Close Window"
+msgstr "關閉視窗"
+
+#: ../lib/blanket/shortcuts_dialog.rb:22 ../lib/blanket/window.rb:138
+msgid "Preferences"
+msgstr "偏好設定"
+
+#: ../lib/blanket/shortcuts_dialog.rb:23 ../lib/blanket/shortcuts_dialog.rb:38
+#: ../lib/blanket/window.rb:139
+msgid "Keyboard Shortcuts"
+msgstr "鍵盤快速鍵"
+
+#: ../lib/blanket/shortcuts_dialog.rb:24 ../lib/blanket/window.rb:145
+msgid "Quit"
+msgstr "結束"
+
+#: ../lib/blanket/sound_context_menu.rb:60
+msgid "Rename"
+msgstr ""
+
+#: ../lib/blanket/sound_context_menu.rb:65
+msgid "Remove"
+msgstr "移除"
+
+#: ../lib/blanket/sound_rename_dialog.rb:65
+#: ../lib/blanket/sound_rename_dialog.rb:81
+msgid "Rename Sound"
+msgstr ""
+
+#: ../lib/blanket/sound_rename_dialog.rb:97
+msgid "Sound Name"
+msgstr ""
+
+#: ../lib/blanket/window.rb:116
+msgid "Main Menu"
+msgstr "主選單"
+
+#: ../lib/blanket/window.rb:132
+#, fuzzy
+msgid "Keep Playing when Closed"
+msgstr "關閉後持續播放"
+
+#: ../lib/blanket/window.rb:140
+msgid "About Blanket"
+msgstr "關於 Blanket"
+
+#: ../lib/blanket/window.rb:182
+msgid "Volume Menu"
+msgstr "音量選單"
+
+#: ../lib/blanket/window.rb:195
+#, fuzzy
+msgid "Sounds Menu"
+msgstr "聲音提供"
+
+#: ../lib/blanket/window.rb:209
+msgid "Hide Inactive Sounds"
+msgstr ""
+
+#: ../lib/blanket/window.rb:210
+msgid "Save as New Preset…"
+msgstr "另存為新的預設…"
+
+#: ../lib/blanket/window.rb:215
+msgid "Add Sound…"
+msgstr "新增聲音…"
+
+#: ../lib/blanket/window.rb:235
+msgid "Reset Sounds"
+msgstr "重置聲音"
+
+#: ../lib/blanket/window.rb:285
+msgid "Paused to save power"
+msgstr ""
+
+#: ../lib/blanket/window.rb:287
+msgid "_Resume Playing"
+msgstr "繼續播放(_R)"
+
+#: ../lib/blanket/window.rb:313
+msgid "Open audio"
+msgstr "選擇音效"
+
+#: ../lib/blanket/window.rb:397
+msgid "File not found"
+msgstr ""
+
+#: ../lib/blanket/window.rb:452
+msgid "Add…"
+msgstr "新增…"
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/com.rafaelmardojai.Blanket.desktop.in:10
+#~ msgid "Concentrate;Focus;Noise;Productivity;Sleep;"
+#~ msgstr "專注;集中注意力;噪音;工作效率;睡眠;"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:7
+#~ msgid "Listen to ambient sounds"
+#~ msgstr "聆聽環境聲音"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:9
+#, fuzzy
+#~ msgid ""
+#~ "Improve focus and increase your productivity by listening to different ambient"
+#~ " sounds"
+#~ msgstr "透過聆聽不同的聲音增進注意力並提昇工作效率或是協助您除噪助眠"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:11
+#~ msgid "Features:"
+#~ msgstr "功能："
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:13
+#, fuzzy
+#~ msgid "Save presets"
+#~ msgstr "已存預設"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:14
+#, fuzzy
+#~ msgid "Add custom sounds"
+#~ msgstr "新增自訂聲音"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:15
+#, fuzzy
+#~ msgid "Auto start in background"
+#~ msgstr "在背景自動執行"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:18
+#~ msgid "Included Sounds in the App:"
+#~ msgstr "這個應用程式包含以下聲音："
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:57
+#~ msgid "The default screen in light theme"
+#~ msgstr "淺色主題的預設界面"
+
+#: data/com.rafaelmardojai.Blanket.metainfo.xml.in:62
+#~ msgid "The default screen in dark theme"
+#~ msgstr "深色主題的預設界面"
+
+#. Translators: Keep single quote please!
+#: data/com.rafaelmardojai.Blanket.gschema.xml:45
+#~ msgctxt "visible-name"
+#~ msgid "'Default'"
+#~ msgstr "預設"
+
+#. Translators: Replace me with your names, You can make a mailto link: translator-name <user@domain.org>
+#: data/resources/about.blp:15
+#~ msgctxt "Add your names here, do not remove previous names!"
+#~ msgid "translator-credits"
+#~ msgstr "farmer87 <richard.chu.kh@gmail.com>"
+
+#: data/resources/window.blp:24
+#, fuzzy
+#~ msgid "Presets Menu"
+#~ msgstr "預設名稱"
+
+#: blanket/define.py:38
+#~ msgid "Noise"
+#~ msgstr "噪音"
+
+#: blanket/preferences.py:79
+#~ msgid "Autostart Blanket in background."
+#~ msgstr "啟動後自動在背景執行 Blanket。"
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "Request error"
+#~ msgstr "請求失敗"
+
+#: blanket/preferences.py:107 blanket/preferences.py:128
+#~ msgid "The autostart request failed."
+#~ msgstr "自動執行請求失敗"
+
+#: blanket/preferences.py:124
+#~ msgid "Authorization failed"
+#~ msgstr "授權失敗"
+
+#: blanket/preferences.py:124
+#, fuzzy
+#~ msgid ""
+#~ "Make sure Blanket has permission to run in the background in Settings → Applic"
+#~ "ations → Blanket and try again."
+#~ msgstr ""
+#~ "Blanket 無權限在背景執行(Run in background)!\n"
+#~ "請在以下組態進行確認並重新設定。\n"
+#~ " - 設定(Settings) > 應用程式(Applicatons) > Blanket"
+
+#: blanket/window.py:133
+#~ msgid "Sound Automatically Removed"
+#~ msgstr "已自動移除聲音"
+
+#: blanket/window.py:138
+#~ msgid "Accept"
+#~ msgstr "接受"
+
+#~ msgid "Rafael Mardojai CM"
+#~ msgstr "Rafael Mardojai CM"
+#~ msgid "Keyboard Shortcus"
+#~ msgstr "鍵盤快速鍵"
+#~ msgid "Add Preset..."
+#~ msgstr "新增預設..."
+#~ msgid "Reset Volume Levels"
+#~ msgstr "音量重置"
+#~ msgid "Custom"
+#~ msgstr "自行定義"
+#~ msgid "Create"
+#~ msgstr "建立"
