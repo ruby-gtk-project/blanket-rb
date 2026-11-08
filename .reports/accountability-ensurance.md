@@ -123,13 +123,58 @@ than citing stale numbers as current.
   new staleness this round beyond what's noted above, since no commit this
   round touched its prose.
 
+## New this round (audit round 3) — `component-inventory.md`'s "Open items" list is itself stale, contradicted by this repo's own more current reports
+
+Re-checked the exact caveat the previous round left unexamined ("not
+re-audited for new staleness... since no commit this round touched its
+prose"). That caveat is no longer accurate to leave standing: no commit
+needed to touch the file's prose for it to go stale — the *rest of the
+repo* moved past it. `.reports/component-inventory.md`'s "Open items,
+current as of Round N+3" list (lines 561-579) still states as open:
+
+1. "Autostart permission flow ... no portal request, no error dialog, no
+   failure toast, no revert on denial" — **false**, as of `b815019`;
+   `component-parity.md` Gap 1 has carried this as CLOSED (behaviourally)
+   for two rounds now.
+2. "Preset chooser tooltip ... never set" — **false**, as of the same
+   commit; `component-parity.md` Gap 2 and `translation-parity.md` both
+   carry this as CLOSED.
+3. "No desktop entry, no AppStream metadata" — **false**; both now exist
+   (`data/org.rubygtkproject.Blanket.desktop.in`,
+   `...metainfo.xml.in`), and as of this round's commit (`0377552`) the
+   metainfo's screenshots/branding gap that this audit itself found is
+   also closed.
+
+The file's earlier "Totals" section (line 40, "The window itself is still
+a placeholder: ... No audio, no sounds, no bottom bar") is even more
+stale — it predates `5a86733` ("Port the main window, sound widgets,
+preferences and MPRIS"), the very next commit after the one this stale
+sentence was written against, and the file's own later "Round N+1: the UI
+landed" section (line 387) says so without ever going back to delete or
+correct the earlier sentence it contradicts.
+
+This is the same failure mode the previous round correctly flagged for
+`drive-verification.md` — a committed report sitting in `.reports/` that
+reads as a current, citable account of open work while actually
+describing a tree that no longer exists — and it is worse here, because
+three of the five "open items" a reader would take as this port's current
+TODO list are closed, and the file gives no indication that any of them
+might be. Not fixed in `component-inventory.md` itself this round (same
+reasoning the previous round gave for `drive-verification.md`: it is not
+one of the five required reports) but recorded here per the same
+instruction, so the next pass either corrects or retires the file rather
+than citing its "Open items" list as current.
+
 ## Summary
 
-One real violation closed with real code (autostart). One real violation
-carried forward completely unaddressed for a second round (real-sound
-playback — the single highest-severity open item from the last audit). One
-new finding: a committed report (`drive-verification.md`) now contains stale
-numbers that contradict a fresh re-run, which is exactly the kind of
-false-green risk this task instructs to treat as the most serious class of
-finding, even though it sits outside this round's own five required
-documents.
+One real violation closed with real code (autostart, carried from a prior
+round). One real violation still open (real-sound playback — tracked with
+a regression test this round, not re-litigated here). Two stale-document
+findings now on record: `drive-verification.md` (flagged and corrected
+last round) and, newly this round, `component-inventory.md`'s "Open
+items" list and "Totals" narrative, both of which state as current things
+that are false as of commits already on this branch. A committed report
+with a false "still open" or "still missing" claim is exactly the
+false-green risk this task names as the most serious class of finding,
+even when — as here — it sits outside the five required documents and
+nobody edited its prose this round.

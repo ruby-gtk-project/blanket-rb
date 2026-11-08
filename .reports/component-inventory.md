@@ -37,10 +37,21 @@ blockers section are corrected in place rather than re-run from scratch.
 | Assets | 16 symbolic icons, 14 `.ogg` sounds in GResource | **all present on disk** (`data/icons/hicolor/scalable/emblems`, `data/sounds`) |
 | Translated strings | 87 msgids, 57 `po/*.po` locales | `lib/blanket/i18n.rb` binds the `blanket` gettext domain; 60 of 80 source-level msgids ported, 57/57 `.mo` catalogues shipped under `locale/*/LC_MESSAGES/` (Round N+3 — see `.reports/translation-parity.md`) |
 
-The window itself is still a placeholder: `lib/blanket/application.rb` presents
+**STALE, corrected by audit round 3**: the sentence below described the
+tree as of this file's first survey, one commit before `5a86733` ("Port
+the main window, sound widgets, preferences and MPRIS") landed the real
+window, the sound grid and the GStreamer player stack. Left for the
+historical record rather than deleted, but it has been false since the
+very next commit after it was written, and the "Round N+1: the UI landed"
+section further down (correctly) says so without this paragraph ever
+being retired. Do not read this paragraph as describing the current tree;
+see `.reports/component-parity.md` and `.reports/accountability-ensurance.md`
+(audit round 3) for what is actually open today.
+
+~~The window itself is still a placeholder: `lib/blanket/application.rb` presents
 an `Adwaita::ApplicationWindow` holding an `Adwaita::ToolbarView`, a header bar
 with the real `PresetChooser` and main menu, and an `Adwaita::StatusPage` where
-the sound grid belongs. No audio, no sounds, no bottom bar.
+the sound grid belongs. No audio, no sounds, no bottom bar.~~
 
 ## Path convention
 
@@ -558,18 +569,19 @@ open item on the `application.rb`/`preferences_dialog.rb` pair.
 | Dark-mode system-colour-scheme fallback | wired | wired (`:force_dark` when unsupported) |
 | `ashpd` dependency | n/a (upstream uses `Xdp.Portal` via libportal, not this gem) | removed — never bound a usable portal |
 
-## Open items, current as of Round N+3
+## Open items, current as of Round N+3 — **items 1-3 below are STALE, closed by later commits; see audit round 3's note at the top of this file**
 
-1. **Autostart permission flow** (`application.rb` / `preferences_dialog.rb`)
+1. ~~**Autostart permission flow** (`application.rb` / `preferences_dialog.rb`)
    — no portal request, no error dialog, no failure toast, no revert on
-   denial. `component-parity.md` Gap 1.
-2. **Preset chooser tooltip** (`preset_chooser.rb`) — upstream's
+   denial.~~ **CLOSED** by `b815019`. `component-parity.md` Gap 1.
+2. ~~**Preset chooser tooltip** (`preset_chooser.rb`) — upstream's
    `tooltip-text: _("Presets Menu")` on the `$PresetChooser` instance is
-   never set. `component-parity.md` Gap 2.
-3. **No desktop entry, no AppStream metadata** — `data/com.rafaelmardojai.
+   never set.~~ **CLOSED**, same commit. `component-parity.md` Gap 2.
+3. ~~**No desktop entry, no AppStream metadata** — `data/com.rafaelmardojai.
    Blanket.desktop.in.in` and `...metainfo.xml.in.in` have no port
-   equivalent; 16 of the 19 translation gaps trace here.
-   `component-parity.md` Gap 3.
+   equivalent; 16 of the 19 translation gaps trace here.~~ **CLOSED**
+   (desktop entry by `b815019`; metainfo's screenshots/branding by this
+   audit round's `0377552`). `component-parity.md` Gap 3.
 4. **MPRIS `Metadata` property binding gap** — `Gio::DBusConnection`'s
    registered-object handler cannot convert the `a{sv}` `Metadata` property
    through `GLib::Variant#value`; a real D-Bus client reading
