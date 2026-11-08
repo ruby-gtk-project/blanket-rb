@@ -3,21 +3,18 @@
 | | |
 |---|---|
 | Upstream | `origin/master` @ `7586dbc` |
-| Port | `ruby` @ `37ac2c7` |
+| Port | `ruby` @ `faae9b0` |
 
-This pass does not re-derive the whole-app inventory from zero — the
-committed `.reports/component-inventory.md` already does file-by-file tables
-for every `lib/blanket/*.rb` unit and most of it is accurate work. **It is
-also stale in two specific places** (see `accountability-ensurance.md`): its
-prose still says "the window itself is still a placeholder" and its totals
-table says "Translated strings: none", both written before `5a86733` (window
-port) and `37ac2c7` (gettext wiring) respectively landed. Treat every claim in
-that document as unverified until re-checked against the current tree; this
-audit re-checked the two load-bearing ones in person.
+This pass re-verifies the standing unit list and re-checks the two gaps the
+previous round (`4d35191` "Parity reports", at port sha `37ac2c7`) recorded
+as missing entirely: the desktop entry and the AppStream metainfo. Both have
+since been added (`b815019`). This report records what changed and what is
+still short.
 
-## Unit list (confirmed against upstream's file tree)
+## Unit list — all twenty upstream units have a port file
 
-Upstream module → port file, confirmed present for all twenty upstream units:
+Unchanged from the previous round; re-confirmed by `find`/`git ls-tree` on
+both sides:
 
 | Upstream | Port file |
 |---|---|
@@ -42,51 +39,36 @@ Upstream module → port file, confirmed present for all twenty upstream units:
 | `data/resources/about.blp` | `lib/blanket/about_dialog.rb` |
 | `data/resources/shortcuts.blp` | `lib/blanket/shortcuts_dialog.rb` |
 
-All twenty upstream units have a corresponding port file. **This is file-level
-coverage, not component parity** — see `component-parity.md` for the
-behavioural gaps found inside several of these files.
+## Standalone-object units — one closed, one still partial
 
-## Units with no backing Python source — found missing entirely
+Previous round found three units with no backing Python class missing
+entirely. Re-checked this round:
 
-Upstream ships three more translatable, user-facing units that have **no
-Ruby file at all**, because they have no Python class to map from — they are
-pure data files, and the component-identification skill calls these out
-explicitly ("one unit per standalone object with no backing source file"):
-
-| Upstream file | What it is | Port equivalent |
+| Upstream file | Port equivalent | Status |
 |---|---|---|
-| `data/com.rafaelmardojai.Blanket.desktop.in.in` | the desktop launcher entry: `Name`, `GenericName`, `Comment`, `Keywords` | **none** — no `.desktop` file anywhere in the port tree |
-| `data/com.rafaelmardojai.Blanket.metainfo.xml.in.in` | the AppStream metadata: summary, description, feature list, screenshot captions | **none** — no metainfo file anywhere in the port tree |
-| `data/com.rafaelmardojai.Blanket.gschema.xml.in` → `data/schemas/org.rubygtkproject.Blanket.gschema.xml` | the GSettings schema | present, but with three key types changed (`a{ss}`/`a{sd}`/`a{sb}`/`(iib)` → `s`/JSON) and every `<description>` reworded to match — see `translation-parity.md` |
+| `data/com.rafaelmardojai.Blanket.desktop.in.in` | `data/org.rubygtkproject.Blanket.desktop.in` | **closed.** Byte-for-byte match on every field upstream has (`Name`, `Comment`, `Keywords`, `Categories`, `StartupNotify`, `X-Purism-FormFactor`), confirmed by direct diff; only `Icon=` differs (app id, correctly so) |
+| `data/com.rafaelmardojai.Blanket.metainfo.xml.in.in` | `data/org.rubygtkproject.Blanket.metainfo.xml.in` | **partial.** `summary`, `description`, feature list and sound list all present and correct. **Still missing: the entire `<screenshots>` block (2 captions: "The default screen in light theme" / "...in dark theme") and the `<branding>` block** (`primary` color for light/dark scheme). Confirmed absent by `grep -c screenshot` / `grep -c branding` on the port file, both `0` |
+| `data/com.rafaelmardojai.Blanket.gschema.xml.in` → `data/schemas/org.rubygtkproject.Blanket.gschema.xml` | present | unchanged from last round: the `window-state` key is retyped `(iib)` tuple → `s` (JSON string) because ruby-gnome's GSettings binding cannot round-trip a GVariant tuple through `Gio::Settings`, and its `<description>` is necessarily reworded ("A tuple containing..." → "A JSON array holding..."). Also: the port's `autostart` key now carries a `<summary>`/`<description>` upstream's schema does not have at all (upstream leaves that key undocumented) — an **addition**, not a gap, but worth naming since it is new translatable text with no upstream counterpart to match against |
 
-The missing desktop entry and metainfo file are **component gaps**, not
-translation gaps: the app currently cannot be launched from a desktop shell's
-app grid or show up in a software center under its own identity, independent
-of any string inside those files. Confirmed by `find . -iname '*.desktop*'`
-and `find . -iname '*metainfo*'` returning nothing under the port root.
+## Behavioural unit that was missing — now built
 
-## Behavioural unit found missing inside an existing file
-
-`blanket/preferences.py`'s autostart switch is backed by a real flow:
-`Xdp.Portal#request_background` → on success, write the setting; on refusal,
-show an `Adw.AlertDialog` ("Authorization failed" / explanation / Ok); on any
-other error, show an `Adw.Toast` ("The autostart request failed.") and revert
-the switch. `lib/blanket/preferences_dialog.rb` maps to this file but contains
-none of that: the switch just writes the GSettings key directly. No alert
-dialog, no toast, no revert-on-denial. See `component-parity.md` and
-`accountability-ensurance.md` for the finding and why the comment explaining
-its absence is itself a problem.
+`blanket/preferences.py`'s autostart flow (`Xdp.Portal#request_background` →
+alert dialog on denial / toast on failure / revert either way) was absent
+from `lib/blanket/preferences_dialog.rb` as of the last round. `b815019`
+built it: no `Xdp` Ruby binding exists, so the port talks to
+`org.freedesktop.portal.Background.RequestBackground` directly over the
+session bus via `gio2`. See `component-parity.md` for the behaviour-axis
+verdict on whether the replacement actually matches upstream's logic
+(it does, including the asymmetric write-on-denial-while-turning-off branch).
 
 ## Scope note
 
-This pass re-verified file coverage for all twenty units and did a full
-props-level read of `application.rb`, `window.rb`, `preferences_dialog.rb`,
-`preset_chooser.rb`, `about_dialog.rb` and `mpris.rb` against their upstream
-counterparts. It did **not** re-derive a full widget/CSS/signal table for
-every remaining file from scratch — the existing `.reports/component-inventory.md`
-tables for `sound.rb`, `main_player.rb`, `sound_item.rb`, `volume_row.rb`,
-`preset_row.rb`, `preset_dialog.rb`, `sound_context_menu.rb` and
-`sound_rename_dialog.rb` were spot-checked rather than independently rebuilt
-line-by-line. Anyone treating this report as proof those tables are still
-accurate should re-run the scan; this audit's confidence is limited to the
-items listed above.
+This pass re-verified file coverage for all twenty units and the three
+standalone units, and did a direct diff of the desktop file plus a read of
+the full metainfo and gschema files. It did not re-derive a full widget/CSS/
+signal table for every `lib/blanket/*.rb` file from scratch this round —
+`component-parity.md` carries the axis-level verdicts for the units that
+changed, and the remaining files (`sound.rb`, `main_player.rb`,
+`sound_item.rb`, `volume_row.rb`, `preset_row.rb`, `preset_dialog.rb`,
+`sound_context_menu.rb`, `sound_rename_dialog.rb`) are unchanged since the
+last round's spot-check and were not independently rebuilt again here.
