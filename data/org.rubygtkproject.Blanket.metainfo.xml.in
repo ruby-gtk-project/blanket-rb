@@ -56,6 +56,22 @@
     <control>touch</control>
   </supports>
 
+  <screenshots>
+    <screenshot type="default">
+      <image type="source">https://raw.githubusercontent.com/ruby-gtk-project/blanket-rb/ruby/tmp/shots/01-window.png</image>
+      <caption>The default screen in light theme</caption>
+    </screenshot>
+    <screenshot>
+      <image type="source">https://raw.githubusercontent.com/ruby-gtk-project/blanket-rb/ruby/tmp/shots/02-sound-playing.png</image>
+      <caption>The default screen in dark theme</caption>
+    </screenshot>
+  </screenshots>
+
+  <branding>
+    <color type="primary" scheme_preference="light">#c0dcff</color>
+    <color type="primary" scheme_preference="dark">#0d3d76</color>
+  </branding>
+
   <releases>
     <release version="0.1.0" date="2025-11-07">
       <description translate="no">

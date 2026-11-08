@@ -51,39 +51,67 @@ drive scripts' job. "The spec suite runs" is not "the spec suite covers the
 app" — it covers the one module that was the easiest thing to test in
 isolation.
 
-## What the 93 checks still do not cover — unchanged from last round, one item worse-confirmed
+## Real file-backed sound playback — CONFIRMED this round, no longer just suspected
+
+This was the single highest-severity open item from the last two rounds:
+`test/drive_window.rb` only ever tells the synthetic `NoiseBin`
+(`pink-noise`, `audiotestsrc`) to play, routing around a suspected
+thread-safety crash in `uridecodebin`'s `"pad-added"` signal, and no
+committed test had ever told a real `.ogg` file to play.
+
+**Settled this round, and the answer is: it crashes/hangs, most of the
+time.** `test/drive_real_sounds.rb`, new this round, forks each sound's
+play attempt with a hard wall-clock budget (so a hang cannot hang the test
+itself) and tried 12 distinct real bundled sounds across 2 trials:
+
+```
+nix develop --command xvfb-run -a ruby test/drive_real_sounds.rb
+```
+
+Result: **19 of 24 attempts (12 sounds x 2 trials) hung for the entire
+16-second hard budget; only 5 survived.** A 79% failure rate, not 100% —
+intermittent, not deterministic, which matches "suspected thread-safety
+crash" exactly: a race, not a guaranteed failure. A separate, earlier
+unbounded run (no fork, no hard timeout) did not merely hang: it ended
+with GStreamer's own built-in signal handler dumping a native backtrace
+and `/proc/self/maps` to stderr, i.e. a real SIGSEGV. Full account in
+`FINDINGS.md`'s third entry.
+
+This is a real, reproduced, severity-1 defect, not a benign quirk: the
+port's core feature (play an ambient sound) does not work today for 13 of
+its 14 bundled sounds. It is an open gap, tracked here and in
+`component-parity.md`, guarded by a committed regression test rather than
+an unconfirmed suspicion. `test/drive_window.rb`'s avoidance of real-sound
+playback was the right call, and its comment now says so with evidence
+instead of suspicion.
+
+## What the 93 checks still do not cover — re-checked this round
 
 The gate's "93 checks ... 20 components" phrasing invites reading coverage
 as uniform across components. It is not. Re-checked this round:
 
-- **Real file-backed sound playback is never driven, still.** Confirmed by
-  reading `test/drive_window.rb:6-12` fresh this session: the comment
-  explaining why only the synthetic `NoiseBin` is exercised is unchanged
-  since before the last parity-reports commit. No commit this round touched
-  it. This audit did not attempt its own ad-hoc reproduction run this
-  session (a prior round's informal 13-sound/10-second run found no crash,
-  but that was explicitly non-committed scratch work, not a regression
-  test, and is not re-cited here as evidence of anything — see
-  `accountability-ensurance.md`). **The state is exactly what it was last
-  round: unknown, and still not gated by any committed test.** This is a
-  component (`audio/bins.rb`'s `LoopBin`, backing 13 of 14 bundled sounds)
-  that no check exercises, which per this task's framing is unverified, not
-  done, regardless of how many of the other 93 checks pass.
+- **Real file-backed sound playback was never driven — now it is, and it
+  fails.** See above; no longer an unknown.
 - The `--hidden` CLI flag is still not exercised end-to-end via `exe/blanket`
   as a real process; the drive scripts spawn the app in-process.
 - No locale other than the default is driven by any committed test — see
   `translation-parity.md`.
 - The rename dialog's persistence is checked within one process
   (`drive_presets.rb` check 21), not across a real restart.
-- The autostart-denial (alert dialog) and autostart-grant paths are
-  read-verified, not driven — no portal daemon is available in this
-  environment to produce either response. See `component-parity.md` Gap 1.
+- The autostart-denial (alert dialog) and autostart-grant paths are still
+  read-verified, not driven. This round investigated faking a portal
+  daemon in-process over `gio2`/`gobject-introspection` and found it is
+  not currently feasible: two independent, reproduced crashes (an
+  `a{sv}`-conversion `NotImplementedError` on the inbound
+  `RequestBackground` call, and a `Ruby/GLib2-ERROR` core dump from
+  `add_filter`'s callback running on an unregistered GDBus worker thread).
+  See `FINDINGS.md`'s second entry and `component-parity.md` Gap 1.
 
 None of this makes "93 checks passed" dishonest. It means the gate's
-"20 components" framing overstates what is actually exercised, in exactly
-the same shape as last round, with one gap closed (the spec suite existing
-at all) and the highest-severity one (real playback) completely
-unaddressed since it was first flagged.
+"20 components" framing overstates what is actually exercised. This round
+closes the single worst gap (real playback: now known, not unknown) and
+narrows the autostart-portal gap from "nothing tried" to "tried, and found
+infeasible with the current bindings, for documented reasons."
 
 ## Extra
 

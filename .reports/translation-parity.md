@@ -38,15 +38,16 @@ confirms all 16 of those msgids now resolve on the port side:
   `MPRIS integration`, `Save presets` — all present in
   `data/org.rubygtkproject.Blanket.metainfo.xml.in`.
 
-## 3 real gaps remain
+## Round 2: 2 of the 3 gaps closed; 1 remains open (binding limitation, tracked in `FINDINGS.md`)
 
-| msgid | Upstream source | Why it's missing from the port |
+| msgid | Upstream source | Status |
 |---|---|---|
-| `A tuple containing the initial width, height and maximize state of the app window.` | `data/com.rafaelmardojai.Blanket.gschema.xml.in` | port's `window-state` gschema key is retyped (`s`/JSON, not GVariant tuple `(iib)` — ruby-gnome's `Gio::Settings` binding cannot round-trip the tuple type) and its `<description>` was necessarily reworded ("A JSON array holding...") to match. Binding limitation is the reason this is hard; it is not a reason to skip recording it as a gap |
-| `The default screen in light theme` | `data/com.rafaelmardojai.Blanket.metainfo.xml.in.in` (screenshot caption) | the port's metainfo has no `<screenshots>` block at all — confirmed by `grep -c screenshot` returning `0` |
-| `The default screen in dark theme` | same file, same block | same cause |
+| `A tuple containing the initial width, height and maximize state of the app window.` | `data/com.rafaelmardojai.Blanket.gschema.xml.in` | **still open.** port's `window-state` gschema key is retyped (`s`/JSON, not GVariant tuple `(iib)` — ruby-gnome's `Gio::Settings` binding cannot round-trip the tuple type) and its `<description>` was necessarily reworded ("A JSON array holding...") to match. A genuine binding limitation, not something to treat as equivalent — see `FINDINGS.md`'s first entry for the full account, now tracked there explicitly rather than only in this table |
+| `The default screen in light theme` | `data/com.rafaelmardojai.Blanket.metainfo.xml.in.in` (screenshot caption) | **closed this round.** `data/org.rubygtkproject.Blanket.metainfo.xml.in` now has a `<screenshots>` block carrying this caption |
+| `The default screen in dark theme` | same file, same block | **closed this round**, same `<screenshots>` block |
 
-All three are named and located; none is excused. See
+The one remaining gap is named and located, and is not excused as
+equivalent to the upstream msgid it replaces. See
 `component-identification.md` and `component-parity.md` for the same two
 findings recorded against their components.
 
@@ -113,11 +114,13 @@ own pass before claiming full coverage.
 
 ## Verdict
 
-Substantial, real progress this round: 19 gaps down to 3, and all three
-remaining ones are either a documented binding limitation (the gschema
-tuple retyping) or a scoped, named omission (the metainfo screenshots
-block). Not full translation parity — 3 gaps open, plus the live-locale
-claim still unverified — but a materially stronger position than the
-previous round's report, and this report's own numbers were independently
-re-derived from a fresh census rather than carried forward from the prior
-file.
+Round 1: 19 gaps down to 3. **Round 2: 3 gaps down to 1.** The metainfo's
+two screenshot-caption msgids now have a home — `data/org.rubygtkproject.
+Blanket.metainfo.xml.in`'s new `<screenshots>` block carries both,
+verbatim, as upstream's captions — closing 2 of the 3. The one that
+remains, the `window-state` gschema tuple-to-JSON retyping, is a genuine
+`ruby-gnome` binding limitation (confirmed, not assumed — see
+`FINDINGS.md`'s first entry) and stays open rather than being waved through
+as an equivalent rewording. Not full translation parity — 1 gap open, plus
+the live-locale claim still unverified — but closing real ground this
+round, independently re-verified rather than carried forward on faith.

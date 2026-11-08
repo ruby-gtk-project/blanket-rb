@@ -8,8 +8,13 @@
 # dynamic pads) is ever told to play — a looped file goes through
 # uridecodebin's "pad-added" signal, which upstream's audio/bins.rb fires
 # from a GStreamer streaming thread, and invoking a Ruby block from a thread
-# Ruby never registered is a pre-existing crash this driver works around
-# rather than exercises.
+# Ruby never registered is a crash this driver works around rather than
+# exercises. This was a suspicion for two audit rounds; it is now confirmed
+# (19 of 24 real-sound attempts hung or segfaulted in a 12-sound x 2-trial
+# run — a 79% failure rate, intermittent rather than deterministic, exactly
+# what a genuine thread race looks like) by test/drive_real_sounds.rb and
+# FINDINGS.md's third entry — see that test for the real-sound regression
+# coverage this driver deliberately avoids.
 
 ENV["GSETTINGS_BACKEND"] = "memory"
 

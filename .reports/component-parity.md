@@ -5,11 +5,16 @@
 | Upstream | `origin/master` @ `7586dbc` |
 | Port | `ruby` @ `faae9b0` |
 | Units with confirmed parity | 0 fully audited to all four axes |
-| Units with a confirmed gap | 2 (down from 3 last round; 1 closed) |
+| Units with a confirmed gap | 2 (one newly confirmed as a real defect, not a doc gap; one narrowed) |
 
-This is a targeted re-audit of the three gaps the previous round found,
-plus one new finding this round surfaced while re-verifying them. It is
-not a from-scratch four-axis pass over every unit — see the Scope note.
+This round (round 2): closed the metainfo `<screenshots>`/`<branding>` gap;
+confirmed, with a committed regression test, that real file-backed sound
+playback actually crashes/hangs rather than being merely suspected; and
+investigated — then ruled out as currently infeasible — faking the
+autostart portal in-process to drive its two remaining read-verified
+branches. See `FINDINGS.md` for the full account of findings 2 and 3.
+The rest of this file is carried over from the previous round's audit of
+the gaps found then.
 
 ## Gap 1 — the autostart permission flow — CLOSED
 
@@ -46,6 +51,19 @@ denial-alert and grant paths are read-verified only, not driven.** Noting
 this distinction rather than calling the whole flow "driven," per the task's
 instruction that an unexercised path is unverified, not done.
 
+**Round 2 update:** investigated whether the denial and grant branches
+could be driven by faking a minimal `org.freedesktop.portal.Desktop`
+service in-process, on the same session bus. Found infeasible, not just
+unattempted: `Gio::DBusConnection#register_object`'s automatic parameter
+conversion crashes with the same `a{sv}`→Ruby `NotImplementedError`
+already known from MPRIS's `Metadata` property (this time on an *inbound*
+method argument), and the fallback of reading the raw message via
+`#add_filter` instead crashes a different way — its callback runs on a
+GDBus worker thread Ruby never registered, aborting the process
+(`Ruby/GLib2-ERROR` + core dump). Both reproduced directly this round; see
+`FINDINGS.md`'s second entry. The two branches remain read-verified only,
+now for a documented reason rather than an assumption.
+
 ## Gap 2 — the preset chooser's tooltip — CLOSED
 
 **Upstream:** `data/resources/window.blp:22` — `tooltip-text: _("Presets
@@ -64,32 +82,43 @@ diffs byte-identical against upstream on every field but `Icon=` (correctly
 the port's own app id). Confirmed by direct `git show origin/master:...`
 vs. the port file, this session.
 
-**Metainfo:** still a gap. `data/org.rubygtkproject.Blanket.metainfo.xml.in`
-carries the summary, description, feature list and sound list, but has
-**no `<screenshots>` block and no `<branding>` block** — confirmed absent by
-grep this session. Two msgids (`The default screen in light theme`, `...in
-dark theme`) have no home in the port at all; a software center showing this
-app's listing would show no screenshots and the generic theme color instead
-of the app's own `#c0dcff` / `#0d3d76` accent.
+**Metainfo:** CLOSED this round (round 2).
+`data/org.rubygtkproject.Blanket.metainfo.xml.in` now carries a
+`<screenshots>` block (two `<screenshot>` entries, both captions —
+"The default screen in light theme" / "...in dark theme" — present and
+marked up the same way upstream marks them for translation) pointing at
+the port's own screenshots under `tmp/shots/`, rather than re-using
+upstream's URLs, which would misrepresent the Python app as this one. It
+also carries a `<branding>` block with the same `#c0dcff` (light) /
+`#0d3d76` (dark) primary accent colors upstream ships, unchanged since
+they are the project's actual brand colors, not something the port should
+invent its own version of.
 
-**Verdict: gap**, narrower than last round (the file now exists and most of
-its content is correct) but not closed.
+**Verdict: parity**, for this sub-unit.
 
-## New this round — real-sound playback has no component-parity coverage
+## Gap 4 (round 2) — real-sound playback: CONFIRMED BROKEN, now a tracked defect with a guarding test
 
-Re-checking `.reports/accountability-ensurance.md`'s standing note (both
-this round's and the carried-over prior one): the drive suite's own comment
-in `test/drive_window.rb:6-12` states, unchanged since before the last
-"Parity reports" commit, that only the synthetic `NoiseBin`
-(`audiotestsrc`) is ever told to play, because a looped file
-(`LoopBin`/`uridecodebin`) is suspected to crash the process via a signal
-fired from a non-Ruby-registered GStreamer thread. **No test, this round or
-any prior round, has driven a real file-backed sound and confirmed the
-process survives.** `audio/bins.rb`'s `LoopBin` is therefore a component
-with zero behaviour-axis coverage of its primary code path — the one GTK
-signal integration this app depends on to play 14 of its 14 bundled sounds.
-See `accountability-ensurance.md` for why this is carried forward rather
-than treated as newly resolved.
+Two prior rounds carried this as a suspicion, unconfirmed: the drive
+suite's comment in `test/drive_window.rb` said only the synthetic
+`NoiseBin` (`audiotestsrc`) is ever told to play, because a looped file
+(`LoopBin`/`uridecodebin`) was suspected to crash the process via a signal
+fired from a non-Ruby-registered GStreamer streaming thread.
+
+**This round settles it with a committed, repeated-trial test —
+`test/drive_real_sounds.rb`.** Result: 19 of 24 attempts (12 distinct real
+bundled sounds x 2 trials) hung for the entire 16-second hard budget; only
+5 survived — a 79% failure rate, intermittent rather than deterministic,
+consistent with a genuine thread race rather than a guaranteed crash. A
+separate unbounded run (before this test's fork+timeout harness was added)
+terminated in a native SIGSEGV, caught and reported by GStreamer's own
+built-in crash handler. Full account in `FINDINGS.md`'s third entry.
+
+**Verdict: real defect, not a documentation or coverage gap.** `audio/bins.rb`'s
+`LoopBin` — the code path behind 13 of the app's 14 bundled sounds — does
+not work. This is now tracked as an open, confirmed, severity-1 bug
+guarded by a regression test, rather than an unconfirmed suspicion routed
+around silently. `test/drive_window.rb`'s avoidance of real-sound playback
+stays, correctly, now backed by evidence.
 
 ## What this audit did check and found clean (unchanged from last round)
 
