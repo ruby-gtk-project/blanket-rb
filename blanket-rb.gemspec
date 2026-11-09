@@ -96,28 +96,11 @@ Gem::Specification.new do |spec|
   spec.executables = ["blanket"]
   spec.require_paths = ["lib"]
 
-  # Runtime dependencies. This gemspec had none at all: the app's gems were
-  # declared only in nix/Gemfile, so `gem install blanket-rb` produced
-  # something that could not load its own toolkit.
-  #
-  # `gem_kit` (GemKit::Deprecate, a deprecation-declaration DSL) was listed
-  # here too, but nothing in lib/ ever `extend`s it or declares a
-  # deprecation -- there is no renamed/moved API in this port for it to
-  # cover -- and it was never even added to nix/Gemfile, so the packaged
-  # devshell closure never actually carried it. Removed rather than kept
-  # "mandated regardless"; add it back if a real deprecation shows up.
-  spec.add_dependency("gtk4", "~> 4.3")
   spec.add_dependency("adwaita", "~> 4.3")
-  spec.add_dependency("glib2", "~> 4.3")
-
-  # The GStreamer bindings MainPlayer and audio/bins.rb mix every sound
-  # through, pinned to the exact release nix/Gemfile.lock already resolved.
-  spec.add_dependency("gstreamer", "4.3.9")
-
-  # Translation catalogue. lib/blanket/i18n.rb binds the "blanket" text
-  # domain against the compiled .mo catalogues under locale/, carried over
-  # from upstream's po/*.po.
   spec.add_dependency("gettext", "~> 3.4")
+  spec.add_dependency("glib2", "~> 4.3")
+  spec.add_dependency("gstreamer", "4.3.9")
+  spec.add_dependency("gtk4", "~> 4.3")
 
   # NOTE: It is preferable to list development dependencies in the gemspec due to increased
   #       visibility and discoverability.

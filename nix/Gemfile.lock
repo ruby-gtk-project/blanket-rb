@@ -76,8 +76,8 @@ DEPENDENCIES
   adwaita
   gettext
   glib2
-  gstreamer (= 4.3.9)
+  gstreamer
   gtk4
 
 BUNDLED WITH
-   2.7.2
+   2.6.9
